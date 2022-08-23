@@ -8,7 +8,7 @@ class Logo extends StatelessWidget {
     return SizedBox(
       width: 200,
       height: 200,
-      child: Image.asset('images/logo.png'),
+      child: Image.asset('lib/components/assets/images/logo.png'),
     );
   }
 }
