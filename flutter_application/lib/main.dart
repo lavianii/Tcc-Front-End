@@ -3,6 +3,7 @@ import 'package:flutter_application/components/cadastrarBotao.dart';
 import 'package:flutter_application/components/entrarBotao.dart';
 import 'package:flutter_application/components/estiloTextFild.dart';
 import 'package:flutter_application/components/logo.dart';
+import 'package:flutter_application/components/textoBoletim.dart';
 
 void main() {
   runApp(
@@ -23,8 +24,15 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: const Color.fromRGBO(119, 168, 166, 1.0),
+    return Container(
+      //testando
+      child: textoBoletim(),
+ 
+    );
+         
+
+    // codigo login
+      /*backgroundColor: const Color.fromRGBO(119, 168, 166, 1.0),
       resizeToAvoidBottomInset: false,
       body: SizedBox(
         height: double.infinity,
@@ -46,7 +54,7 @@ class _MyAppState extends State<MyApp> {
             ),
           ),
         ),
-      ),
-    );
+      ),*/
+    
   }
 }
