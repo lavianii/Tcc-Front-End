@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application/components/textoBoletim.dart';
+import 'package:flutter_application/components/TextoBoletim.dart';
 import 'package:flutter_application/components/Login.dart';
 
 
@@ -25,7 +25,7 @@ class _MyAppState extends State<MyApp> {
 
     return Container(
       //testando
-      child: textoBoletim(),
+      child: TextoBoletim(),
  
     );
          

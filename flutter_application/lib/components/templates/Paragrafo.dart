@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
 
-class paragrafo extends StatelessWidget {
+class Paragrafo extends StatelessWidget {
 
    final String texto;
    final double padding;
-
-
-
-  const paragrafo({Key? key, required this.texto, required this.padding}) : super(key: key);
+  const Paragrafo({Key? key, required this.texto, required this.padding}) : super(key: key);
 
 
   @override

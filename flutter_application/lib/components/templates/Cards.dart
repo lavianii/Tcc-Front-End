@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class card extends StatelessWidget {
+class Cards extends StatelessWidget {
 
    final color;
    final double width;
@@ -14,7 +14,7 @@ class card extends StatelessWidget {
    final double alignmentY;
 
 
-  const card({Key? key, required this.width, required this.height,required this.color,
+  const Cards({Key? key, required this.width, required this.height,required this.color,
             required this.marginLeft, required this.marginTop,required this.marginRight,
               required this.marginBottom,required this.child,required this.alignmentX, required this.alignmentY}) : super(key: key);
 
