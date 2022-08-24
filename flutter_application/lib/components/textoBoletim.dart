@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application/components/templates/Paragrafo.dart';
-import 'package:flutter_application/components/templates/Cards.dart';
+import '../components/templates/Paragrafo.dart';
+import '../components/templates/Cards.dart';
 
 class TextoBoletim extends StatelessWidget {
   const TextoBoletim({
@@ -16,6 +16,7 @@ class TextoBoletim extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: const [
+
             Paragrafo(
               texto: 'Grande parte dos brasileiros ó registra um boletim de ocorrência em casos graves.',
               padding:  5),

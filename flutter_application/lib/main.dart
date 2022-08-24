@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application/components/TextoBoletim.dart';
-import 'package:flutter_application/components/Login.dart';
+import './components/textoBoletim.dart';
+import './components/Login.dart';
+import 'components/templates/BotaoPadrao.dart';
 
 
 void main() {
@@ -25,7 +26,15 @@ class _MyAppState extends State<MyApp> {
 
     return Container(
       //testando
-      child: TextoBoletim(),
+      child: const BotaoPadrao(
+        text: 'teste',
+        paddingLeft: 100,
+        paddingBottom: 10,
+        paddingRight: 100,
+        paddingTop: 10,
+        colorBackground: (0xff161616),
+        colorText: (0xff555555),
+      ),
  
     );
          

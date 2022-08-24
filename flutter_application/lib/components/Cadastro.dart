@@ -1,8 +1,8 @@
 // ignore_for_file: file_names
 
 import 'package:flutter/material.dart';
-import 'package:flutter_application/components/templates/EntrarBotao.dart';
-import 'package:flutter_application/components/templates/Logo.dart';
+import '../components/templates/EntrarBotao.dart';
+import '../components/templates/Logo.dart';
 
 import 'templates/EstiloTextFild.dart';
 
