@@ -9,15 +9,18 @@ class Cards extends StatelessWidget {
    final double marginTop;
    final double marginRight;
    final double marginBottom;
+   final double paddingLeft;
+   final double paddingTop;
+   final double paddingRight;
+   final double paddingBottom;
    final Widget child;
-   final double alignmentX;
-   final double alignmentY;
-
+   final double opacity;
 
   const Cards({Key? key, required this.width, required this.height,required this.color,
             required this.marginLeft, required this.marginTop,required this.marginRight,
-              required this.marginBottom,required this.child,required this.alignmentX, required this.alignmentY}) : super(key: key);
-
+              required this.marginBottom,required this.paddingLeft,required this.paddingTop,
+              required this.paddingRight, required this.paddingBottom,required this.child, 
+              required this.opacity,}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -25,9 +28,9 @@ class Cards extends StatelessWidget {
         Container(
           width: width,
           height: height,
-          color: Color(color),
+          color: Color(color).withOpacity(opacity),
           margin: EdgeInsets.fromLTRB(marginLeft, marginTop, marginRight, marginBottom),
-          alignment: Alignment(alignmentX,alignmentY),
+          padding: EdgeInsets.fromLTRB(paddingLeft,paddingTop,paddingRight,paddingBottom),
           child: child,
       )
     );

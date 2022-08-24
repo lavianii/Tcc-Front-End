@@ -1,16 +1,17 @@
-# flutter_application
+# Cores do projeto
 
-A new Flutter project.
 
-## Getting Started
+77A8A6 (100%) 
+152C42 (90%) - usado nos icons e textos
+FFFFFF (100%) - o famoso branco
+DFF5F4 (100%) - usado no fundo 
+000000 (100%) - para pequenos detalhes
+F03E44 (90%) - para a alta periculosidade 
+F0913E (90%) - média periculosidade
+78CF46 (90%) - baixa periculosidade
+000000 (35%) - fundinho dos favoritos
 
-This project is a starting point for a Flutter application.
+link do Docs:
+ https://docs.google.com/document/d/1HX5rDxtJvFzJ648zZsJqDWL-hafQWZljVfMR6utrUnE/edit
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.

@@ -4,8 +4,8 @@ class Paragrafo extends StatelessWidget {
 
    final String texto;
    final double padding;
-  const Paragrafo({Key? key, required this.texto, required this.padding}) : super(key: key);
 
+  const Paragrafo({Key? key, required this.texto, required this.padding}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -15,8 +15,8 @@ class Paragrafo extends StatelessWidget {
               child: Text(
                   texto,
                   style: const TextStyle(
-                    color: Color(0xfffdfcf9),
-                    fontSize:  20,
+                    color: Color(0xff152C42),
+                    fontSize:  17,
                   )
                 ),
             )
