@@ -4,6 +4,7 @@ import './components/Login.dart';
 import 'components/templates/BotaoPadrao.dart';
 
 
+
 void main() {
   runApp(
     const MaterialApp(
@@ -24,18 +25,22 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
 
-    return Container(
+    return Card(
+      
+      //teste
+      /*shape: const RoundedRectangleBorder(
+        borderRadius:  BorderRadius.all(
+          Radius.circular(200),
+        ),
+      ), 
+      color: Colors.lightBlueAccent,
+      margin: EdgeInsets.fromLTRB(150, 400, 150, 400),
       //testando
-      child: const BotaoPadrao(
-        text: 'teste',
-        paddingLeft: 100,
-        paddingBottom: 10,
-        paddingRight: 100,
-        paddingTop: 10,
-        colorBackground: (0xff161616),
-        colorText: (0xff555555),
-      ),
- 
+      child:  SizedBox( 
+        width: 5,
+        height: 5,
+        child: Image.asset('lib/components/assets/icons/favoritos.png'),
+        )*/
     );
          
 
