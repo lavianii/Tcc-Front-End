@@ -17,7 +17,7 @@ class TelaDenuncia extends StatelessWidget {
       backgroundColor: const Color(0xffDFF5F4),
 
       body: Padding(
-        padding: const EdgeInsets.fromLTRB(45, 0, 45, 0),
+        padding: const EdgeInsets.fromLTRB(45, 50, 45, 0),
 
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -30,10 +30,11 @@ class TelaDenuncia extends StatelessWidget {
             Paragrafo(
               texto: 'Os acontecimentos relatados por você em nosso questionário serão fundamentais para a construção do mapeamento.', 
               padding: 5),
-
+            
+            // card de texto
             Cards(
               width: 300, 
-              height: 180, 
+              height: 120, 
               color: 0xff77A8A6,
               opacity: 0.30,
               marginLeft: 0,
@@ -41,17 +42,37 @@ class TelaDenuncia extends StatelessWidget {
               marginRight: 0,
               marginTop: 25,
               paddingLeft: 30,
-              paddingTop: 60,
+              paddingTop: 37,
               paddingRight: 30,
-              paddingBottom:60 ,
+              paddingBottom:37 ,
               child: TextoCardsDeInfo(texto: 'O Boletim de Ocorrência é importante?'),
-              ),
+            ),
+
+            //card de texto
+            Cards(
+              width: 300, 
+              height: 110, 
+              color: 0xff77A8A6,
+              opacity: 0.30,
+              marginLeft: 0,
+              marginBottom: 0,
+              marginRight: 0,
+              marginTop: 20,
+              paddingLeft: 30,
+              paddingTop: 37,
+              paddingRight: 30,
+              paddingBottom:37 ,
+              child: TextoCardsDeInfo(texto: 'Denuncie e contribua com nosso banco de dados!')
+
+            ),
+
+            //card para alinhar o botao
               Cards(
                 width: 300, 
-                height: 45, 
+                height: 35, 
                 color: 0xff77A8A6, 
                 marginLeft: 0, 
-                marginTop: 50, 
+                marginTop: 0, 
                 marginRight: 0, 
                 marginBottom: 0, 
                 paddingLeft: 0, 
@@ -61,15 +82,15 @@ class TelaDenuncia extends StatelessWidget {
                 opacity: 0,
                 child: 
                   BotaoPadrao(
-                paddingLeft: 103, 
-                paddingTop: 15, 
-                paddingRight: 103, 
-                paddingBottom: 15, 
-                colorBackground: 0xff77A8A6, 
-                colorText: 0xffffffff, 
-                text: 'Denunciar'
+                    paddingLeft: 103, 
+                    paddingTop: 10, 
+                    paddingRight: 103, 
+                    paddingBottom: 10, 
+                    colorBackground: 0xff77A8A6, 
+                    colorText: 0xffffffff, 
+                    text: 'Denunciar'
               ), 
-               )
+            ),
           ],
         ),
       ),
