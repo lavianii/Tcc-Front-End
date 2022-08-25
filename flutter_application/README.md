@@ -1,7 +1,7 @@
 # Cores do projeto
 
 
-77A8A6 (100%) 
+77A8A6 (100%) - cor de fundo mais forte 
 152C42 (90%) - usado nos icons e textos
 FFFFFF (100%) - o famoso branco
 DFF5F4 (100%) - usado no fundo 
