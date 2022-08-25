@@ -1,7 +1,11 @@
 
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:url_launcher/url_launcher_string.dart';
+
 
 class BotaoPadrao extends StatelessWidget {
+
   final double paddingLeft;
   final double paddingTop;
   final double paddingRight;
@@ -9,6 +13,7 @@ class BotaoPadrao extends StatelessWidget {
   final colorBackground;
   final colorText;
   final String text;
+
 
   const BotaoPadrao(
       {Key? key,
@@ -18,8 +23,12 @@ class BotaoPadrao extends StatelessWidget {
       required this.paddingBottom,
       required this.colorBackground,
       required this.colorText,
-      required this.text})
+      required this.text,
+   
+      })
       : super(key: key);
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +40,9 @@ class BotaoPadrao extends StatelessWidget {
           primary: Color(colorBackground),
           onPrimary: Color(colorText),
         ),
-        onPressed: () {},
+        onPressed: (() {
+          
+        }),
         child: Text(text),
       ),
     ));

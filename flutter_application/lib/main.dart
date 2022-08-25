@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import './components/TelaDenuncia.dart';
+import './components/TelaBoletimDeOcorrencia.dart';
 import './components/Login.dart';
 
 
@@ -23,7 +24,7 @@ class _MyAppState extends State<MyApp> {
 
     return  Container(
       //testando
-      child: TelaDenuncia(),
+      child: TelaBoletimDeOcorrencia(),
  
     );
          

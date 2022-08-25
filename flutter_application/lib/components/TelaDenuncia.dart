@@ -5,11 +5,11 @@ import 'package:flutter_application/components/templates/Cards.dart';
 import 'package:flutter_application/components/templates/TextoCardsDeInfo.dart';
 import 'package:flutter_application/components/templates/BotaoPadrao.dart';
 
-
 class TelaDenuncia extends StatelessWidget {
   const TelaDenuncia({
     Key? key,
   }) : super(key: key);
+  
 
   @override
   Widget build(BuildContext context) {
@@ -88,7 +88,8 @@ class TelaDenuncia extends StatelessWidget {
                     paddingBottom: 10, 
                     colorBackground: 0xff77A8A6, 
                     colorText: 0xffffffff, 
-                    text: 'Denunciar'
+                    text: 'Denunciar',
+                    
               ), 
             ),
           ],

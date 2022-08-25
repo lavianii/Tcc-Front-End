@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application/components/templates/TextoCardsDeInfo.dart';
 import '../components/templates/Cards.dart';
 import '../components/templates/Paragrafo.dart';
+import 'package:flutter_application/components/templates/BotaoPadrao.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class TelaBoletimDeOcorrencia extends StatelessWidget {
   const TelaBoletimDeOcorrencia({
@@ -49,7 +51,31 @@ class TelaBoletimDeOcorrencia extends StatelessWidget {
               paddingRight: 30,
               paddingBottom:60 ,
               child: TextoCardsDeInfo(texto: 'Link')
-              )
+              ),
+            Cards(
+                width: 300, 
+                height: 35, 
+                color: 0xff77A8A6, 
+                marginLeft: 0, 
+                marginTop: 0, 
+                marginRight: 0, 
+                marginBottom: 0, 
+                paddingLeft: 0, 
+                paddingTop: 0, 
+                paddingRight: 0, 
+                paddingBottom: 0,
+                opacity: 0,
+                child: 
+                  BotaoPadrao(
+                    paddingLeft: 103, 
+                    paddingTop: 10, 
+                    paddingRight: 103, 
+                    paddingBottom: 10, 
+                    colorBackground: 0xff77A8A6, 
+                    colorText: 0xffffffff, 
+                    text: 'Denunciar'
+              ), 
+            ),
           ],
         ),
       ),
