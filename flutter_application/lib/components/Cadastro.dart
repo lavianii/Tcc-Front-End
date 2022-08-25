@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'templates/CadastrarBotao.dart';
 import 'templates/EntrarBotao.dart';
 import 'templates/EstiloTextFild.dart';
-import 'templates/Logo.dart';
 
 class Cadastro extends StatefulWidget {
   const Cadastro({Key? key}) : super(key: key);
@@ -15,12 +13,25 @@ class _CadastroState extends State<Cadastro> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromRGBO(223, 245, 244, 1),
+      appBar: AppBar(
+        backgroundColor: const Color.fromARGB(255, 221, 241, 240),
+        elevation: 0,
+        title: Row(
+          children: [
+            Image.asset(
+              'lib/components/assets/images/logo2.png',
+              height: 50,
+            ),
+          ],
+        ),
+      ),
       resizeToAvoidBottomInset: false,
-      body: Center(
-        heightFactor: 3,
+      body: Container(
+        height: double.infinity,
+        width: double.infinity,
+        color: const Color.fromARGB(255, 221, 241, 240),
         child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 10),
+          padding: const EdgeInsets.symmetric(vertical: 180),
           child: SingleChildScrollView(
             child: Column(
               children: const [
@@ -33,7 +44,7 @@ class _CadastroState extends State<Cadastro> {
                 SizedBox(height: 15),
                 EstiloTextFild(
                   label: 'Email',
-                  iconData: Icons.email,
+                  iconData: Icons.email_rounded,
                   obscureText: false,
                 ),
                 SizedBox(height: 15),
@@ -42,6 +53,8 @@ class _CadastroState extends State<Cadastro> {
                   iconData: Icons.lock,
                   obscureText: true,
                 ),
+                SizedBox(height: 100),
+                EntrarBotao(text: 'Cadastrar')
               ],
             ),
           ),

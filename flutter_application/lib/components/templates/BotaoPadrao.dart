@@ -1,11 +1,8 @@
-
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
-
 class BotaoPadrao extends StatelessWidget {
-
   final double paddingLeft;
   final double paddingTop;
   final double paddingRight;
@@ -14,37 +11,34 @@ class BotaoPadrao extends StatelessWidget {
   final colorText;
   final String text;
 
-
-  const BotaoPadrao(
-      {Key? key,
-      required this.paddingLeft,
-      required this.paddingTop,
-      required this.paddingRight,
-      required this.paddingBottom,
-      required this.colorBackground,
-      required this.colorText,
-      required this.text,
-   
-      })
-      : super(key: key);
-
-
+  const BotaoPadrao({
+    Key? key,
+    required this.paddingLeft,
+    required this.paddingTop,
+    required this.paddingRight,
+    required this.paddingBottom,
+    required this.colorBackground,
+    required this.colorText,
+    required this.text,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return (Scaffold(
+    return Scaffold(
       body: ElevatedButton(
         style: ElevatedButton.styleFrom(
           padding: EdgeInsets.fromLTRB(
-              paddingLeft, paddingTop, paddingRight, paddingBottom),
+            paddingLeft,
+            paddingTop,
+            paddingRight,
+            paddingBottom,
+          ),
           primary: Color(colorBackground),
           onPrimary: Color(colorText),
         ),
-        onPressed: (() {
-          
-        }),
+        onPressed: (() {}),
         child: Text(text),
       ),
-    ));
+    );
   }
 }
