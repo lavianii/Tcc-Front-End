@@ -42,7 +42,7 @@ class TelaDenuncia extends StatelessWidget {
               paddingBottom:60 ,
               child: TextoCardsDeInfo(texto: 'O Boletim de Ocorrência é importante?'),
               ),
-              EntrarBotao()
+              
           ],
         ),
       ),

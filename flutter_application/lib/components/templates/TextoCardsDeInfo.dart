@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-
-
 class TextoCardsDeInfo extends StatelessWidget {
 
   final String texto;

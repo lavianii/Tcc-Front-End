@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application/components/TelaBoletimDeOcorrencia.dart';
-import 'package:flutter_application/components/Login.dart';
-import 'components/TelaDenuncia.dart';
+import './components/TelaDenuncia.dart';
+import './components/Login.dart';
+
 
 void main() {
   runApp(
@@ -21,7 +21,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
 
-    return Container(
+    return  Container(
       //testando
       child: TelaDenuncia(),
  

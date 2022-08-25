@@ -16,7 +16,7 @@ class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromRGBO(119, 168, 166, 1.0),
+      backgroundColor: const Color.fromRGBO(119, 168, 166, 1),
       resizeToAvoidBottomInset: false,
       body: SizedBox(
         height: double.infinity,
@@ -40,7 +40,7 @@ class _LoginState extends State<Login> {
                   obscureText: true,
                 ),
                 SizedBox(height: 100),
-                EntrarBotao(),
+                EntrarBotao(text: 'Entrar'),
                 SizedBox(height: 150),
                 CadastrarBotao()
               ],

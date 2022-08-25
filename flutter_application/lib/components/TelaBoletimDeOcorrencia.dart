@@ -1,7 +1,8 @@
+
 import 'package:flutter/material.dart';
-import 'package:flutter_application/components/templates/Paragrafo.dart';
-import 'package:flutter_application/components/templates/Cards.dart';
 import 'package:flutter_application/components/templates/TextoCardsDeInfo.dart';
+import '../components/templates/Cards.dart';
+import '../components/templates/Paragrafo.dart';
 
 class TelaBoletimDeOcorrencia extends StatelessWidget {
   const TelaBoletimDeOcorrencia({
@@ -18,6 +19,7 @@ class TelaBoletimDeOcorrencia extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: const [
             Paragrafo(
+
               texto: 'Grande parte dos brasileiros só registra um boletim de ocorrência em casos graves.',
               padding:  5),
                   
@@ -26,9 +28,9 @@ class TelaBoletimDeOcorrencia extends StatelessWidget {
               padding: 5),
 
             Paragrafo(
-              texto: 'É mais do que apenas recuperar um bem roubado, por exemplo, é colaborar para um bem coletivo.', 
-              padding: 5),
-            
+                texto:
+                    'É mais do que apenas recuperar um bem roubado, por exemplo, é colaborar para um bem coletivo.',
+                padding: 5),
             Paragrafo(
               texto: 'O link abaixo te redicionara para a Delegacia eletrônica, onde é possivel registrar um b.o. tranquilamente.', 
               padding: 5),
@@ -47,7 +49,7 @@ class TelaBoletimDeOcorrencia extends StatelessWidget {
               paddingRight: 30,
               paddingBottom:60 ,
               child: TextoCardsDeInfo(texto: 'Link')
-            )
+              )
           ],
         ),
       ),
