@@ -4,7 +4,7 @@ import 'package:flutter_application/components/templates/TextoCardsDeInfo.dart';
 import '../components/templates/Cards.dart';
 import '../components/templates/Paragrafo.dart';
 import 'package:flutter_application/components/templates/BotaoPadrao.dart';
-import 'package:url_launcher/url_launcher.dart';
+//import 'package:url_launcher/url_launcher.dart';
 
 class TelaBoletimDeOcorrencia extends StatelessWidget {
   const TelaBoletimDeOcorrencia({
@@ -33,13 +33,10 @@ class TelaBoletimDeOcorrencia extends StatelessWidget {
                 texto:
                     'É mais do que apenas recuperar um bem roubado, por exemplo, é colaborar para um bem coletivo.',
                 padding: 5),
-            Paragrafo(
-              texto: 'O link abaixo te redicionara para a Delegacia eletrônica, onde é possivel registrar um b.o. tranquilamente.', 
-              padding: 5),
             
             Cards(
               width: 300, 
-              height: 180, 
+              height: 190, 
               color: 0xff77A8A6,
               opacity: 0.30,
               marginLeft: 0,
@@ -47,15 +44,15 @@ class TelaBoletimDeOcorrencia extends StatelessWidget {
               marginRight: 0,
               marginTop: 35,
               paddingLeft: 30,
-              paddingTop: 60,
+              paddingTop: 45,
               paddingRight: 30,
-              paddingBottom:60 ,
-              child: TextoCardsDeInfo(texto: 'Link')
+              paddingBottom:45 ,
+              child: TextoCardsDeInfo(texto: 'O botão abaixo te redicionara para a Delegacia eletrônica, onde é possivel registrar um b.o. tranquilamente.')
               ),
             Cards(
                 width: 300, 
                 height: 35, 
-                color: 0xff77A8A6, 
+                color: 0xffffffff, 
                 marginLeft: 0, 
                 marginTop: 0, 
                 marginRight: 0, 
@@ -67,13 +64,14 @@ class TelaBoletimDeOcorrencia extends StatelessWidget {
                 opacity: 0,
                 child: 
                   BotaoPadrao(
-                    paddingLeft: 103, 
-                    paddingTop: 10, 
-                    paddingRight: 103, 
-                    paddingBottom: 10, 
-                    colorBackground: 0xff77A8A6, 
+                    paddingLeft: 71, 
+                    paddingTop: 8, 
+                    paddingRight: 71, 
+                    paddingBottom: 8, 
+                    colorBackground: 0xffDFF5F4,  /* ou (0xffffffff)*/ 
+                    opacity: 0.90,
                     colorText: 0xffffffff, 
-                    text: 'Denunciar'
+                    text: 'Delegacia eletrônica'
               ), 
             ),
           ],

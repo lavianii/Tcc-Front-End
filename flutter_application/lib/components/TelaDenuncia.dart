@@ -86,7 +86,8 @@ class TelaDenuncia extends StatelessWidget {
                     paddingTop: 10, 
                     paddingRight: 103, 
                     paddingBottom: 10, 
-                    colorBackground: 0xff77A8A6, 
+                    colorBackground: 0xffDFF5F4, 
+                    opacity: 0.90,
                     colorText: 0xffffffff, 
                     text: 'Denunciar',
                     

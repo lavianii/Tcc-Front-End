@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
-import 'package:url_launcher/url_launcher_string.dart';
+/*import 'package:url_launcher/url_launcher.dart';
+import 'package:url_launcher/url_launcher_string.dart';*/
 
 class BotaoPadrao extends StatelessWidget {
   final double paddingLeft;
@@ -10,6 +10,7 @@ class BotaoPadrao extends StatelessWidget {
   final colorBackground;
   final colorText;
   final String text;
+  final opacity;
 
   const BotaoPadrao({
     Key? key,
@@ -20,6 +21,7 @@ class BotaoPadrao extends StatelessWidget {
     required this.colorBackground,
     required this.colorText,
     required this.text,
+    required this.opacity,
   }) : super(key: key);
 
   @override
@@ -33,7 +35,7 @@ class BotaoPadrao extends StatelessWidget {
             paddingRight,
             paddingBottom,
           ),
-          primary: Color(colorBackground),
+          primary: Color(colorBackground).withOpacity(opacity),
           onPrimary: Color(colorText),
         ),
         onPressed: (() {}),
