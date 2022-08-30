@@ -13,19 +13,25 @@ class TelaDenuncia extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return (Scaffold(
+    return Scaffold(
+      appBar: AppBar(
+        elevation: 0,
+        backgroundColor: const Color(0xffDFF5F4) ,
+        foregroundColor: const Color(0xff000000),
+        
+      ),
       backgroundColor: const Color(0xffDFF5F4),
 
       body: Padding(
         padding: const EdgeInsets.fromLTRB(45, 50, 45, 0),
 
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          
           children: const [
 
             Paragrafo(
               texto: 'A denúncia serve para que ao presenciar, como vitíma ou testemunha, um furto, assalto, ou qualquer outra atividade considerada uma ameaça para a sociedade você possa compartilhar com a gente',
-              padding:  5),
+              padding:  0),
                   
             Paragrafo(
               texto: 'Os acontecimentos relatados por você em nosso questionário serão fundamentais para a construção do mapeamento.', 
@@ -82,13 +88,13 @@ class TelaDenuncia extends StatelessWidget {
                 opacity: 0,
                 child: 
                   BotaoPadrao(
-                    paddingLeft: 103, 
+                    paddingLeft: 118, 
                     paddingTop: 10, 
-                    paddingRight: 103, 
+                    paddingRight: 118, 
                     paddingBottom: 10, 
-                    colorBackground: 0xffDFF5F4, 
-                    opacity: 0.90,
-                    colorText: 0xffffffff, 
+                    colorBackground: 0xfffffff, 
+                    opacity: 0.0,
+                    colorText: 0xff152C42, 
                     text: 'Denunciar',
                     
               ), 
@@ -96,6 +102,6 @@ class TelaDenuncia extends StatelessWidget {
           ],
         ),
       ),
-    ));
+    );
   }
 }

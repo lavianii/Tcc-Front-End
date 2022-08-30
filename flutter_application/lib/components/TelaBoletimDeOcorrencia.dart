@@ -13,12 +13,18 @@ class TelaBoletimDeOcorrencia extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return (Scaffold(
+    return Scaffold(
+      appBar: AppBar(
+        elevation: 0,
+        backgroundColor: const Color(0xffDFF5F4) ,
+        foregroundColor: const Color(0xff000000),
+        
+      ),
       backgroundColor: const Color(0xffDFF5F4),
       body: Padding(
-        padding: const EdgeInsets.fromLTRB(45, 15, 45, 0),
+        padding: const EdgeInsets.fromLTRB(45, 45, 45, 0),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+   
           children: const [
             Paragrafo(
 
@@ -64,19 +70,19 @@ class TelaBoletimDeOcorrencia extends StatelessWidget {
                 opacity: 0,
                 child: 
                   BotaoPadrao(
-                    paddingLeft: 71, 
+                    paddingLeft: 70, 
                     paddingTop: 8, 
-                    paddingRight: 71, 
+                    paddingRight: 70, 
                     paddingBottom: 8, 
-                    colorBackground: 0xffDFF5F4,  /* ou (0xffffffff)*/ 
-                    opacity: 0.90,
-                    colorText: 0xffffffff, 
+                    colorBackground: 0xffffffff,  /* ou (0xffffffff)*/ 
+                    opacity: 0.0,
+                    colorText: 0xff152C42, 
                     text: 'Delegacia eletrônica'
               ), 
             ),
           ],
         ),
       ),
-    ));
+    );
   }
 }

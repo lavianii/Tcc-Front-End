@@ -1,7 +1,7 @@
 
 import 'package:flutter/material.dart';
 
-class Cards extends StatelessWidget {
+class Cards extends StatefulWidget {
 
    final color;
    final double width;
@@ -24,15 +24,20 @@ class Cards extends StatelessWidget {
               required this.opacity,}) : super(key: key);
 
   @override
+  State<Cards> createState() => _CardsState();
+}
+
+class _CardsState extends State<Cards> {
+  @override
   Widget build(BuildContext context) {
     return (
         Container(
-          width: width,
-          height: height,
-          color: Color(color).withOpacity(opacity),
-          margin: EdgeInsets.fromLTRB(marginLeft, marginTop, marginRight, marginBottom),
-          padding: EdgeInsets.fromLTRB(paddingLeft,paddingTop,paddingRight,paddingBottom),
-          child: child,
+          width: widget.width,
+          height: widget.height,
+          color: Color(widget.color).withOpacity(widget.opacity),
+          margin: EdgeInsets.fromLTRB(widget.marginLeft, widget.marginTop, widget.marginRight, widget.marginBottom),
+          padding: EdgeInsets.fromLTRB(widget.paddingLeft,widget.paddingTop,widget.paddingRight,widget.paddingBottom),
+          child: widget.child,
       )
     );
   }
