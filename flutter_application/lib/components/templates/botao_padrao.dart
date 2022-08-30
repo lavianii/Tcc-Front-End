@@ -7,10 +7,10 @@ class BotaoPadrao extends StatelessWidget {
   final double paddingTop;
   final double paddingRight;
   final double paddingBottom;
-  final colorBackground;
-  final colorText;
+  final int colorBackground;
+  final int colorText;
   final String text;
-  final opacity;
+  final double opacity;
 
   const BotaoPadrao({
     Key? key,

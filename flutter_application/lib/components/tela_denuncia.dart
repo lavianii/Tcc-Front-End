@@ -1,9 +1,9 @@
 
 import 'package:flutter/material.dart';
-import 'package:flutter_application/components/templates/Paragrafo.dart';
-import 'package:flutter_application/components/templates/Cards.dart';
-import 'package:flutter_application/components/templates/TextoCardsDeInfo.dart';
-import 'package:flutter_application/components/templates/BotaoPadrao.dart';
+import '/components/templates/paragrafo.dart';
+import '/components/templates/cards.dart';
+import 'templates/texto_cards_de_info.dart';
+import 'templates/botao_padrao.dart';
 
 class TelaDenuncia extends StatelessWidget {
   const TelaDenuncia({

@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application/components/Cadastro.dart';
-import 'package:flutter_application/components/Login.dart';
-import 'package:flutter_application/components/TelaDenuncia.dart';
-import 'components/TelaBoletimDeOcorrencia.dart';
-import 'components/TelaInicial.dart';
+
+import 'components/tela_denuncia_form.dart';
 
 void main() {
   runApp(
-    const MaterialApp( 
+    const MaterialApp(
       home: MyApp(),
       debugShowCheckedModeBanner: false,
     ),
@@ -24,6 +21,7 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    return const TelaInicial();
+    //teste
+    return const FormDenuncia();
   }
 }

@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import './TelaDenuncia.dart';
-import './TelaBoletimDeOcorrencia.dart';
+import 'tela_denuncia.dart';
+import 'tela_boletim_de_ocorrencia.dart';
 
 
 class TelaInicial extends StatefulWidget {

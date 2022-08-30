@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'templates/EntrarBotao.dart';
-import 'templates/EstiloTextFild.dart';
+import 'templates/entrar_botao.dart';
+import 'templates/estilo_text_fild.dart';
 
 class Cadastro extends StatefulWidget {
   const Cadastro({Key? key}) : super(key: key);
@@ -14,7 +14,7 @@ class _CadastroState extends State<Cadastro> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: const Color.fromARGB(255, 221, 241, 240),
+        backgroundColor: const Color(0xffDFF5F4),
         elevation: 0,
         title: Row(
           children: [
@@ -29,32 +29,35 @@ class _CadastroState extends State<Cadastro> {
       body: Container(
         height: double.infinity,
         width: double.infinity,
-        color: const Color.fromARGB(255, 221, 241, 240),
+        color: const Color(0xffDFF5F4),
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 180),
           child: SingleChildScrollView(
             child: Column(
-              children: const [
-                SizedBox(height: 15),
-                EstiloTextFild(
-                  label: 'Usuario',
-                  iconData: Icons.person,
-                  obscureText: false,
-                ),
-                SizedBox(height: 15),
-                EstiloTextFild(
+              children: [
+                const SizedBox(height: 15),
+                const EstiloTextFild(
                   label: 'Email',
                   iconData: Icons.email_rounded,
                   obscureText: false,
                 ),
-                SizedBox(height: 15),
-                EstiloTextFild(
+                const SizedBox(height: 15),
+                const EstiloTextFild(
                   label: 'Senha',
                   iconData: Icons.lock,
                   obscureText: true,
                 ),
-                SizedBox(height: 100),
-                EntrarBotao(text: 'Cadastrar')
+                const SizedBox(height: 15),
+                const EstiloTextFild(
+                  label: 'Nome',
+                  iconData: Icons.person,
+                  obscureText: false,
+                ),
+                const SizedBox(height: 100),
+                EntrarBotao(
+                  text: 'Cadastrar',
+                  funcao: () {},
+                )
               ],
             ),
           ),

@@ -1,20 +1,26 @@
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class EntrarBotao extends StatelessWidget {
   final String text;
+  Function()? funcao;
 
-  const EntrarBotao({Key? key, required this.text}) : super(key: key);
+  EntrarBotao({
+    Key? key,
+    required this.text,
+    this.funcao,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       width: 150,
       child: ElevatedButton.icon(
-        onPressed: () {},
+        onPressed: funcao,
         icon: const Icon(Icons.arrow_forward),
         label: Text(text),
         style: ElevatedButton.styleFrom(
-          primary: const Color.fromRGBO(21, 44, 66, 0.9),
+          primary: const Color(0xff152C42),
         ),
       ),
     );

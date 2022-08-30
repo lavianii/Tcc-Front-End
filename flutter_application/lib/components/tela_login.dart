@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-import 'templates/CadastrarBotao.dart';
-import 'templates/EntrarBotao.dart';
-import 'templates/EstiloTextFild.dart';
-import 'templates/Logo.dart';
+import 'templates/cadastrar_botao.dart';
+import 'templates/entrar_botao.dart';
+import 'templates/estilo_text_fild.dart';
+import 'templates/logo.dart';
 
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
@@ -16,7 +16,7 @@ class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromRGBO(119, 168, 166, 1),
+      backgroundColor: const Color(0Xff77A8A6),
       resizeToAvoidBottomInset: false,
       body: SizedBox(
         height: double.infinity,
@@ -25,24 +25,27 @@ class _LoginState extends State<Login> {
           padding: const EdgeInsets.symmetric(vertical: 100),
           child: SingleChildScrollView(
             child: Column(
-              children: const [
-                Logo(),
-                SizedBox(height: 15),
-                EstiloTextFild(
-                  label: 'Usuario',
-                  iconData: Icons.person,
+              children: [
+                const Logo(),
+                const SizedBox(height: 15),
+                const EstiloTextFild(
+                  label: 'Email',
+                  iconData: Icons.email_rounded,
                   obscureText: false,
                 ),
-                SizedBox(height: 15),
-                EstiloTextFild(
+                const SizedBox(height: 15),
+                const EstiloTextFild(
                   label: 'Senha',
                   iconData: Icons.lock,
                   obscureText: true,
                 ),
-                SizedBox(height: 100),
-                EntrarBotao(text: 'Entrar'),
-                SizedBox(height: 150),
-                CadastrarBotao()
+                const SizedBox(height: 100),
+                EntrarBotao(
+                  text: 'Entrar',
+                  funcao: () {},
+                ),
+                const SizedBox(height: 150),
+                const CadastrarBotao()
               ],
             ),
           ),

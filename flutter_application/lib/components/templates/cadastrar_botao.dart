@@ -1,8 +1,6 @@
-
-
 import 'package:flutter/material.dart';
 
-import '../Cadastro.dart';
+import '../tela_cadastro.dart';
 
 class CadastrarBotao extends StatelessWidget {
   const CadastrarBotao({Key? key}) : super(key: key);
@@ -23,7 +21,7 @@ class CadastrarBotao extends StatelessWidget {
           "Me cadastrar",
           style: TextStyle(
             fontSize: 20,
-            color: Color.fromRGBO(21, 44, 66, 0.9),
+            color: Color(0xff152C42),
           ),
         ),
       ),

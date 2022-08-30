@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 class Cards extends StatefulWidget {
 
-   final color;
+   final int color;
    final double width;
    final double height;
    final double marginLeft;
