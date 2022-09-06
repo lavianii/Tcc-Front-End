@@ -3,14 +3,14 @@ import 'package:flutter_application/components/templates/entrar_botao.dart';
 import 'package:flutter_application/components/templates/estilo_text_fild.dart';
 
 
-class FormDenuncia extends StatefulWidget {
-  const FormDenuncia({Key? key}) : super(key: key);
+class TelaDenunciaForm extends StatefulWidget {
+  const TelaDenunciaForm ({Key? key}) : super(key: key);
 
   @override
-  State<FormDenuncia> createState() => _FormDenunciaState();
+  State<TelaDenunciaForm > createState() => _FormDenunciaState();
 }
 
-class _FormDenunciaState extends State<FormDenuncia> {
+class _FormDenunciaState extends State<TelaDenunciaForm > {
   bool _checked1 = false;
   bool _checked2 = false;
   bool _checked3 = false;

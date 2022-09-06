@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:flutter_application/components/tela_inicial.dart';
 import 'components/tela_denuncia_form.dart';
 import 'components/tela_inicial.dart';
 
@@ -22,7 +22,8 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    //teste
-    return const tela_inicial();
+    
+    return const TelaInicial();
+
   }
 }

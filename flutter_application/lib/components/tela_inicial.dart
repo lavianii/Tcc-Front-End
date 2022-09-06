@@ -1,21 +1,22 @@
 import 'package:flutter/material.dart';
 import 'tela_denuncia.dart';
 import 'tela_boletim_de_ocorrencia.dart';
+import 'templates/cards_bairros.dart';
 
 
-class tela_inicial extends StatefulWidget {
-  const tela_inicial({Key? key}) : super(key: key);
+class TelaInicial extends StatefulWidget {
+  const TelaInicial({Key? key}) : super(key: key);
 
   @override
-  State<tela_inicial> createState() => _tela_inicial();
+  State<TelaInicial> createState() => _tela_inicial();
 }
 
-class _tela_inicial extends State<tela_inicial> {
+class _tela_inicial extends State<TelaInicial> {
   @override
   Widget build(BuildContext context) {
     return(Scaffold(
       appBar: AppBar(
-        backgroundColor: const Color(0xff77A8A6),
+       backgroundColor: const Color(0xff77A8A6),
       ),
       drawer: Drawer(
         backgroundColor: const Color(0xffDFF5F4),
@@ -40,7 +41,7 @@ class _tela_inicial extends State<tela_inicial> {
                 Navigator.push(
                 context,
                   MaterialPageRoute(
-                    builder: (context) => const tela_inicial(),
+                    builder: (context) => const TelaInicial(),
                   ),
                 );
               },
@@ -54,7 +55,7 @@ class _tela_inicial extends State<tela_inicial> {
                 Navigator.push(
                   context,
                     MaterialPageRoute(
-                    builder: (context) => const tela_inicial(),
+                    builder: (context) => const TelaInicial(),
                    ),
                  );
               },
@@ -101,11 +102,10 @@ class _tela_inicial extends State<tela_inicial> {
                   );
                },
              ),
-
-
            ],
          ),
        ),
+       body: Center(child: Column( children: [CardsBairros(), CardsBairros()],)),
       )
     );
   }
