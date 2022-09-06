@@ -3,14 +3,14 @@ import 'tela_denuncia.dart';
 import 'tela_boletim_de_ocorrencia.dart';
 
 
-class TelaInicial extends StatefulWidget {
-  const TelaInicial({Key? key}) : super(key: key);
+class tela_inicial extends StatefulWidget {
+  const tela_inicial({Key? key}) : super(key: key);
 
   @override
-  State<TelaInicial> createState() => _TelaInicial();
+  State<tela_inicial> createState() => _tela_inicial();
 }
 
-class _TelaInicial extends State<TelaInicial> {
+class _tela_inicial extends State<tela_inicial> {
   @override
   Widget build(BuildContext context) {
     return(Scaffold(
@@ -40,7 +40,7 @@ class _TelaInicial extends State<TelaInicial> {
                 Navigator.push(
                 context,
                   MaterialPageRoute(
-                    builder: (context) => const TelaInicial(),
+                    builder: (context) => const tela_inicial(),
                   ),
                 );
               },
@@ -54,7 +54,7 @@ class _TelaInicial extends State<TelaInicial> {
                 Navigator.push(
                   context,
                     MaterialPageRoute(
-                    builder: (context) => const TelaInicial(),
+                    builder: (context) => const tela_inicial(),
                    ),
                  );
               },

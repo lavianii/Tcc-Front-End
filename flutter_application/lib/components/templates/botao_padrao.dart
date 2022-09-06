@@ -37,7 +37,7 @@ class BotaoPadrao extends StatelessWidget {
           ),
           primary: Color(colorBackground).withOpacity(opacity),
           onPrimary: Color(colorText),
-          elevation: 0,
+          
         ),
         onPressed: (() {}),
         child: Text(text),
