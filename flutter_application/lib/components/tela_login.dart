@@ -5,14 +5,14 @@ import 'templates/entrar_botao.dart';
 import 'templates/estilo_text_fild.dart';
 import 'templates/logo.dart';
 
-class Login extends StatefulWidget {
-  const Login({Key? key}) : super(key: key);
+class tela_login extends StatefulWidget {
+  const tela_login({Key? key}) : super(key: key);
 
   @override
-  State<Login> createState() => _LoginState();
+  State<tela_login> createState() => _LoginState();
 }
 
-class _LoginState extends State<Login> {
+class _LoginState extends State<tela_login> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

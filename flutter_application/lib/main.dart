@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application/components/tela_inicial.dart';
 
-import 'components/tela_denuncia_form.dart';
 
 void main() {
   runApp(
@@ -22,6 +22,6 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     //teste
-    return const FormDenuncia();
+    return const TelaInicial();
   }
 }

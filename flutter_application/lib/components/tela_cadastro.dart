@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'templates/entrar_botao.dart';
 import 'templates/estilo_text_fild.dart';
 
-class Cadastro extends StatefulWidget {
-  const Cadastro({Key? key}) : super(key: key);
+class TelaCadastro extends StatefulWidget {
+  const TelaCadastro({Key? key}) : super(key: key);
 
   @override
-  State<Cadastro> createState() => _CadastroState();
+  State<TelaCadastro> createState() => _CadastroState();
 }
 
-class _CadastroState extends State<Cadastro> {
+class _CadastroState extends State<TelaCadastro> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

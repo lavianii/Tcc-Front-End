@@ -3,7 +3,7 @@ import 'templates/texto_cards_de_info.dart';
 import 'templates/cards.dart';
 import 'templates/paragrafo.dart';
 import 'templates/botao_padrao.dart';
-//import 'package:url_launcher/url_launcher.dart';
+
 
 class TelaBoletimDeOcorrencia extends StatelessWidget {
   const TelaBoletimDeOcorrencia({

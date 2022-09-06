@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'tela_denuncia.dart';
 import 'tela_boletim_de_ocorrencia.dart';
+import 'templates/cards_bairros.dart';
 
 
 class TelaInicial extends StatefulWidget {
@@ -15,7 +16,7 @@ class _TelaInicial extends State<TelaInicial> {
   Widget build(BuildContext context) {
     return(Scaffold(
       appBar: AppBar(
-        backgroundColor: const Color(0xff77A8A6),
+       backgroundColor: const Color(0xff77A8A6),
       ),
       drawer: Drawer(
         backgroundColor: const Color(0xffDFF5F4),
@@ -101,11 +102,10 @@ class _TelaInicial extends State<TelaInicial> {
                   );
                },
              ),
-
-
            ],
          ),
        ),
+       body: Center(child: Column( children: [CardsBairros(), CardsBairros()],)),
       )
     );
   }
