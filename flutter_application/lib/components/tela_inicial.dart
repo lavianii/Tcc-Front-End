@@ -15,6 +15,7 @@ class _tela_inicial extends State<TelaInicial> {
   @override
   Widget build(BuildContext context) {
     return(Scaffold(
+      backgroundColor:const  Color(0xff77A8A6),
       appBar: AppBar(
        backgroundColor: const Color(0xff77A8A6),
       ),
@@ -25,7 +26,7 @@ class _tela_inicial extends State<TelaInicial> {
           children: <Widget>[
              
             const UserAccountsDrawerHeader(
-              
+              arrowColor: const Color(0xffDFF5F4) ,
               accountEmail: Text("Teste@email.com"),
               accountName: Text("Teste"),
               currentAccountPicture: CircleAvatar(
@@ -105,7 +106,103 @@ class _tela_inicial extends State<TelaInicial> {
            ],
          ),
        ),
-       body: Center(child: Column( children: [CardsBairros(), CardsBairros()],)),
+       body: SingleChildScrollView(
+        child: Stack(
+          children: [
+           Center(
+            
+            child: Column( 
+
+              children: const  [
+
+                Padding(
+                  padding: EdgeInsets.fromLTRB(0,20,0,20),
+                  child: CardsBairros(
+                    colorSuperior: 0xffF03E44,
+                    colorInferior: 0xffffffff,
+                    borderRadius: 4,
+                    width: 300,
+                    height: 60,
+                    paddingSuperior: 15,
+                    textInferior: 'Vila mimosa',
+                    textSuperior: 'Alta Periculosidade',
+                    ),
+                ),
+
+                Padding(
+                  padding: EdgeInsets.fromLTRB(0,20,0,20),
+                  child: CardsBairros(
+                    colorSuperior: 0xffF03E44,
+                    colorInferior: 0xffffffff,
+                    borderRadius: 4,
+                    width: 300,
+                    height: 60,
+                    paddingSuperior: 15,
+                    textInferior: 'Vila mimosa',
+                    textSuperior: 'Alta Periculosidade',
+                    ),
+                ),
+                Padding(
+                  padding: EdgeInsets.fromLTRB(0,10,0,20),
+                  child: CardsBairros(
+                    colorSuperior: 0xffF0913E,
+                    colorInferior: 0xffffffff,
+                    borderRadius: 4,
+                    width: 300,
+                    height: 60,
+                    paddingSuperior: 15,
+                    textInferior: 'Vila mimosa',
+                    textSuperior: 'Media Periculosidade',
+                  ),
+                ),
+                 Padding(
+                  padding: EdgeInsets.fromLTRB(0,10,0,20),
+                  child: CardsBairros(
+                    colorSuperior: 0xffF0913E,
+                    colorInferior: 0xffffffff,
+                    borderRadius: 4,
+                    width: 300,
+                    height: 60,
+                    paddingSuperior: 15,
+                    textInferior: 'Vila mimosa',
+                    textSuperior: 'Media Periculosidade',
+                  ),
+                ),
+
+                Padding(
+                  padding: EdgeInsets.fromLTRB(0,10,0,20),
+                  child: CardsBairros(
+                    colorSuperior: 0xff78CF46,
+                    colorInferior: 0xffffffff,
+                    borderRadius: 4,
+                    width: 300,
+                    height: 60,
+                    paddingSuperior: 15,
+                    textInferior: 'Vila mimosa',
+                    textSuperior: 'Baixa Periculosidade',
+                   ),
+                  ),
+                Padding(
+                  padding: EdgeInsets.fromLTRB(0,10,0,20),
+                  child: CardsBairros(
+                    colorSuperior: 0xff78CF46,
+                    colorInferior: 0xffffffff,
+                    borderRadius: 4,
+                    width: 300,
+                    height: 60,
+                    paddingSuperior: 15,
+                    textInferior: 'Vila mimosa',
+                    textSuperior: 'Baixa Periculosidade',
+                   ),
+                  ),
+
+
+                ],
+              )
+            ),
+         ],
+        ),
+       ),
       )
     );
   }
