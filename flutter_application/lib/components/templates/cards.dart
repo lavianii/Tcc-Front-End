@@ -34,9 +34,12 @@ class _CardsState extends State<Cards> {
         Container(
           width: widget.width,
           height: widget.height,
-          color: Color(widget.color).withOpacity(widget.opacity),
           margin: EdgeInsets.fromLTRB(widget.marginLeft, widget.marginTop, widget.marginRight, widget.marginBottom),
           padding: EdgeInsets.fromLTRB(widget.paddingLeft,widget.paddingTop,widget.paddingRight,widget.paddingBottom),
+          decoration:  BoxDecoration(
+              borderRadius: BorderRadius.circular(2),
+              color: Color(widget.color).withOpacity(widget.opacity), 
+            ),
           child: widget.child,
       )
     );

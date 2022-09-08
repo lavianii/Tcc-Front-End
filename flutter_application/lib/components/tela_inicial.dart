@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'tela_denuncia.dart';
 import 'tela_boletim_de_ocorrencia.dart';
 import 'templates/cards_bairros.dart';
+import 'tela_estresse_pos_traumatico.dart';
+import 'tela_infs_do_usuario.dart';
 
 
 class TelaInicial extends StatefulWidget {
@@ -12,6 +14,8 @@ class TelaInicial extends StatefulWidget {
 }
 
 class _tela_inicial extends State<TelaInicial> {
+
+
   @override
   Widget build(BuildContext context) {
     return(Scaffold(
@@ -20,17 +24,39 @@ class _tela_inicial extends State<TelaInicial> {
        backgroundColor: const Color(0xff77A8A6),
       ),
       drawer: Drawer(
-        backgroundColor: const Color(0xffDFF5F4),
+        backgroundColor: const Color(0xffffffff),
         child: ListView(
           padding: EdgeInsets.zero,
           children: <Widget>[
              
-            const UserAccountsDrawerHeader(
-              arrowColor: const Color(0xffDFF5F4) ,
-              accountEmail: Text("Teste@email.com"),
-              accountName: Text("Teste"),
-              currentAccountPicture: CircleAvatar(
-                child: Text("TS"),
+             UserAccountsDrawerHeader(
+              
+              accountEmail: const  Text(
+                "Teste@email.com",
+                style: TextStyle(color: Color(0xff000000),fontSize:  14)
+                ),
+
+              accountName: const Text(
+                "Teste",
+                style: TextStyle(color: Color(0xff000000),fontSize:  14)
+                ),
+
+              currentAccountPicture: const  CircleAvatar(
+                child:  Text("TS"),
+                backgroundColor:  Color(0xffffffff) ,
+              ),
+
+              onDetailsPressed: () {
+                Navigator.push(
+                context,
+                  MaterialPageRoute(
+                    builder: (context) => const TelaInfsDoUsuario(),
+                  ),
+                );
+              },
+
+              decoration: const BoxDecoration(
+                color:  Color(0xffDFF5F4),
               ),
             ),
 
@@ -76,7 +102,7 @@ class _tela_inicial extends State<TelaInicial> {
               },
             ),
 
-          //Tela estresse pos traumatico **** ainda nao tenho
+          //Tela estresse pos traumatico 
             ListTile(
               leading: const Icon(Icons.info_outline ),
               title: const Text("Estresse pós-traumatico"),
@@ -84,7 +110,7 @@ class _tela_inicial extends State<TelaInicial> {
                 Navigator.push(
                   context,
                     MaterialPageRoute(
-                      builder: (context) => const TelaDenuncia(),
+                      builder: (context) => const TelaEstressePosTraumatico(),
                     ),
                   );
                },
@@ -195,8 +221,6 @@ class _tela_inicial extends State<TelaInicial> {
                     textSuperior: 'Baixa Periculosidade',
                    ),
                   ),
-
-
                 ],
               )
             ),
