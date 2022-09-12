@@ -1,5 +1,5 @@
 // npm i express mysql2 dotenv nodemon
-const bd = require('./db/bd.js');
+const bd = require('./database/bd');
 const express = require('express');
 const app = express();
 
