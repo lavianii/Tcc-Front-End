@@ -15,9 +15,9 @@ class TelaDenuncia extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        elevation: 0,
-        backgroundColor: const Color(0xffDFF5F4) ,
-        foregroundColor: const Color(0xff000000),
+        title: const Text('Denuncia', style: TextStyle(fontSize: 17)),
+        backgroundColor: const Color(0xff77A8A6),
+        foregroundColor: const Color(0xffffffff),
         
       ),
       backgroundColor: const Color(0xffDFF5F4),

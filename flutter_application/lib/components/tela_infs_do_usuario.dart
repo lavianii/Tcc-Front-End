@@ -17,8 +17,9 @@ class TelaInfsDoUsuario extends StatelessWidget {
 
       backgroundColor: const Color(0xffDFF5F4),
       appBar: AppBar(
-        elevation: 0,
-        backgroundColor: const Color(0xffDFF5F4),
+
+        title: const Text('Dados', style: TextStyle(fontSize: 17)),
+        backgroundColor: const Color(0xff77A8A6),
         foregroundColor: const Color(0xff000000),
 
       ),

@@ -29,6 +29,7 @@ class BotaoPadrao extends StatelessWidget {
     return Scaffold(
       body: ElevatedButton(
         style: ElevatedButton.styleFrom(
+
           padding: EdgeInsets.fromLTRB(
             paddingLeft,
             paddingTop,
@@ -38,9 +39,11 @@ class BotaoPadrao extends StatelessWidget {
           primary: Color(colorBackground).withOpacity(opacity),
           onPrimary: Color(colorText),
           elevation: 0,
+          
         ),
         onPressed: (() {}),
         child: Text(text),
+        
       ),
     );
   }

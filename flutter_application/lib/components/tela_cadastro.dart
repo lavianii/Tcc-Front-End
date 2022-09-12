@@ -15,7 +15,6 @@ class _CadastroState extends State<TelaCadastro> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color(0xffDFF5F4),
-        elevation: 0,
         title: Row(
           children: [
             Image.asset(

@@ -4,6 +4,8 @@ import 'tela_boletim_de_ocorrencia.dart';
 import 'templates/cards_bairros.dart';
 import 'tela_estresse_pos_traumatico.dart';
 import 'tela_infs_do_usuario.dart';
+import 'tela_sobre_desenvolvedores.dart';
+import 'tela_favoritos.dart';
 
 
 class TelaInicial extends StatefulWidget {
@@ -74,7 +76,7 @@ class _tela_inicial extends State<TelaInicial> {
               },
             ),
 
-          //Favoritos ***** ainda nao tenho 
+          //Favoritos
             ListTile(
               leading: const Icon(Icons.star_rate_outlined),
               title: const Text("Favoritos"),
@@ -82,7 +84,7 @@ class _tela_inicial extends State<TelaInicial> {
                 Navigator.push(
                   context,
                     MaterialPageRoute(
-                    builder: (context) => const TelaInicial(),
+                    builder: (context) => const TelaFavoritos(),
                    ),
                  );
               },
@@ -90,7 +92,7 @@ class _tela_inicial extends State<TelaInicial> {
 
           //Tela denuncia 
             ListTile(
-              leading: const Icon(Icons.error_outline),
+              leading: const Icon(Icons.warning_amber_rounded),
               title: const Text("Denuncia"),
               onTap: () {
                 Navigator.push(
@@ -104,7 +106,7 @@ class _tela_inicial extends State<TelaInicial> {
 
           //Tela estresse pos traumatico 
             ListTile(
-              leading: const Icon(Icons.info_outline ),
+              leading: const Icon(Icons.supervised_user_circle_outlined ),
               title: const Text("Estresse pós-traumatico"),
               onTap: () {
                 Navigator.push(
@@ -125,6 +127,20 @@ class _tela_inicial extends State<TelaInicial> {
                   context,
                     MaterialPageRoute(
                       builder: (context) => const TelaBoletimDeOcorrencia(),
+                    ),
+                  );
+               },
+             ),
+
+            //Tela sobre os devs
+             ListTile(
+              leading: const Icon(Icons.developer_mode_outlined ),
+              title:  const Text("Desenvolvedores"),
+              onTap: () {
+                Navigator.push(
+                  context,
+                    MaterialPageRoute(
+                      builder: (context) => const TelaSobreDesenvolvedores(),
                     ),
                   );
                },
