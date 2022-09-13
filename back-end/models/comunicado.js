@@ -1,4 +1,5 @@
 class Comunicado {
+    
     #codigo
     #mensagem
     #descricao
@@ -53,8 +54,8 @@ class Comunicado {
         return { codigo: this.#codigo, mensagem: this.#mensagem, descricao: this.#descricao }
     }
 }
-function novo(codigo, mensagem, descricao) {
+function novoComunicado(codigo, mensagem, descricao) {
     return new Comunicado(codigo, mensagem, descricao);
 
 }
-module.exports = { novo };
+module.exports = { novoComunicado };

@@ -1,16 +1,20 @@
 class Usuario {
-    #nomeUsuario
+    #id
+    #nome
     #senha
     #email
 
-    constructor(nomeUsuario, senha, email) {
-        this.#nomeUsuario = nomeUsuario;
+    constructor(id, nome, senha, email) {
+        this.#id = id;
+        this.#nome = nome;
         this.#senha = senha;
         this.#email = email;
     }
-
-    get nomeUsuario() {
-        return this.#nomeUsuario;
+    get id() {
+        return this.#id;
+    }
+    get nome() {
+        return this.#nome;
     }
 
     get senha() {
@@ -21,12 +25,18 @@ class Usuario {
         return this.#email;
     }
 
+    set id(id) {
+        if(id === undefined || typeof id  !== "number" || id === null){
+            throw('Id inválido !');
+        }
+        this.#id = id;
+    }
 
-    set nomeUsuario(nomeUsuario) {
-        if (nomeUsuario === undefined || typeof nomeUsuario !== "string" || nomeUsuario === '') {
+    set nome(nome) {
+        if (nome === undefined || typeof nome !== "string" || nome === '') {
             throw ('Nome de usuário inválido !');
         }
-        this.#nomeUsuario = nomeUsuario;
+        this.#nome = nome;
     }
 
     set senha(senha) {
@@ -45,9 +55,9 @@ class Usuario {
 
 }
 
-const novoUsuario= (nomeUsuario, senha, email) => {
+const novoUsuario= (id, nome, senha, email) => {
     
-    let novoUsuario = new Usuario (nomeUsuario, senha, email);
+    let novoUsuario = new Usuario (id, nome, senha, email);
 
     return novoUsuario;
 }
