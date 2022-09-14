@@ -8,8 +8,8 @@ const inclua = async (usuario) => {
         return null;
 
     try {
-        const sql = 'INSERT INTO usuario(id, nome, senha, email) VALUES (?, ?, ?, ?)';
-        const dados = [usuario.id,usuario.nome, usuario.senha, usuario.email];
+        const sql = 'INSERT INTO usuario(nome, senha, email) VALUES (?, ?, ?)';
+        const dados = [usuario.nome, usuario.senha, usuario.email];
         await conexao.query(sql, dados);
 
         return true;

@@ -5,7 +5,7 @@ const usuarioDBO = require('../database/dbo/usuarioDBO')
 
 async function inclusao(req, res) {
 
-    if (Object.values(req.body).length != 3 || !req.body.id || !req.body.nome || !req.body.senha || !req.body.email) {
+    if (Object.values(req.body).length < 3 || !req.body.nome || !req.body.senha || !req.body.email) {
 
         const erro = comunicado.novoComunicado('Ddi', 'Dados inesperados', 'Não foram fornecidos as informações esperadas').object;
 
