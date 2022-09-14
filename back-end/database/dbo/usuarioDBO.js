@@ -63,20 +63,20 @@ const remove = async (id) => {
     }
 }
 
-const recupera =  async (id) => {
+const recupera = async (id) => {
     const conexao = await bd.getConexao();
 
-    if(conexao === null)
+    if (conexao === null)
         return null;
-    
+
     try {
 
-        const sql = 'SELECT id FROM usuario WHERE id=?';
+        const sql = 'SELECT nome, senha, email FROM usuario WHERE id=?';
         const dados = [id];
         const [linhas] = await conexao.query(sql, dados);
 
         return linhas;
-        
+
     } catch (error) {
         console.log(error);
         return false;

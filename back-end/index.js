@@ -42,6 +42,7 @@ const servidor = async () => {
 
 
     app.post('/incluir', rotas.inclusao);
+    app.get('/recupera/:id', rotas.recupera)
     
 
     console.log('Conectado na porta 3001');
