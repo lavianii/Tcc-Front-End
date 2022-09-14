@@ -60,11 +60,12 @@ const recupera = async (req, res) => {
     } else if (ret.length === 0) {
         const erro = comunicado.novoComunicado('UNE', 'Usuario inexistente', 'Não há Usuario cadastrado com esse id').object;
         return res.status(404).json(erro);
-        PNE
+
     } else {
         return res.status(200).json(ret);
     }
 }
+
 const remove = async (req, res) => {
 
     if (Object.values(req.body).length != 0) {
@@ -106,5 +107,6 @@ const remove = async (req, res) => {
         return res.status(201).json(sucesso);
     }
 }
+
 
 module.exports = { inclusao, recupera, remove }

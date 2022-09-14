@@ -32,16 +32,13 @@ const atualiza = async (usuario) => {
         const sql = 'UPADTE usuario SET nome=?, senha=?, email=? WHERE id=?';
         const dados = [usuario.nome, usuario.senha, usuario.email, usuario.id];
         await conexao.query(sql, dados);
-
+        
         return true;
-
 
     } catch (error) {
         console.log(error);
         return null;
     }
-
-
 
 }
 
