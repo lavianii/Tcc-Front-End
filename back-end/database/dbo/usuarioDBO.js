@@ -29,7 +29,7 @@ const atualiza = async (usuario) => {
         return null;
 
     try {
-        const sql = 'UPADTE usuario SET nome=?, senha=?, email=? WHERE id=?';
+        const sql = 'UPDATE usuario SET nome=?, senha=?, email=? WHERE id=?';
         const dados = [usuario.nome, usuario.senha, usuario.email, usuario.id];
         await conexao.query(sql, dados);
         
@@ -37,7 +37,7 @@ const atualiza = async (usuario) => {
 
     } catch (error) {
         console.log(error);
-        return null;
+        return false;
     }
 
 }
