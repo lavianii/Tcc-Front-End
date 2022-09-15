@@ -95,6 +95,7 @@ class TelaDenuncia extends StatelessWidget {
                     colorBackground: 0xfffffff, 
                     opacity: 0.0,
                     colorText: 0xff152C42, 
+                    link: 'https://apsiquiatra.com.br/trauma/',
                     text: 'Denunciar',
                     
               ), 

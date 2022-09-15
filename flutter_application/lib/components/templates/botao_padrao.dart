@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
-/*import 'package:url_launcher/url_launcher.dart';
-import 'package:url_launcher/url_launcher_string.dart';*/
+import 'package:url_launcher/url_launcher.dart';
 
 class BotaoPadrao extends StatelessWidget {
+
+
+  
   final double paddingLeft;
   final double paddingTop;
   final double paddingRight;
@@ -11,8 +13,11 @@ class BotaoPadrao extends StatelessWidget {
   final int colorText;
   final String text;
   final double opacity;
+  final String link;
 
-  const BotaoPadrao({
+ 
+
+   const BotaoPadrao({
     Key? key,
     required this.paddingLeft,
     required this.paddingTop,
@@ -22,6 +27,8 @@ class BotaoPadrao extends StatelessWidget {
     required this.colorText,
     required this.text,
     required this.opacity,
+    required this.link,
+
   }) : super(key: key);
 
   @override
@@ -41,7 +48,12 @@ class BotaoPadrao extends StatelessWidget {
           elevation: 0,
           
         ),
-        onPressed: (() {}),
+        onPressed: (() async {
+          final Uri _url = Uri.parse(link);
+          if (!await launchUrl(_url)) {
+          throw 'Could not launch $_url';
+        }
+      }),
         child: Text(text),
         
       ),

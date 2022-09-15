@@ -73,6 +73,7 @@ class TelaBoletimDeOcorrencia extends StatelessWidget {
                   /* ou (0xffffffff)*/
                   opacity: 0.0,
                   colorText: 0xff152C42,
+                  link: 'https://delegaciaeletronica.policiacivil.sp.gov.br/ssp-de-cidadao/home',
                   text: 'Delegacia eletrônica'),
             ),
           ],
