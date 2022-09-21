@@ -54,4 +54,22 @@ const removeCrime = async (id) => {
         return false;
     }
 }
-module.exports = { incluaCrime, recuperaCrime, removeCrime }
+
+const atualizaCrime = async (crime) => {
+    const conexao = await bd.getConexao();
+
+    if(conexao === null)
+        return null;
+    
+    try {
+        const sql = 'UPDATE crimes SET bairro=?, tipoCrime=? WHERE id=?';
+        const dados = [crime.bairro, crime.tipoCrime, crime.id];
+        await conexao.query(sql, dados);
+
+        return true;
+    } catch (error) {
+        console.log(error);
+        return false;
+    }
+}
+module.exports = { incluaCrime, recuperaCrime, removeCrime, atualizaCrime }
