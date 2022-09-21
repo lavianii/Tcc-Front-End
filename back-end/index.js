@@ -54,6 +54,7 @@ const servidor = async () => {
     //rotas do crime
     app.post('/incluirCrime', rotasCrime.incluaCrime);
     app.get('/recuperaCrime/:id', rotasCrime.recuperaCrime);
+    app.delete('/removeCrime/:id', rotasCrime.removeCrime);
 
 
     console.log('Conectado na porta 3001');
