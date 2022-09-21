@@ -4,8 +4,10 @@ const bd = require('./database/bd');
 const express = require('express');
 const app = express();
 
+//ter acesso as funcoes
 const rotas = require('./controllers/usuarioEnviaComunicado.js');
 const rotasCrime = require('./controllers/crimeEnviaComunicado');
+
 function middleWareGlobal(req, res, next) {
     console.time('Duraçao');
     console.log(req.url);
@@ -16,6 +18,7 @@ function middleWareGlobal(req, res, next) {
     console.timeEnd('Duraçao');
 }
 
+// ativa o servidor com o banco
 const servidor = async () => {
 
     const ret = await bd.criaTabela();
@@ -34,6 +37,7 @@ const servidor = async () => {
     app.use(express.json());
     app.use(middleWareGlobal);
 
+    //evitar erro de cors
     app.use((req, res, next) => {
         res.header('Access-Control-Allow-Origin', '*');
         res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
@@ -41,14 +45,15 @@ const servidor = async () => {
         next();
     });
 
-
+    //rotas do usuario
     app.post('/incluir', rotas.inclusao);
     app.get('/recupera/:id', rotas.recupera);
     app.delete('/remove/:id', rotas.remove);
     app.put('/atualiza/:id', rotas.atualiza);
 
+    //rotas do crime
     app.post('/incluirCrime', rotasCrime.incluaCrime);
-
+    app.get('/recuperaCrime/:id', rotasCrime.recuperaCrime);
 
 
     console.log('Conectado na porta 3001');

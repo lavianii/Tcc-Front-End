@@ -18,4 +18,22 @@ const incluaCrime = async (crime) => {
         return false;
     }
 }
-module.exports = { incluaCrime }
+
+const recuperaCrime = async (id) => {
+    const conexao = await bd.getConexao();
+
+    if(conexao === null)
+        return null;
+
+    try {
+        const sql = 'SELECT bairro, tipoCrime FROM crimes WHERE id=?';
+        const dados = [id];
+        const [linhas] = await conexao.query(sql, dados);
+
+        return linhas;
+    } catch (error) {
+        console.log(error);
+        return false;
+    }
+}
+module.exports = { incluaCrime, recuperaCrime }
