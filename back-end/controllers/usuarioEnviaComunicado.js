@@ -1,5 +1,5 @@
-const comunicado = require('./comunicado');
-const usuario = require('./usuario');
+const comunicado = require('../models/comunicado');
+const usuario = require('../models/usuario');
 const usuarioDBO = require('../database/dbo/usuarioDBO')
 
 

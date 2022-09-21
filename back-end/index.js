@@ -4,7 +4,8 @@ const bd = require('./database/bd');
 const express = require('express');
 const app = express();
 
-const rotas = require('./models/usuarioEnviaComunicado.js');
+const rotas = require('./controllers/usuarioEnviaComunicado.js');
+const rotasCrime = require('./controllers/crimeEnviaComunicado');
 function middleWareGlobal(req, res, next) {
     console.time('Duraçao');
     console.log(req.url);
@@ -46,7 +47,9 @@ const servidor = async () => {
     app.delete('/remove/:id', rotas.remove);
     app.put('/atualiza/:id', rotas.atualiza);
 
-    
+    app.post('/incluirCrime', rotasCrime.incluaCrime);
+
+
 
     console.log('Conectado na porta 3001');
     app.listen(3001)
