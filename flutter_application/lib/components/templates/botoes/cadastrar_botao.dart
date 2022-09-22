@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../tela_cadastro.dart';
+import '../../tela_cadastro.dart';
 
 class CadastrarBotao extends StatelessWidget {
   const CadastrarBotao({Key? key}) : super(key: key);

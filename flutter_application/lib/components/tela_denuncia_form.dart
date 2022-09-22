@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application/components/templates/entrar_botao.dart';
-import 'package:flutter_application/components/templates/estilo_text_fild.dart';
+import 'package:flutter_application/components/templates/botoes/entrar_botao.dart';
+import 'package:flutter_application/components/templates/textos/estilo_text_fild.dart';
 
 
 class TelaDenunciaForm extends StatefulWidget {

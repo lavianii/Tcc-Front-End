@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'templates/texto_cards_de_info.dart';
-import 'templates/cards.dart';
-import 'templates/paragrafo.dart';
-import 'templates/botao_padrao.dart';
+import 'templates/textos/texto_cards_de_info.dart';
+import 'templates/cards/cards.dart';
+import 'templates/textos/paragrafo.dart';
+import 'templates/botoes/botao_abre_link.dart';
 
 
 class TelaEstressePosTraumatico extends StatelessWidget {
@@ -63,7 +63,7 @@ class TelaEstressePosTraumatico extends StatelessWidget {
               paddingRight: 0,
               paddingBottom: 0,
               opacity: 0,
-              child: BotaoPadrao(
+              child: BotaoAbreLink(
                   paddingLeft: 120,
                   paddingTop: 8,
                   paddingRight: 120,

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'templates/entrar_botao.dart';
-import 'templates/estilo_text_fild.dart';
+import 'templates/botoes/entrar_botao.dart';
+import 'templates/textos/estilo_text_fild.dart';
 
 class TelaCadastro extends StatefulWidget {
   const TelaCadastro({Key? key}) : super(key: key);

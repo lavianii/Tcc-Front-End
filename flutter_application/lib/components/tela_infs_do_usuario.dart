@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'templates/texto_cards_de_info.dart';
-import 'templates/cards.dart';
-import 'templates/paragrafo.dart';
-import 'templates/botao_padrao.dart';
+import 'templates/textos/texto_cards_de_info.dart';
+import 'templates/cards/cards.dart';
+import 'templates/textos/paragrafo.dart';
+import 'templates/botoes/botao_padrao.dart';
 
 
 class TelaInfsDoUsuario extends StatelessWidget {
@@ -102,7 +102,6 @@ class TelaInfsDoUsuario extends StatelessWidget {
                             /* ou (0xffffffff)*/
                             opacity: 0.0,
                             colorText: 0xff152C42,
-                            link: 'https://apsiquiatra.com.br/trauma/',
                             text: 'Atualizar'),
                     ),
                   ],

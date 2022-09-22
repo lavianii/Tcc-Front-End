@@ -1,9 +1,9 @@
 
 import 'package:flutter/material.dart';
-import '/components/templates/paragrafo.dart';
-import '/components/templates/cards.dart';
-import 'templates/texto_cards_de_info.dart';
-import 'templates/botao_padrao.dart';
+import 'templates/textos/paragrafo.dart';
+import 'templates/cards/cards.dart';
+import 'templates/textos/texto_cards_de_info.dart';
+import 'templates/botoes/botao_padrao.dart';
 
 class TelaDenuncia extends StatelessWidget {
   const TelaDenuncia({
@@ -95,7 +95,6 @@ class TelaDenuncia extends StatelessWidget {
                     colorBackground: 0xfffffff, 
                     opacity: 0.0,
                     colorText: 0xff152C42, 
-                    link: 'https://apsiquiatra.com.br/trauma/',
                     text: 'Denunciar',
                     
               ), 

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'tela_denuncia.dart';
 import 'tela_boletim_de_ocorrencia.dart';
-import 'templates/cards_bairros.dart';
+import 'templates/cards/cards_bairros.dart';
 import 'tela_estresse_pos_traumatico.dart';
 import 'tela_infs_do_usuario.dart';
 import 'tela_sobre_desenvolvedores.dart';

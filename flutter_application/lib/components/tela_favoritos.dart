@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'templates/paragrafo.dart';
+import 'templates/textos/paragrafo.dart';
 
 
 

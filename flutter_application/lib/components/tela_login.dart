@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import 'templates/cadastrar_botao.dart';
-import 'templates/entrar_botao.dart';
-import 'templates/estilo_text_fild.dart';
+import 'templates/botoes/cadastrar_botao.dart';
+import 'templates/botoes/entrar_botao.dart';
+import 'templates/textos/estilo_text_fild.dart';
 import 'templates/logo.dart';
 
 class tela_login extends StatefulWidget {

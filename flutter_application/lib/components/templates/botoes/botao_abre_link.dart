@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class BotaoPadrao extends StatelessWidget {
+class BotaoAbreLink extends StatelessWidget {
 
 
   
@@ -17,7 +17,7 @@ class BotaoPadrao extends StatelessWidget {
 
  
 
-   const BotaoPadrao({
+   const BotaoAbreLink({
     Key? key,
     required this.paddingLeft,
     required this.paddingTop,
@@ -36,24 +36,20 @@ class BotaoPadrao extends StatelessWidget {
     return Scaffold(
       body: ElevatedButton(
         style: ElevatedButton.styleFrom(
-
-          padding: EdgeInsets.fromLTRB(
-            paddingLeft,
-            paddingTop,
-            paddingRight,
-            paddingBottom,
-          ),
+          
+          padding: EdgeInsets.fromLTRB(paddingLeft,paddingTop,paddingRight,paddingBottom),
           primary: Color(colorBackground).withOpacity(opacity),
           onPrimary: Color(colorText),
           elevation: 0,
-          
         ),
+
         onPressed: (() async {
           final Uri _url = Uri.parse(link);
-          if (!await launchUrl(_url)) {
-          throw 'Could not launch $_url';
-        }
-      }),
+
+          if (!await launchUrl(_url,mode: LaunchMode.externalApplication) ) {
+            throw 'Could not launch $_url';
+        }}),
+
         child: Text(text),
         
       ),
