@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application/components/tela_cadastro.dart';
 import 'tela_denuncia.dart';
 import 'tela_boletim_de_ocorrencia.dart';
 import 'templates/cards/cards_bairros.dart';
@@ -6,7 +7,8 @@ import 'tela_estresse_pos_traumatico.dart';
 import 'tela_infs_do_usuario.dart';
 import 'tela_sobre_desenvolvedores.dart';
 import 'tela_favoritos.dart';
-import 'form_atualiza_usuario.dart';
+import 'tela_cadastro.dart';
+import 'select_exemplo.dart';
 
 
 class TelaInicial extends StatefulWidget {
@@ -149,12 +151,24 @@ class _tela_inicial extends State<TelaInicial> {
 
               ListTile(
               leading: const Icon(Icons.supervised_user_circle_outlined),
-              title: const Text("Cadastro de usuario"),
+              title: const Text("**Form Cadastro"),
               onTap: () {
                 Navigator.push(
                   context,
                     MaterialPageRoute(
-                    builder: (context) => const FormAtualizaUser(),
+                    builder: (context) => const TelaCadastro(),
+                   ),
+                 );
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.supervised_user_circle_outlined),
+              title: const Text("**Select"),
+              onTap: () {
+                Navigator.push(
+                  context,
+                    MaterialPageRoute(
+                    builder: (context) => const SelectExemplo(),
                    ),
                  );
               },

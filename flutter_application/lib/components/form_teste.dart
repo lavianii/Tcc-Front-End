@@ -1,19 +1,16 @@
 import 'dart:convert';
-
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'tela_inicial.dart';
 
-class FormAtualizaUser extends StatefulWidget {
-  const FormAtualizaUser({Key? key}) : super(key: key);
+class FormTeste extends StatefulWidget {
+  const FormTeste({Key? key}) : super(key: key);
 
   @override
-  State<FormAtualizaUser> createState() => _FormAtualizaUserState();
+  State<FormTeste> createState() => _FormAtualizaUserState();
 }
 
-class _FormAtualizaUserState extends State<FormAtualizaUser> {
+class _FormAtualizaUserState extends State<FormTeste> {
 
   //chave global do form onde obtenho o estado
   final _formKey = GlobalKey<FormState>();

@@ -39,7 +39,7 @@ class _FormDenunciaState extends State<TelaDenunciaForm > {
         child: Column(
           textDirection: TextDirection.values.first,
           children: [
-            const EstiloTextFild(
+             EstiloTextFild(
               label: 'Coloque seu endereço',
             ),
             const SizedBox(height: 15),
@@ -107,7 +107,7 @@ class _FormDenunciaState extends State<TelaDenunciaForm > {
             ),
             EntrarBotao(
               text: 'Enviar',
-              funcao: () {
+              onPressed: () {
                 showModalBottomSheet(
                   context: context,
                   builder: (BuildContext bd) {

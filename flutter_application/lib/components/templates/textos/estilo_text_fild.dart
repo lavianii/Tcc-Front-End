@@ -4,13 +4,21 @@ class EstiloTextFild extends StatelessWidget {
   final String? label;
   final IconData? iconData;
   final bool obscureText;
+  void Function(String?)? onSaved;
+  String? Function(String?)? validator;
+  TextInputAction? textInputAction;
+  void Function(String)? onFieldSubmitted;
 
 
-   const EstiloTextFild({
+    EstiloTextFild({
     Key? key,
     this.label,
     this.iconData,
     this.obscureText = false,
+    this.onSaved,
+    this.validator,
+    this.textInputAction,
+    this.onFieldSubmitted
 
   }) : super(key: key);
 
@@ -20,6 +28,9 @@ class EstiloTextFild extends StatelessWidget {
       width: 300,
       child: TextFormField(
         obscureText: obscureText,
+        onSaved: onSaved,
+        textInputAction: textInputAction ,
+        validator: validator,
         decoration: InputDecoration(
           labelText: label,
           hintText: 'Digite $label...',

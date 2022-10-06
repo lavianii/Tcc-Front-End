@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'templates/textos/paragrafo.dart';
-
-
 
 
 class TelaFavoritos extends StatelessWidget {

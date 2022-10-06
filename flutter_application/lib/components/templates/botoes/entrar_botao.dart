@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 // ignore: must_be_immutable
 class EntrarBotao extends StatelessWidget {
   final String text;
-  Function()? funcao;
+  void Function()? onPressed;
 
   EntrarBotao({
     Key? key,
     required this.text,
-    this.funcao,
+    this.onPressed,
   }) : super(key: key);
 
   @override
@@ -16,7 +16,7 @@ class EntrarBotao extends StatelessWidget {
     return SizedBox(
       width: 150,
       child: ElevatedButton.icon(
-        onPressed: funcao,
+        onPressed: onPressed,
         icon: const Icon(Icons.arrow_forward),
         label: Text(text),
         style: ElevatedButton.styleFrom(

@@ -28,13 +28,13 @@ class _LoginState extends State<tela_login> {
               children: [
                 const Logo(),
                 const SizedBox(height: 15),
-                const EstiloTextFild(
+                 EstiloTextFild(
                   label: 'Email',
                   iconData: Icons.email_rounded,
                   obscureText: false,
                 ),
                 const SizedBox(height: 15),
-                const EstiloTextFild(
+                 EstiloTextFild(
                   label: 'Senha',
                   iconData: Icons.lock,
                   obscureText: true,
@@ -42,7 +42,7 @@ class _LoginState extends State<tela_login> {
                 const SizedBox(height: 100),
                 EntrarBotao(
                   text: 'Entrar',
-                  funcao: () {},
+                  onPressed: () {},
                 ),
                 const SizedBox(height: 150),
                 const CadastrarBotao()
