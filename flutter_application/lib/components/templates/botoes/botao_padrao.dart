@@ -12,10 +12,11 @@ class BotaoPadrao extends StatelessWidget {
   final int colorText;
   final String text;
   final double opacity;
+  Function() funcao;
 
 
 
-   const BotaoPadrao({
+    BotaoPadrao({
     Key? key,
     required this.paddingLeft,
     required this.paddingTop,
@@ -25,6 +26,7 @@ class BotaoPadrao extends StatelessWidget {
     required this.colorText,
     required this.text,
     required this.opacity,
+    required this.funcao,
 
   }) : super(key: key);
 
@@ -39,7 +41,7 @@ class BotaoPadrao extends StatelessWidget {
           elevation: 0,
         ),
 
-        onPressed: (){},
+        onPressed: funcao,
         child: Text(text),
         
       ),

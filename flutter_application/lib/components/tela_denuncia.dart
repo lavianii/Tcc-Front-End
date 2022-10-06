@@ -4,13 +4,26 @@ import 'templates/textos/paragrafo.dart';
 import 'templates/cards/cards.dart';
 import 'templates/textos/texto_cards_de_info.dart';
 import 'templates/botoes/botao_padrao.dart';
+import 'tela_denuncia_form.dart';
 
-class TelaDenuncia extends StatelessWidget {
+class TelaDenuncia extends StatefulWidget {
   const TelaDenuncia({
     Key? key,
   }) : super(key: key);
-  
 
+  @override
+  State<TelaDenuncia> createState() => _TelaDenunciaState();
+}
+
+class _TelaDenunciaState extends State<TelaDenuncia> {
+
+ void carregaForm () {
+  Navigator.push(
+     context,
+      MaterialPageRoute(
+        builder: (context) => const TelaDenunciaForm())
+    );
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,18 +40,18 @@ class TelaDenuncia extends StatelessWidget {
 
         child: Column(
           
-          children: const [
+          children:  [
 
-            Paragrafo(
+          const  Paragrafo(
               texto: 'A denúncia serve para que ao presenciar, como vitíma ou testemunha, um furto, assalto, ou qualquer outra atividade considerada uma ameaça para a sociedade você possa compartilhar com a gente',
               padding:  0),
                   
-            Paragrafo(
+          const    Paragrafo(
               texto: 'Os acontecimentos relatados por você em nosso questionário serão fundamentais para a construção do mapeamento.', 
               padding: 5),
             
             // card de texto
-            Cards(
+           const  Cards(
               width: 300, 
               height: 120, 
               color: 0xff77A8A6,
@@ -55,7 +68,7 @@ class TelaDenuncia extends StatelessWidget {
             ),
 
             //card de texto
-            Cards(
+          const  Cards(
               width: 300, 
               height: 110, 
               color: 0xff77A8A6,
@@ -96,6 +109,7 @@ class TelaDenuncia extends StatelessWidget {
                     opacity: 0.0,
                     colorText: 0xff152C42, 
                     text: 'Denunciar',
+                    funcao: carregaForm ,
                     
               ), 
             ),

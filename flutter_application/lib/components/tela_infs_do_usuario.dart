@@ -5,11 +5,20 @@ import 'templates/textos/paragrafo.dart';
 import 'templates/botoes/botao_padrao.dart';
 
 
-class TelaInfsDoUsuario extends StatelessWidget {
+class TelaInfsDoUsuario extends StatefulWidget {
   const TelaInfsDoUsuario({
     Key? key,
   }) : super(key: key);
 
+  @override
+  State<TelaInfsDoUsuario> createState() => _TelaInfsDoUsuarioState();
+}
+
+class _TelaInfsDoUsuarioState extends State<TelaInfsDoUsuario> {
+
+  void teste(){
+    print('apertei');
+  }
   @override
   Widget build(BuildContext context) {
 
@@ -70,7 +79,7 @@ class TelaInfsDoUsuario extends StatelessWidget {
 
                        Container(
                         margin: const EdgeInsets.fromLTRB(10, 0, 10, 10),
-                        child:  TextField(
+                        child:   TextField(
                           decoration: InputDecoration(
                             label:  Text('Nome:')
                           ),
@@ -80,7 +89,7 @@ class TelaInfsDoUsuario extends StatelessWidget {
                       ),
  
                     //card com botao
-                     const Cards(
+                      Cards(
                         width: 320,
                         height: 35,
                         color: 0xffffffff,
@@ -102,7 +111,8 @@ class TelaInfsDoUsuario extends StatelessWidget {
                             /* ou (0xffffffff)*/
                             opacity: 0.0,
                             colorText: 0xff152C42,
-                            text: 'Atualizar'),
+                            text: 'Atualizar',
+                            funcao: teste),
                     ),
                   ],
                 ),

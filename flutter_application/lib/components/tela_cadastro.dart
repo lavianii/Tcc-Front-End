@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'templates/botoes/entrar_botao.dart';
 import 'templates/textos/estilo_text_fild.dart';
+import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+import 'tela_inicial.dart';
 
 class TelaCadastro extends StatefulWidget {
   const TelaCadastro({Key? key}) : super(key: key);
@@ -10,6 +13,8 @@ class TelaCadastro extends StatefulWidget {
 }
 
 class _CadastroState extends State<TelaCadastro> {
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,11 +39,18 @@ class _CadastroState extends State<TelaCadastro> {
           child: SingleChildScrollView(
             child: Column(
               children: [
+                Form(
+                  child: ListView(
+                    children: [
+
+                    ]) ,
+                ),
                 const SizedBox(height: 15),
                 const EstiloTextFild(
-                  label: 'Email',
+                  label: 'Nome',
                   iconData: Icons.email_rounded,
                   obscureText: false,
+   
                 ),
                 const SizedBox(height: 15),
                 const EstiloTextFild(
