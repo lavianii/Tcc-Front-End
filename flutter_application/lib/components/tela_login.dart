@@ -1,18 +1,28 @@
+// ignore_for_file: avoid_print
+
+import 'dart:convert';
+import 'dart:core';
 import 'package:flutter/material.dart';
+import 'package:flutter_application/components/tela_inicial.dart';
+import 'package:http/http.dart' as http;
 
 import 'templates/botoes/cadastrar_botao.dart';
 import 'templates/botoes/entrar_botao.dart';
 import 'templates/textos/estilo_text_fild.dart';
 import 'templates/logo.dart';
 
-class tela_login extends StatefulWidget {
-  const tela_login({Key? key}) : super(key: key);
+class TelaLogin extends StatefulWidget {
+  const TelaLogin({Key? key}) : super(key: key);
 
   @override
-  State<tela_login> createState() => _LoginState();
+  State<TelaLogin> createState() => _LoginState();
 }
 
-class _LoginState extends State<tela_login> {
+class _LoginState extends State<TelaLogin> {
+  final _formKey = GlobalKey<FormState>();
+  final _emailController = TextEditingController();
+  final _senhaController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,34 +33,62 @@ class _LoginState extends State<tela_login> {
         width: double.infinity,
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 100),
-          child: SingleChildScrollView(
-            child: Column(
-              children: [
-                const Logo(),
-                const SizedBox(height: 15),
-                 EstiloTextFild(
+          //  child: SingleChildScrollView(
+          child: Column(
+            children: [
+              const Logo(),
+              const SizedBox(height: 15),
+              Form(
+                key: _formKey,
+                child: EstiloTextFild(
+                  controller: _emailController,
                   label: 'Email',
                   iconData: Icons.email_rounded,
                   obscureText: false,
                 ),
-                const SizedBox(height: 15),
-                 EstiloTextFild(
-                  label: 'Senha',
-                  iconData: Icons.lock,
-                  obscureText: true,
-                ),
-                const SizedBox(height: 100),
-                EntrarBotao(
-                  text: 'Entrar',
-                  onPressed: () {},
-                ),
-                const SizedBox(height: 150),
-                const CadastrarBotao()
-              ],
-            ),
+              ),
+              const SizedBox(height: 15),
+              EstiloTextFild(
+                controller: _senhaController,
+                label: 'Senha',
+                iconData: Icons.lock,
+                obscureText: true,
+              ),
+              const SizedBox(height: 100),
+              EntrarBotao(
+                text: 'Entrar',
+                onPressed: logar,
+              ),
+              const SizedBox(height: 150),
+              const CadastrarBotao()
+            ],
           ),
+          //  ),
         ),
       ),
     );
+  }
+
+  logar() async {
+    var urlTodos = Uri.parse(
+      "https://back-end-tcc-deploy.lavianii.repl.co/login/${_emailController.text}/${_senhaController.text}",
+    );
+    await http.get(
+      urlTodos,
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+    ).then((value) {
+      if (value.statusCode == 200) {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const TelaInicial(),
+          ),
+        );
+        print(value.body);
+        print(value.statusCode);
+      }
+    });
   }
 }

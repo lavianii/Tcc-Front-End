@@ -20,7 +20,7 @@ class EntrarBotao extends StatelessWidget {
         icon: const Icon(Icons.arrow_forward),
         label: Text(text),
         style: ElevatedButton.styleFrom(
-          primary: const Color(0xff152C42),
+          backgroundColor: const Color(0xff152C42),
         ),
       ),
     );

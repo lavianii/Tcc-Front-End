@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application/components/tela_inicial.dart';
-import 'components/tela_denuncia_form.dart';
-import 'components/tela_inicial.dart';
+
+import 'components/tela_login.dart';
+
+
 
 void main() {
   runApp(
@@ -22,8 +23,6 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    
-    return const TelaInicial();
-
+    return const TelaLogin();
   }
 }

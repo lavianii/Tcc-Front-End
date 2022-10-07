@@ -7,7 +7,6 @@ import 'tela_estresse_pos_traumatico.dart';
 import 'tela_infs_do_usuario.dart';
 import 'tela_sobre_desenvolvedores.dart';
 import 'tela_favoritos.dart';
-import 'tela_cadastro.dart';
 import 'select_exemplo.dart';
 
 
@@ -15,10 +14,10 @@ class TelaInicial extends StatefulWidget {
   const TelaInicial({Key? key}) : super(key: key);
 
   @override
-  State<TelaInicial> createState() => _tela_inicial();
+  State<TelaInicial> createState() => _TelaInicial();
 }
 
-class _tela_inicial extends State<TelaInicial> {
+class _TelaInicial extends State<TelaInicial> {
 
 
   @override
@@ -47,8 +46,8 @@ class _tela_inicial extends State<TelaInicial> {
                 ),
 
               currentAccountPicture: const  CircleAvatar(
-                child:  Text("TS"),
                 backgroundColor:  Color(0xffffffff) ,
+                child: Text("TS"),
               ),
 
               onDetailsPressed: () {

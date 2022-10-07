@@ -4,13 +4,13 @@ class EstiloTextFild extends StatelessWidget {
   final String? label;
   final IconData? iconData;
   final bool obscureText;
-  void Function(String?)? onSaved;
+  final TextEditingController? controller;
   String? Function(String?)? validator;
   TextInputAction? textInputAction;
+  void Function(String?)? onSaved;
   void Function(String)? onFieldSubmitted;
 
-
-    EstiloTextFild({
+  EstiloTextFild({
     Key? key,
     this.label,
     this.iconData,
@@ -18,8 +18,8 @@ class EstiloTextFild extends StatelessWidget {
     this.onSaved,
     this.validator,
     this.textInputAction,
-    this.onFieldSubmitted
-
+    this.onFieldSubmitted,
+    this.controller,
   }) : super(key: key);
 
   @override
@@ -29,8 +29,9 @@ class EstiloTextFild extends StatelessWidget {
       child: TextFormField(
         obscureText: obscureText,
         onSaved: onSaved,
-        textInputAction: textInputAction ,
+        textInputAction: textInputAction,
         validator: validator,
+        controller: controller,
         decoration: InputDecoration(
           labelText: label,
           hintText: 'Digite $label...',
@@ -41,7 +42,6 @@ class EstiloTextFild extends StatelessWidget {
           ),
           prefixIcon: Icon(iconData),
         ),
-  
       ),
     );
   }
