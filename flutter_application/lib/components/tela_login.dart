@@ -1,6 +1,4 @@
 // ignore_for_file: avoid_print
-
-import 'dart:convert';
 import 'dart:core';
 import 'package:flutter/material.dart';
 import 'package:flutter_application/components/tela_inicial.dart';
@@ -88,6 +86,14 @@ class _LoginState extends State<TelaLogin> {
         );
         print(value.body);
         print(value.statusCode);
+      } else {
+        print(value.body);
+        print(value.statusCode);
+        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+          content: Text("e-mail ou senha inválidos"),
+          behavior: SnackBarBehavior.floating,
+          backgroundColor: Colors.red,
+        ));
       }
     });
   }
