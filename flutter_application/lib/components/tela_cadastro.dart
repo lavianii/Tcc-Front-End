@@ -163,7 +163,7 @@ class _CadastroState extends State<TelaCadastro> {
                     },
                     onFieldSubmitted: (_) => _submitForm() ,
                   ),
-                  SizedBox(height: 100),
+                  const SizedBox(height: 100),
                   EntrarBotao(
                     text: 'Cadastrar',
                     onPressed: _submitForm,

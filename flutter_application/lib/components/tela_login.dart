@@ -2,6 +2,7 @@
 import 'dart:core';
 import 'package:flutter/material.dart';
 import 'package:flutter_application/components/tela_inicial.dart';
+import 'package:flutter_application/models/login_models.dart';
 import 'package:http/http.dart' as http;
 
 import 'templates/botoes/cadastrar_botao.dart';
@@ -76,9 +77,14 @@ class _LoginState extends State<TelaLogin> {
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
-    ).then((value) {
+    ).then((value) async {
       if (value.statusCode == 200) {
-        Navigator.push(
+        LoginModels.saveMap('id', {
+          'id': value.body,
+          'email': _emailController.text,
+          'senha': _senhaController.text
+        });
+        Navigator.pushReplacement(
           context,
           MaterialPageRoute(
             builder: (context) => const TelaInicial(),
@@ -86,14 +92,14 @@ class _LoginState extends State<TelaLogin> {
         );
         print(value.body);
         print(value.statusCode);
-      } else {
-        print(value.body);
-        print(value.statusCode);
+      } else if (value.statusCode != 200) {
         ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
           content: Text("e-mail ou senha inválidos"),
           behavior: SnackBarBehavior.floating,
           backgroundColor: Colors.red,
         ));
+        print(value.statusCode);
+        print(value.body);
       }
     });
   }

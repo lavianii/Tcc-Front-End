@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_application/components/tela_cadastro.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter_application/models/login_models.dart';
 import 'tela_denuncia.dart';
 import 'tela_boletim_de_ocorrencia.dart';
 import 'templates/cards/cards_bairros.dart';
@@ -21,11 +21,9 @@ class TelaInicial extends StatefulWidget {
 
 class _TelaInicial extends State<TelaInicial> {
   Future<bool> verificarUsuario() async {
-    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+    final id = await LoginModels.getMap('id');
 
-    int? id = sharedPreferences.getInt('id');
-
-    if (id == null) {
+    if (id.isEmpty) {
       return false;
     } else {
       return true;
@@ -38,7 +36,12 @@ class _TelaInicial extends State<TelaInicial> {
 
     verificarUsuario().then(
       (temUsuario) => {
-        if (temUsuario) {print('tem usuario')} else {print("não tem usuario")}
+        if (temUsuario)
+          {
+            print('tem usuario'),
+          }
+        else
+          {print("não tem usuario")}
       },
     );
   }
