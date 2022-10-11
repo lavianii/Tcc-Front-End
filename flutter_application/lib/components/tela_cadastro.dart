@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'templates/botoes/entrar_botao.dart';
 import 'templates/textos/estilo_text_fild.dart';
-import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'tela_inicial.dart';
 import 'dart:convert';
@@ -164,7 +163,7 @@ class _CadastroState extends State<TelaCadastro> {
                     },
                     onFieldSubmitted: (_) => _submitForm() ,
                   ),
-                  SizedBox(height: 100),
+                  const SizedBox(height: 100),
                   EntrarBotao(
                     text: 'Cadastrar',
                     onPressed: _submitForm,

@@ -1,5 +1,8 @@
+// ignore_for_file: avoid_print
+
 import 'package:flutter/material.dart';
 import 'package:flutter_application/components/tela_cadastro.dart';
+import 'package:flutter_application/models/login_models.dart';
 import 'tela_denuncia.dart';
 import 'tela_boletim_de_ocorrencia.dart';
 import 'templates/cards/cards_bairros.dart';
@@ -7,7 +10,6 @@ import 'tela_estresse_pos_traumatico.dart';
 import 'tela_infs_do_usuario.dart';
 import 'tela_sobre_desenvolvedores.dart';
 import 'tela_favoritos.dart';
-import 'tela_cadastro.dart';
 import 'select_exemplo.dart';
 import 'package:flutter/material.dart';
 import 'dart:convert';
@@ -15,6 +17,7 @@ import '../models/bairros.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'teste.dart';
+
 
 String _baseUrl = 'https://back-end-tcc-deploy.lavianii.repl.co';
 
@@ -30,19 +33,43 @@ Future<List<Bairro>> getBairros() async {
   }
 }
 
+
 class TelaInicial extends StatefulWidget {
   const TelaInicial({Key? key}) : super(key: key);
 
   @override
-  State<TelaInicial> createState() => _tela_inicial();
+  State<TelaInicial> createState() => _TelaInicial();
 }
 
-class _tela_inicial extends State<TelaInicial> {
-  late Future<List<Bairro>> bairroData;
+class _TelaInicial extends State<TelaInicial> {
+   late Future<List<Bairro>> bairroData;
 
+  Future<bool> verificarUsuario() async {
+    final id = await LoginModels.getMap('id');
+
+    if (id.isEmpty) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+  @override
   void initState() {
     super.initState();
     bairroData = getBairros();
+
+    verificarUsuario().then(
+      (temUsuario) => {
+        if (temUsuario)
+          {
+            print('tem usuario'),
+          }
+        else
+          {print("não tem usuario")}
+      },
+    );
+
   }
 
   @override
@@ -65,6 +92,7 @@ class _tela_inicial extends State<TelaInicial> {
               currentAccountPicture: const CircleAvatar(
                 child: Text("TS"),
                 backgroundColor: Color(0xffffffff),
+
               ),
               onDetailsPressed: () {
                 Navigator.push(
@@ -182,12 +210,15 @@ class _tela_inicial extends State<TelaInicial> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => const TelaTeste(),
+
+                    builder: (context) => const SelectExemplo(),
+
                   ),
                 );
               },
             ),
           ],
+
         ),
       ),
       body: Center(
@@ -233,6 +264,7 @@ class _tela_inicial extends State<TelaInicial> {
           return CircularProgressIndicator();
         }),
       )),
+
     ));
   }
 }

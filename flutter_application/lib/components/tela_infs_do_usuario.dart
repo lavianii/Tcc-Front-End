@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:flutter/material.dart';
 import 'templates/cards/cards.dart';
 import 'templates/botoes/botao_padrao.dart';
@@ -65,25 +67,25 @@ class _TelaInfsDoUsuarioState extends State<TelaInfsDoUsuario> {
                     
                     //inputs
                       Container(
-                        margin: const EdgeInsets.fromLTRB(10, 0, 10, 10),
-                        child: TextField(
+                        margin: const EdgeInsets.fromLTRB(10, 0, 10, 10), 
+                        height: 50, 
+                        width: 300,
+                        child: const TextField(
                           decoration: InputDecoration(
                             label:  Text('E-mail:')
                           ),
-                        ), 
-                        height: 50, 
-                        width: 300,
+                        ),
                       ),
 
                        Container(
-                        margin: const EdgeInsets.fromLTRB(10, 0, 10, 10),
-                        child:   TextField(
+                        margin: const EdgeInsets.fromLTRB(10, 0, 10, 10), 
+                        height: 50, 
+                        width: 300,
+                        child:   const TextField(
                           decoration: InputDecoration(
                             label:  Text('Nome:')
                           ),
-                        ), 
-                        height: 50, 
-                        width: 300,
+                        ),
                       ),
  
                     //card com botao

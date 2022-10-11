@@ -1,9 +1,7 @@
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
+
 import 'package:flutter/material.dart';
 import 'dart:convert';
 import '../models/bairros.dart';
-import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 String _baseUrl = 'https://back-end-tcc-deploy.lavianii.repl.co';
