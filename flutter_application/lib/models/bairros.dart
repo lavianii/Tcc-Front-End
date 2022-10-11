@@ -1,12 +1,29 @@
 class Bairro{
+  int id;
+  String bairro;
+  String tipoCrime;
+  int qtd ;
+  String data;
 
-  String id = '';
-  String bairro = '';
-  int qtd = 0;
+  Bairro(
+    this.id,
+    this.bairro,
+    this.qtd,
+    this.tipoCrime,
+    this.data,
+  );
 
-  Bairro({
-   required this.id,
-   required this.bairro,
-   required this.qtd
-  });
+  Map toJson() => {'id': id, 'bairro': bairro, 'qtd': qtd,'tipoCrime':tipoCrime, 'data': data};
+
+  factory Bairro.fromJson(dynamic json) {
+
+     if (json['data'] == null) json['data'] = '';
+
+    return Bairro(json['id'], json['bairro'], json['qtd'],json['tipoCrime'],json['data']);
+  }
+
+  @override
+  String toString() {
+    return '{${this.id},${this.bairro},${this.qtd},${this.data},${this.tipoCrime}}';
+  }
 }

@@ -7,6 +7,7 @@ import 'tela_inicial.dart';
 import 'dart:convert';
 import '../models/bairros.dart';
 
+
 String _baseUrl = 'https://back-end-tcc-deploy.lavianii.repl.co';
 List<Bairro> bairros = List<Bairro>.empty();
 
@@ -15,38 +16,42 @@ Future<void> getBairros() async {
       headers: {"Accept": "application/json"});
 
   if (response.statusCode == 200) {
-    Iterable data = jsonDecode(response.body);
-    bairros = data.map((model) => Bairro.fromJson(model)).toList();
+ 
+   Iterable data = jsonDecode(response.body);
+    bairros = data.map((model) => Bairro.fromJson(model)). toList();
+ 
   } else {
     throw Exception('Erro inesperado...');
   }
 }
 
-class TelaDenunciaForm extends StatefulWidget {
-  const TelaDenunciaForm({Key? key}) : super(key: key);
+class TelaTeste extends StatefulWidget {
+  const TelaTeste({Key? key}) : super(key: key);
 
   @override
-  State<TelaDenunciaForm> createState() => _FormDenunciaState();
+  State<TelaTeste> createState() => _TelaTesteState();
 }
 
-class _FormDenunciaState extends State<TelaDenunciaForm> {
+class _TelaTesteState extends State<TelaTeste> {
   final _formKey = GlobalKey<FormState>();
   final _formData = Map<String, Object>();
+
 
   void initState() {
     super.initState();
 
     getBairros();
-    print('$bairros' 'Carregados com sucesso');
+    print('$bairros''Carregados com sucesso');
+
   }
 
   Future<void> insereDenuncia() {
     final int id = int.parse(_formData['id'].toString());
-
+ 
     return http
         .put(
       Uri.parse('$_baseUrl/atualizaqtdcrimes/$id'),
-      headers: {
+      headers:{
         'Content-Type': 'application/json; charset=UTF-8',
       },
       body: jsonEncode({
@@ -91,6 +96,7 @@ class _FormDenunciaState extends State<TelaDenunciaForm> {
   }
 
   void _submitForm() {
+  
     insereDenuncia();
   }
 
@@ -126,18 +132,19 @@ class _FormDenunciaState extends State<TelaDenunciaForm> {
                     iconData: Icons.person,
                     obscureText: false,
                     textInputAction: TextInputAction.next,
+                    
                   ),
                   const SizedBox(height: 15),
                   Container(
                     width: 280,
                     child: DropdownButton(
-                      items: bairros
-                          .map(
-                            (e) => DropdownMenuItem(
-                                value: e.id, child: Text(e.bairro)),
-                          )
-                          .toList(),
-                      onChanged: (value) => {_formData['id'] = value ?? ''},
+                     
+                      items: bairros.map((e) => DropdownMenuItem(
+                                value: e.id,
+                                 child: Text(e.bairro)
+                            ),
+                          ).toList(),
+                      onChanged: (value) => {_formData['id'] = value ?? '' } ,
                       hint: const Text('Escolha o bairro'),
                       isExpanded: true,
                     ),

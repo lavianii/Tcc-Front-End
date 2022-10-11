@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/material.dart';
 import 'package:favorite_button/favorite_button.dart';
 
-class CardsBairros  extends StatelessWidget {
+class CardsBairros  extends StatefulWidget {
 
  final String textSuperior;
  final String textInferior;
@@ -21,6 +21,11 @@ final int colorInferior;
   required this.borderRadius}) : super(key: key);
 
   @override
+  State<CardsBairros> createState() => _CardsBairrosState();
+}
+
+class _CardsBairrosState extends State<CardsBairros> {
+  @override
   Widget build(BuildContext context) {
     return
 
@@ -32,13 +37,13 @@ final int colorInferior;
             Card(
               elevation: 10, 
               shadowColor: Colors.black87,
-              color: Color(colorSuperior), 
+              color: Color(widget.colorSuperior), 
               child: Container(
-              padding: EdgeInsets.only(top:  paddingSuperior),
+              padding: EdgeInsets.only(top:  widget.paddingSuperior),
               child: Column(
                   children: [
                     Text(
-                      textSuperior,
+                      widget.textSuperior,
                       style: const  TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize:  17,
@@ -49,11 +54,11 @@ final int colorInferior;
                     Container(
                       margin: const EdgeInsets.only(top: 15),
                       alignment: const Alignment(0,0),
-                      width: width,
-                      height: height,
+                      width: widget.width,
+                      height: widget.height,
                       decoration:  BoxDecoration(
-                        borderRadius: BorderRadius.circular(borderRadius),
-                        color: Color(colorInferior),
+                        borderRadius: BorderRadius.circular(widget.borderRadius),
+                        color: Color(widget.colorInferior),
                         
                       ),
 
@@ -71,7 +76,7 @@ final int colorInferior;
                         ),
                           ),
                          Text(
-                          textInferior,
+                          widget.textInferior,
                           style: const  TextStyle(
                             fontSize:  15,
                             ),

@@ -101,9 +101,9 @@ class _TelaDenunciaState extends State<TelaDenuncia> {
                 opacity: 0,
                 child: 
                   BotaoPadrao(
-                    paddingLeft: 118, 
+                    paddingLeft: 97, 
                     paddingTop: 10, 
-                    paddingRight: 118, 
+                    paddingRight: 97, 
                     paddingBottom: 10, 
                     colorBackground: 0xfffffff, 
                     opacity: 0.0,
