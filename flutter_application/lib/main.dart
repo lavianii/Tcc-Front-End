@@ -4,22 +4,9 @@ import 'components/tela_login.dart';
 void main() {
   runApp(
     const MaterialApp(
-      home: MyApp(),
+      home: TelaLogin(),
       debugShowCheckedModeBanner: false,
     ),
   );
 }
 
-class MyApp extends StatefulWidget {
-  const MyApp({Key? key}) : super(key: key);
-
-  @override
-  State<MyApp> createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
-  @override
-  Widget build(BuildContext context) {
-    return const TelaLogin();
-  }
-}

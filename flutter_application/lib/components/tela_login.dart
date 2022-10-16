@@ -32,7 +32,6 @@ class _LoginState extends State<TelaLogin> {
         width: double.infinity,
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 100),
-          //  child: SingleChildScrollView(
           child: Column(
             children: [
               const Logo(),
@@ -62,7 +61,6 @@ class _LoginState extends State<TelaLogin> {
               const CadastrarBotao()
             ],
           ),
-          //  ),
         ),
       ),
     );

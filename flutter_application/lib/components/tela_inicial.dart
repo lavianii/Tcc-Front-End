@@ -18,7 +18,6 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'teste.dart';
 
-
 String _baseUrl = 'https://back-end-tcc-deploy.lavianii.repl.co';
 
 Future<List<Bairro>> getBairros() async {
@@ -33,7 +32,6 @@ Future<List<Bairro>> getBairros() async {
   }
 }
 
-
 class TelaInicial extends StatefulWidget {
   const TelaInicial({Key? key}) : super(key: key);
 
@@ -42,7 +40,7 @@ class TelaInicial extends StatefulWidget {
 }
 
 class _TelaInicial extends State<TelaInicial> {
-   late Future<List<Bairro>> bairroData;
+  late Future<List<Bairro>> bairroData;
 
   Future<bool> verificarUsuario() async {
     final id = await LoginModels.getMap('id');
@@ -63,18 +61,18 @@ class _TelaInicial extends State<TelaInicial> {
       (temUsuario) => {
         if (temUsuario)
           {
-            print('tem usuario'),
+            print('tem usuario '),
           }
         else
           {print("não tem usuario")}
       },
     );
-
   }
 
   @override
   Widget build(BuildContext context) {
-    return (Scaffold(
+    return (
+      Scaffold(
       backgroundColor: const Color(0xff77A8A6),
       appBar: AppBar(
         backgroundColor: const Color(0xff77A8A6),
@@ -90,9 +88,8 @@ class _TelaInicial extends State<TelaInicial> {
               accountName: const Text("Teste",
                   style: TextStyle(color: Color(0xff000000), fontSize: 14)),
               currentAccountPicture: const CircleAvatar(
-                child: Text("TS"),
                 backgroundColor: Color(0xffffffff),
-
+                child: Text("TS"),
               ),
               onDetailsPressed: () {
                 Navigator.push(
@@ -210,61 +207,56 @@ class _TelaInicial extends State<TelaInicial> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-
                     builder: (context) => const SelectExemplo(),
-
                   ),
                 );
               },
             ),
           ],
-
         ),
       ),
       body: Center(
-          child: FutureBuilder<List<Bairro>>(
-        future: bairroData,
-        builder: ((context, snapshot) {
-          if (snapshot.hasData) {
-            List<Bairro> data = snapshot.data!;
-      
+        child: FutureBuilder<List<Bairro>>(
+          future: bairroData,
+          builder: ((context, snapshot) {
+            if (snapshot.hasData) {
+              List<Bairro> data = snapshot.data!;
+              return ListView.builder(
+                  itemCount: data.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    String text = 'baixa Periculosidade';
+                    int color = 0xff78CF46;
 
-            return ListView.builder(
-                itemCount: data.length,
-                itemBuilder: (BuildContext context, int index) {
-                  String text = 'baixa Periculosidade';
-                  int color =  0xff78CF46;
+                    if (data[index].qtd >= 10) {
+                      color = 0xffF03E44;
+                      text = 'Alta periculosidade';
+                    }
+                    if (data[index].qtd >= 5 && data[index].qtd < 10) {
+                      color = 0xffF0913E;
+                      text = 'Media Periculosidade';
+                    }
 
-                  if(data[index].qtd>=10){
-                       color = 0xffF03E44;
-                       text = 'Alta periculosidade';
-                   }
-                   if(data[index].qtd>=5 && data[index].qtd<10 ){
-                       color = 0xffF0913E;
-                       text= 'Media Periculosidade';
-                   }
-                 
-                 return Padding(
-                    padding: const  EdgeInsets.fromLTRB(0, 20, 0, 10),
-                    child: CardsBairros(
-                      colorSuperior: color,
-                      colorInferior: 0xffffffff,
-                      borderRadius: 4,
-                      width: 300,
-                      height: 60,
-                      paddingSuperior: 15,
-                      textInferior: data[index].bairro,
-                      textSuperior: text,
-                    ),
-                  );
-                });
-          } else if (snapshot.hasError) {
-            return Text("${snapshot.error}");
-          }
-          return CircularProgressIndicator();
-        }),
-      )),
-
+                    return Padding(
+                      padding: const EdgeInsets.fromLTRB(0, 20, 0, 10),
+                      child: CardsBairros(
+                        colorSuperior: color,
+                        colorInferior: 0xffffffff,
+                        borderRadius: 4,
+                        width: 300,
+                        height: 60,
+                        paddingSuperior: 15,
+                        textInferior: data[index].bairro,
+                        textSuperior: text,
+                      ),
+                    );
+                  });
+            } else if (snapshot.hasError) {
+              return Text("${snapshot.error}");
+            }
+            return const CircularProgressIndicator();
+          }),
+        ),
+      ),
     ));
   }
 }
