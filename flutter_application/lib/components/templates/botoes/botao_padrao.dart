@@ -37,7 +37,7 @@ class BotaoPadrao extends StatelessWidget {
         style: ElevatedButton.styleFrom(
           padding: EdgeInsets.fromLTRB(paddingLeft,paddingTop,paddingRight,paddingBottom),
           backgroundColor: Color(colorBackground).withOpacity(opacity),
-          foregroundColor : Color(colorText),
+          foregroundColor: Color(colorText),
           elevation: 0,
         ),
 

@@ -4,11 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application/components/tela_inicial.dart';
 import 'package:flutter_application/models/login_models.dart';
 import 'package:http/http.dart' as http;
+import 'dart:convert';
 
 import 'templates/botoes/cadastrar_botao.dart';
 import 'templates/botoes/entrar_botao.dart';
 import 'templates/textos/estilo_text_fild.dart';
 import 'templates/logo.dart';
+import '../models/usuario.dart';
+
 
 class TelaLogin extends StatefulWidget {
   const TelaLogin({Key? key}) : super(key: key);
@@ -78,11 +81,18 @@ class _LoginState extends State<TelaLogin> {
         'Content-Type': 'application/json; charset=UTF-8',
       },
     ).then((value) async {
+      
       if (value.statusCode == 200) {
-        LoginModels.saveMap('id', {
-          'id': value.body,
-          'email': _emailController.text,
-          'senha': _senhaController.text
+   
+       
+        Iterable bairros = json.decode(value.body);
+       
+        teste.saveList(bairros);
+       
+    
+        LoginModels.saveMap('user', {
+          "user": value.body
+        
         });
         Navigator.pushReplacement(
           context,
@@ -90,6 +100,7 @@ class _LoginState extends State<TelaLogin> {
             builder: (context) => const TelaInicial(),
           ),
         );
+        print('foi aqui');
         print(value.body);
         print(value.statusCode);
       } else if (value.statusCode != 200) {

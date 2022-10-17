@@ -1,8 +1,11 @@
 import 'dart:convert';
 
+import 'package:flutter_application/components/tela_inicial.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginModels {
+ Iterable<dynamic> usuario= [];
+
   static Future<bool> saveString(String key, String value) async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     return prefs.setString(key, value);
@@ -18,6 +21,19 @@ class LoginModels {
 
     return prefs.getString(key) ?? defaultString;
   }
+
+    saveList(Iterable user) async {
+      
+     usuario = user;
+     print('save $usuario');
+    
+  }
+   Future<Iterable> getList() async {
+    print('gettiii $usuario');
+    return usuario;
+   }
+
+
 
   static Future<Map<String, dynamic>> getMap(String key) async {
     try {

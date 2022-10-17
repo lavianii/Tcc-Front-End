@@ -1,7 +1,6 @@
 // ignore_for_file: avoid_print
 
 import 'package:flutter/material.dart';
-import 'package:flutter_application/components/tela_cadastro.dart';
 import 'package:flutter_application/models/login_models.dart';
 import 'tela_denuncia.dart';
 import 'tela_boletim_de_ocorrencia.dart';
@@ -10,14 +9,11 @@ import 'tela_estresse_pos_traumatico.dart';
 import 'tela_infs_do_usuario.dart';
 import 'tela_sobre_desenvolvedores.dart';
 import 'tela_favoritos.dart';
-import 'select_exemplo.dart';
-import 'package:flutter/material.dart';
 import 'dart:convert';
 import '../models/bairros.dart';
-import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'teste.dart';
-
+import '../models/usuario.dart';
+import '../models/id.dart';
 
 String _baseUrl = 'https://back-end-tcc-deploy.lavianii.repl.co';
 
@@ -33,6 +29,18 @@ Future<List<Bairro>> getBairros() async {
   }
 }
 
+List<Usuario> usuario = List<Usuario>.empty();
+LoginModels teste = new LoginModels();
+
+Future<void> getUser() async {
+   Iterable user = await teste.getList();
+  print('$user aquiiiiiiiiiiiiiiiiiiiiiiiiiiiiii');
+ usuario = user.map((model) => new  Usuario.fromJson(model)).toList();
+ print('to aqui');
+ print(usuario.map((e) => e.email));
+ 
+
+}
 
 class TelaInicial extends StatefulWidget {
   const TelaInicial({Key? key}) : super(key: key);
@@ -42,7 +50,7 @@ class TelaInicial extends StatefulWidget {
 }
 
 class _TelaInicial extends State<TelaInicial> {
-   late Future<List<Bairro>> bairroData;
+  late Future<List<Bairro>> bairroData;
 
   Future<bool> verificarUsuario() async {
     final id = await LoginModels.getMap('id');
@@ -58,6 +66,8 @@ class _TelaInicial extends State<TelaInicial> {
   void initState() {
     super.initState();
     bairroData = getBairros();
+    getUser();
+ 
 
     verificarUsuario().then(
       (temUsuario) => {
@@ -69,7 +79,6 @@ class _TelaInicial extends State<TelaInicial> {
           {print("não tem usuario")}
       },
     );
-
   }
 
   @override
@@ -92,22 +101,14 @@ class _TelaInicial extends State<TelaInicial> {
               currentAccountPicture: const CircleAvatar(
                 child: Text("TS"),
                 backgroundColor: Color(0xffffffff),
-
               ),
-              onDetailsPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const TelaInfsDoUsuario(),
-                  ),
-                );
-              },
               decoration: const BoxDecoration(
                 color: Color(0xffDFF5F4),
               ),
             ),
 
             //Tela inicial
+
             ListTile(
               leading: const Icon(Icons.home),
               title: const Text("Home"),
@@ -116,6 +117,18 @@ class _TelaInicial extends State<TelaInicial> {
                   context,
                   MaterialPageRoute(
                     builder: (context) => const TelaInicial(),
+                  ),
+                );
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.person),
+              title: const Text("Conta"),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const TelaInfsDoUsuario(),
                   ),
                 );
               },
@@ -190,35 +203,7 @@ class _TelaInicial extends State<TelaInicial> {
                 );
               },
             ),
-
-            ListTile(
-              leading: const Icon(Icons.supervised_user_circle_outlined),
-              title: const Text("**Form Cadastro"),
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const TelaCadastro(),
-                  ),
-                );
-              },
-            ),
-            ListTile(
-              leading: const Icon(Icons.ac_unit),
-              title: const Text("**FormDenuncia"),
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-
-                    builder: (context) => const SelectExemplo(),
-
-                  ),
-                );
-              },
-            ),
           ],
-
         ),
       ),
       body: Center(
@@ -227,25 +212,24 @@ class _TelaInicial extends State<TelaInicial> {
         builder: ((context, snapshot) {
           if (snapshot.hasData) {
             List<Bairro> data = snapshot.data!;
-      
 
             return ListView.builder(
                 itemCount: data.length,
                 itemBuilder: (BuildContext context, int index) {
                   String text = 'baixa Periculosidade';
-                  int color =  0xff78CF46;
+                  int color = 0xff78CF46;
 
-                  if(data[index].qtd>=10){
-                       color = 0xffF03E44;
-                       text = 'Alta periculosidade';
-                   }
-                   if(data[index].qtd>=5 && data[index].qtd<10 ){
-                       color = 0xffF0913E;
-                       text= 'Media Periculosidade';
-                   }
-                 
-                 return Padding(
-                    padding: const  EdgeInsets.fromLTRB(0, 20, 0, 10),
+                  if (data[index].qtd >= 10) {
+                    color = 0xffF03E44;
+                    text = 'Alta periculosidade';
+                  }
+                  if (data[index].qtd >= 5 && data[index].qtd < 10) {
+                    color = 0xffF0913E;
+                    text = 'Media Periculosidade';
+                  }
+
+                  return Padding(
+                    padding: const EdgeInsets.fromLTRB(0, 20, 0, 10),
                     child: CardsBairros(
                       colorSuperior: color,
                       colorInferior: 0xffffffff,
@@ -261,10 +245,9 @@ class _TelaInicial extends State<TelaInicial> {
           } else if (snapshot.hasError) {
             return Text("${snapshot.error}");
           }
-          return CircularProgressIndicator();
+          return const  CircularProgressIndicator();
         }),
       )),
-
     ));
   }
 }
