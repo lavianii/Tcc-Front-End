@@ -11,12 +11,11 @@ import 'tela_infs_do_usuario.dart';
 import 'tela_sobre_desenvolvedores.dart';
 import 'tela_favoritos.dart';
 import 'select_exemplo.dart';
-import 'package:flutter/material.dart';
+
 import 'dart:convert';
 import '../models/bairros.dart';
-import 'package:flutter/material.dart';
+
 import 'package:http/http.dart' as http;
-import 'teste.dart';
 
 String _baseUrl = 'https://back-end-tcc-deploy.lavianii.repl.co';
 
@@ -26,7 +25,7 @@ Future<List<Bairro>> getBairros() async {
 
   if (response.statusCode == 200) {
     List bairros = json.decode(response.body);
-    return bairros.map((data) => new Bairro.fromJson(data)).toList();
+    return bairros.map((data) => Bairro.fromJson(data)).toList();
   } else {
     throw Exception('Erro inesperado...');
   }
@@ -43,9 +42,9 @@ class _TelaInicial extends State<TelaInicial> {
   late Future<List<Bairro>> bairroData;
 
   Future<bool> verificarUsuario() async {
-    final id = await LoginModels.getMap('id');
+    final usuario = await LoginModels.getMap('usuario');
 
-    if (id.isEmpty) {
+    if (usuario.isEmpty) {
       return false;
     } else {
       return true;
@@ -64,15 +63,16 @@ class _TelaInicial extends State<TelaInicial> {
             print('tem usuario '),
           }
         else
-          {print("não tem usuario")}
+          {
+            print("não tem usuario"),
+          }
       },
     );
   }
 
   @override
   Widget build(BuildContext context) {
-    return (
-      Scaffold(
+    return (Scaffold(
       backgroundColor: const Color(0xff77A8A6),
       appBar: AppBar(
         backgroundColor: const Color(0xff77A8A6),

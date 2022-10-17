@@ -77,7 +77,7 @@ class _LoginState extends State<TelaLogin> {
       },
     ).then((value) async {
       if (value.statusCode == 200) {
-        LoginModels.saveMap('id', {
+        LoginModels.saveMap('usuario', {
           'id': value.body,
           'email': _emailController.text,
           'senha': _senhaController.text
