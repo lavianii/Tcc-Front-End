@@ -13,7 +13,8 @@ import 'dart:convert';
 import '../models/bairros.dart';
 import 'package:http/http.dart' as http;
 import '../models/usuario.dart';
-import '../models/id.dart';
+
+
 
 String _baseUrl = 'https://back-end-tcc-deploy.lavianii.repl.co';
 
@@ -23,11 +24,12 @@ Future<List<Bairro>> getBairros() async {
 
   if (response.statusCode == 200) {
     List bairros = json.decode(response.body);
-    return bairros.map((data) => new Bairro.fromJson(data)).toList();
+    return bairros.map((data) => Bairro.fromJson(data)).toList();
   } else {
     throw Exception('Erro inesperado...');
   }
 }
+
 
 List<Usuario> usuario = List<Usuario>.empty();
 LoginModels teste = new LoginModels();
@@ -42,6 +44,7 @@ Future<void> getUser() async {
 
 }
 
+
 class TelaInicial extends StatefulWidget {
   const TelaInicial({Key? key}) : super(key: key);
 
@@ -53,9 +56,9 @@ class _TelaInicial extends State<TelaInicial> {
   late Future<List<Bairro>> bairroData;
 
   Future<bool> verificarUsuario() async {
-    final id = await LoginModels.getMap('id');
+    final usuario = await LoginModels.getMap('usuario');
 
-    if (id.isEmpty) {
+    if (usuario.isEmpty) {
       return false;
     } else {
       return true;
@@ -73,10 +76,12 @@ class _TelaInicial extends State<TelaInicial> {
       (temUsuario) => {
         if (temUsuario)
           {
-            print('tem usuario'),
+            print('tem usuario '),
           }
         else
-          {print("não tem usuario")}
+          {
+            print("não tem usuario"),
+          }
       },
     );
   }
@@ -99,8 +104,10 @@ class _TelaInicial extends State<TelaInicial> {
               accountName: const Text("Teste",
                   style: TextStyle(color: Color(0xff000000), fontSize: 14)),
               currentAccountPicture: const CircleAvatar(
-                child: Text("TS"),
                 backgroundColor: Color(0xffffffff),
+
+                child: Text("TS"),
+
               ),
               decoration: const BoxDecoration(
                 color: Color(0xffDFF5F4),
@@ -203,51 +210,54 @@ class _TelaInicial extends State<TelaInicial> {
                 );
               },
             ),
+
           ],
         ),
       ),
       body: Center(
-          child: FutureBuilder<List<Bairro>>(
-        future: bairroData,
-        builder: ((context, snapshot) {
-          if (snapshot.hasData) {
-            List<Bairro> data = snapshot.data!;
 
-            return ListView.builder(
-                itemCount: data.length,
-                itemBuilder: (BuildContext context, int index) {
-                  String text = 'baixa Periculosidade';
-                  int color = 0xff78CF46;
+        child: FutureBuilder<List<Bairro>>(
+          future: bairroData,
+          builder: ((context, snapshot) {
+            if (snapshot.hasData) {
+              List<Bairro> data = snapshot.data!;
+              return ListView.builder(
+                  itemCount: data.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    String text = 'baixa Periculosidade';
+                    int color = 0xff78CF46;
 
-                  if (data[index].qtd >= 10) {
-                    color = 0xffF03E44;
-                    text = 'Alta periculosidade';
-                  }
-                  if (data[index].qtd >= 5 && data[index].qtd < 10) {
-                    color = 0xffF0913E;
-                    text = 'Media Periculosidade';
-                  }
+                    if (data[index].qtd >= 10) {
+                      color = 0xffF03E44;
+                      text = 'Alta periculosidade';
+                    }
+                    if (data[index].qtd >= 5 && data[index].qtd < 10) {
+                      color = 0xffF0913E;
+                      text = 'Media Periculosidade';
+                    }
 
-                  return Padding(
-                    padding: const EdgeInsets.fromLTRB(0, 20, 0, 10),
-                    child: CardsBairros(
-                      colorSuperior: color,
-                      colorInferior: 0xffffffff,
-                      borderRadius: 4,
-                      width: 300,
-                      height: 60,
-                      paddingSuperior: 15,
-                      textInferior: data[index].bairro,
-                      textSuperior: text,
-                    ),
-                  );
-                });
-          } else if (snapshot.hasError) {
-            return Text("${snapshot.error}");
-          }
-          return const  CircularProgressIndicator();
-        }),
-      )),
+                    return Padding(
+                      padding: const EdgeInsets.fromLTRB(0, 20, 0, 10),
+                      child: CardsBairros(
+                        colorSuperior: color,
+                        colorInferior: 0xffffffff,
+                        borderRadius: 4,
+                        width: 300,
+                        height: 60,
+                        paddingSuperior: 15,
+                        textInferior: data[index].bairro,
+                        textSuperior: text,
+                      ),
+                    );
+                  });
+            } else if (snapshot.hasError) {
+              return Text("${snapshot.error}");
+            }
+            return const CircularProgressIndicator();
+          }),
+        ),
+      ),
+
     ));
   }
 }

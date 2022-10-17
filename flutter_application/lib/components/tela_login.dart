@@ -35,7 +35,6 @@ class _LoginState extends State<TelaLogin> {
         width: double.infinity,
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 100),
-          //  child: SingleChildScrollView(
           child: Column(
             children: [
               const Logo(),
@@ -65,7 +64,6 @@ class _LoginState extends State<TelaLogin> {
               const CadastrarBotao()
             ],
           ),
-          //  ),
         ),
       ),
     );
@@ -83,6 +81,7 @@ class _LoginState extends State<TelaLogin> {
     ).then((value) async {
       
       if (value.statusCode == 200) {
+
    
        
         Iterable bairros = json.decode(value.body);
@@ -93,6 +92,7 @@ class _LoginState extends State<TelaLogin> {
         LoginModels.saveMap('user', {
           "user": value.body
         
+
         });
         Navigator.pushReplacement(
           context,
