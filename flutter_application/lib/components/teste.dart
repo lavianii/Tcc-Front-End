@@ -36,7 +36,7 @@ class _TelaTesteState extends State<TelaTeste> {
   final _formKey = GlobalKey<FormState>();
   final _formData = Map<String, Object>();
 
-
+  @override
   void initState() {
     super.initState();
 
@@ -135,7 +135,7 @@ class _TelaTesteState extends State<TelaTeste> {
                     
                   ),
                   const SizedBox(height: 15),
-                  Container(
+                  SizedBox(
                     width: 280,
                     child: DropdownButton(
                      

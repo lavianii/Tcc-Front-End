@@ -24,6 +24,6 @@ class Bairro{
 
   @override
   String toString() {
-    return '{${this.id},${this.bairro},${this.qtd},${this.data},${this.tipoCrime}}';
+    return '{$id,$bairro,$qtd,$data,$tipoCrime}';
   }
 }

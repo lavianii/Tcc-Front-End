@@ -1,7 +1,6 @@
-// ignore_for_file: avoid_print
-
 import 'package:flutter/material.dart';
 import 'package:flutter_application/models/login_models.dart';
+import 'barra_pesquisa.dart';
 import 'tela_denuncia.dart';
 import 'tela_boletim_de_ocorrencia.dart';
 import 'templates/cards/cards_bairros.dart';
@@ -86,6 +85,12 @@ class _TelaInicial extends State<TelaInicial> {
       backgroundColor: const Color(0xff77A8A6),
       appBar: AppBar(
         backgroundColor: const Color(0xff77A8A6),
+        actions: [
+          IconButton(
+            onPressed: () {
+              showSearch(context: context, delegate: BarraDePesquisa());
+          }, icon: const Icon(Icons.search)),
+        ],
       ),
       drawer: Drawer(
         backgroundColor: const Color(0xffffffff),
@@ -105,9 +110,7 @@ class _TelaInicial extends State<TelaInicial> {
                 color: Color(0xffDFF5F4),
               ),
             ),
-
             //Tela inicial
-
             ListTile(
               leading: const Icon(Icons.home),
               title: const Text("Home"),
@@ -132,7 +135,6 @@ class _TelaInicial extends State<TelaInicial> {
                 );
               },
             ),
-
             //Favoritos
             ListTile(
               leading: const Icon(Icons.star_rate_outlined),
@@ -146,7 +148,6 @@ class _TelaInicial extends State<TelaInicial> {
                 );
               },
             ),
-
             //Tela denuncia
             ListTile(
               leading: const Icon(Icons.warning_amber_rounded),
@@ -160,7 +161,6 @@ class _TelaInicial extends State<TelaInicial> {
                 );
               },
             ),
-
             //Tela estresse pos traumatico
             ListTile(
               leading: const Icon(Icons.supervised_user_circle_outlined),

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-
 class TelaFavoritos extends StatelessWidget {
   const TelaFavoritos({
     Key? key,

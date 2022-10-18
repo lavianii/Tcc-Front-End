@@ -1,8 +1,3 @@
-
-// ignore_for_file: avoid_print
-
-
-
 class LoginModels {
   Iterable<dynamic> usuario = [];
 
@@ -11,7 +6,8 @@ class LoginModels {
     if(user.isEmpty){
       throw ('usuario vazio');
     }
-      usuario = user;
+    
+    return usuario = user;
  
   }
 

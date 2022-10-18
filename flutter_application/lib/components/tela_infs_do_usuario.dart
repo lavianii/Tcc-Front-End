@@ -1,9 +1,6 @@
-// ignore_for_file: avoid_print
-
 import 'package:flutter/material.dart';
 import 'templates/cards/cards.dart';
 import 'templates/botoes/botao_padrao.dart';
-
 
 class TelaInfsDoUsuario extends StatefulWidget {
   const TelaInfsDoUsuario({

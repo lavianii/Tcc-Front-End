@@ -1,4 +1,3 @@
-// ignore_for_file: avoid_print
 import 'dart:core';
 import 'package:flutter/material.dart';
 import 'package:flutter_application/components/tela_inicial.dart';
@@ -31,34 +30,36 @@ class _LoginState extends State<TelaLogin> {
         width: double.infinity,
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 100),
-          child: Column(
-            children: [
-              const Logo(),
-              const SizedBox(height: 15),
-              Form(
-                key: _formKey,
-                child: EstiloTextFild(
-                  controller: _emailController,
-                  label: 'Email',
-                  iconData: Icons.email_rounded,
-                  obscureText: false,
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                const Logo(),
+                const SizedBox(height: 15),
+                Form(
+                  key: _formKey,
+                  child: EstiloTextFild(
+                    controller: _emailController,
+                    label: 'Email',
+                    iconData: Icons.email_rounded,
+                    obscureText: false,
+                  ),
                 ),
-              ),
-              const SizedBox(height: 15),
-              EstiloTextFild(
-                controller: _senhaController,
-                label: 'Senha',
-                iconData: Icons.lock,
-                obscureText: true,
-              ),
-              const SizedBox(height: 100),
-              EntrarBotao(
-                text: 'Entrar',
-                onPressed: logar,
-              ),
-              const SizedBox(height: 150),
-              const CadastrarBotao()
-            ],
+                const SizedBox(height: 15),
+                EstiloTextFild(
+                  controller: _senhaController,
+                  label: 'Senha',
+                  iconData: Icons.lock,
+                  obscureText: true,
+                ),
+                const SizedBox(height: 100),
+                EntrarBotao(
+                  text: 'Entrar',
+                  onPressed: logar,
+                ),
+                const SizedBox(height: 150),
+                const CadastrarBotao()
+              ],
+            ),
           ),
         ),
       ),
@@ -76,7 +77,6 @@ class _LoginState extends State<TelaLogin> {
       },
     ).then((value) async {
       if (value.statusCode == 200) {
-        
         Iterable usuario = json.decode(value.body);
         loginModels.saveUsuario(usuario);
 
@@ -87,11 +87,10 @@ class _LoginState extends State<TelaLogin> {
           ),
         );
       } else if (value.statusCode != 200) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text("e-mail ou senha inválidos"),
-            behavior: SnackBarBehavior.floating,
-            backgroundColor: Colors.red,
+        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+          content: Text("e-mail ou senha inválidos"),
+          behavior: SnackBarBehavior.floating,
+          backgroundColor: Colors.red,
         ));
       }
     });
