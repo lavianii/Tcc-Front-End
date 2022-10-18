@@ -5,7 +5,7 @@ import 'templates/textos/estilo_text_fild.dart';
 import 'package:http/http.dart' as http;
 import 'tela_inicial.dart';
 import 'dart:convert';
-import '../models/bairros.dart';
+import '../models/bairros_models.dart';
 
 
 String _baseUrl = 'https://back-end-tcc-deploy.lavianii.repl.co';

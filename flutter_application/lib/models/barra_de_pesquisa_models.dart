@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
-import 'package:flutter_application/models/bairros.dart';
+import 'package:flutter_application/models/bairros_models.dart';
 
 class BairroListPesquisa {
   var data = [];

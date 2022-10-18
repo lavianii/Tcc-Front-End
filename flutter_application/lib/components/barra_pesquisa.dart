@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application/models/barra_de_pesquisa_models.dart';
 
 import 'templates/cards/cards_bairros.dart';
-import '../models/bairros.dart';
+import '../models/bairros_models.dart';
 
 class BarraDePesquisa extends SearchDelegate {
   BairroListPesquisa bairroList = BairroListPesquisa();
