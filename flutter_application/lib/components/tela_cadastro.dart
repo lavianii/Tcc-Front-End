@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application/components/tela_login.dart';
 import 'templates/botoes/entrar_botao.dart';
 import 'templates/textos/estilo_text_fild.dart';
 import 'package:http/http.dart' as http;
@@ -45,7 +46,7 @@ class _CadastroState extends State<TelaCadastro> {
                       onPressed: (() => Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => const TelaInicial(),
+                              builder: (context) => const TelaLogin(),
                             ),
                           )),
                       child: const Text('ok'))
@@ -62,7 +63,7 @@ class _CadastroState extends State<TelaCadastro> {
                 onPressed: (() => Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const TelaInicial(),
+                        builder: (context) => const TelaLogin(),
                       ),
                     )),
                 child: const Text('ok'))

@@ -37,4 +37,21 @@ class LoginModels {
     List<Usuario> usuario = await getUser();
     return usuario.map((e) => e.email).toString();
   }
+
+  Future<String> getNome() async {
+    List<Usuario> usuario = await getUser();
+    return usuario.map((e) => e.nome).toString();
+  }
+
+    Future<String> getSenha() async {
+    List<Usuario> usuario = await getUser();
+    return usuario.map((e) => e.senha).toString();
+
+  }
+
+  Future<String> getId() async {
+    List<Usuario> usuario = await getUser();
+    return usuario.map((e) => e.id).toString();
+
+  }
 }

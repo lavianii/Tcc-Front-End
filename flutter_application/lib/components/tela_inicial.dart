@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_application/models/login_models.dart';
 import 'barra_pesquisa.dart';
@@ -37,8 +39,10 @@ class TelaInicial extends StatefulWidget {
 
 class _TelaInicial extends State<TelaInicial> {
   late Future<List<Bairro>> bairroData;
+
   String email = '';
-  String senha = '';
+  String nome = '';
+
 
   @override
   void initState() {
@@ -48,6 +52,12 @@ class _TelaInicial extends State<TelaInicial> {
     loginModels.getEmail().then((String result) {
       setState(() {
         email = result;
+      });
+    });
+
+    loginModels.getNome().then((String result) {
+      setState(() {
+        nome = result;
       });
     });
 
@@ -87,15 +97,17 @@ class _TelaInicial extends State<TelaInicial> {
               accountEmail: Text(email,
                   style:
                       const TextStyle(color: Color(0xff000000), fontSize: 14)),
-              accountName: const Text("Teste",
-                  style: TextStyle(color: Color(0xff000000), fontSize: 14)),
+              accountName:  Text(nome,
+                  style: const TextStyle(color: Color(0xff000000), fontSize: 14)),
               currentAccountPicture: const CircleAvatar(
-                backgroundColor: Color(0xffffffff),
-                child: Text("TS"),
+                  backgroundImage: 
+                  NetworkImage('https://xsgames.co/randomusers/assets/avatars/female/48.jpg'),
+                  backgroundColor: Color(0xffffffff),
               ),
               decoration: const BoxDecoration(
                 color: Color(0xffDFF5F4),
               ),
+
             ),
             //Tela inicial
             ListTile(

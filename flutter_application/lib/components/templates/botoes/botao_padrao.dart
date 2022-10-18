@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 
-class BotaoPadrao extends StatelessWidget {
+class BotaoPadrao extends StatefulWidget {
 
   
   final double paddingLeft;
@@ -31,18 +31,23 @@ class BotaoPadrao extends StatelessWidget {
   }) : super(key: key);
 
   @override
+  State<BotaoPadrao> createState() => _BotaoPadraoState();
+}
+
+class _BotaoPadraoState extends State<BotaoPadrao> {
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: ElevatedButton(
         style: ElevatedButton.styleFrom(
-          padding: EdgeInsets.fromLTRB(paddingLeft,paddingTop,paddingRight,paddingBottom),
-          backgroundColor: Color(colorBackground).withOpacity(opacity),
-          foregroundColor: Color(colorText),
+          padding: EdgeInsets.fromLTRB(widget.paddingLeft,widget.paddingTop,widget.paddingRight,widget.paddingBottom),
+          backgroundColor: Color(widget.colorBackground).withOpacity(widget.opacity),
+          foregroundColor: Color(widget.colorText),
           elevation: 0,
         ),
 
-        onPressed: funcao,
-        child: Text(text),
+        onPressed: widget.funcao,
+        child: Text(widget.text),
         
       ),
     );

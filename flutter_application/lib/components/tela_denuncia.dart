@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application/models/lista_bairros.dart';
 import 'templates/textos/paragrafo.dart';
 import 'templates/cards/cards.dart';
 import 'templates/textos/texto_cards_de_info.dart';
 import 'templates/botoes/botao_padrao.dart';
 import 'tela_denuncia_form.dart';
+
 
 class TelaDenuncia extends StatefulWidget {
   const TelaDenuncia({
@@ -15,6 +17,17 @@ class TelaDenuncia extends StatefulWidget {
 }
 
 class _TelaDenunciaState extends State<TelaDenuncia> {
+
+
+
+  @override
+  void initState() {
+    super.initState();
+
+    listaBairros.getBackEnd();
+    print('passei');
+
+  }
 
  void carregaForm () {
   Navigator.push(
