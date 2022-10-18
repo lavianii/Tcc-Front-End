@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application/models/lista_bairros.dart';
+import 'package:flutter_application/models/lista_bairros_models.dart';
 import 'templates/textos/paragrafo.dart';
 import 'templates/cards/cards.dart';
 import 'templates/textos/texto_cards_de_info.dart';

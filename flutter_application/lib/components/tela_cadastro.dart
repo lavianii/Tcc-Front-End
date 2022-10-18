@@ -15,7 +15,7 @@ class TelaCadastro extends StatefulWidget {
 
 class _CadastroState extends State<TelaCadastro> {
   final _formKey = GlobalKey<FormState>();
-  final _formData = Map<String, Object>();
+  final _formData = <String, Object>{};
 
   final _baseUrl = 'https://back-end-tcc-deploy.lavianii.repl.co';
 
@@ -162,7 +162,7 @@ class _CadastroState extends State<TelaCadastro> {
                       }
                       return null;
                     },
-                    onFieldSubmitted: (_) => _submitForm() ,
+                    onFieldSubmitted: (_) => _submitForm(),
                   ),
                   const SizedBox(height: 100),
                   EntrarBotao(

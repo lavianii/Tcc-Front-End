@@ -2,13 +2,13 @@
 
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:flutter_application/models/lista_bairros.dart';
+import 'package:flutter_application/models/lista_bairros_models.dart';
 import 'templates/botoes/entrar_botao.dart';
 import 'templates/textos/estilo_text_fild.dart';
 import 'package:http/http.dart' as http;
 import 'tela_inicial.dart';
 import 'dart:convert';
-import '../models/bairros.dart';
+import '../models/bairros_models.dart';
 
 String _baseUrl = 'https://back-end-tcc-deploy.lavianii.repl.co';
 ListaBairros listaBairros = ListaBairros();
@@ -22,7 +22,7 @@ class TelaDenunciaForm extends StatefulWidget {
 
 class _FormDenunciaState extends State<TelaDenunciaForm> {
   final _formKey = GlobalKey<FormState>();
-  final _formData = Map<String, Object>();
+  final _formData = <String, Object>{};
   List<Bairro> bairros = List<Bairro>.empty();
   
 
@@ -30,12 +30,13 @@ class _FormDenunciaState extends State<TelaDenunciaForm> {
   void initState() {
     super.initState();
 
+
         listaBairros.listBairros().then((List<Bairro> result) {
           setState(() {
             bairros = result;
           });
         });
- 
+
     print('$bairros' 'Carregados com sucesso');
   }
 

@@ -1,9 +1,9 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
-import 'package:flutter_application/models/bairros.dart';
+import 'package:flutter_application/models/bairros_models.dart';
 
-class BairroList {
+class BairroListPesquisa {
   var data = [];
   List<Bairro> results = [];
   String urlList = 'https://back-end-tcc-deploy.lavianii.repl.co/recuperabairro';

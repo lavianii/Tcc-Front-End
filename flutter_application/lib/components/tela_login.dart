@@ -19,7 +19,6 @@ class _LoginState extends State<TelaLogin> {
   final _formKey = GlobalKey<FormState>();
   final _emailController = TextEditingController();
   final _senhaController = TextEditingController();
-  
 
   @override
   Widget build(BuildContext context) {
@@ -57,7 +56,7 @@ class _LoginState extends State<TelaLogin> {
                   text: 'Entrar',
                   onPressed: logar,
                 ),
-                const SizedBox(height: 150),
+                const SizedBox(height: 110),
                 const CadastrarBotao()
               ],
             ),
@@ -95,6 +94,5 @@ class _LoginState extends State<TelaLogin> {
         ));
       }
     });
-    
   }
 }

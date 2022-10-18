@@ -11,9 +11,9 @@ import 'tela_infs_do_usuario.dart';
 import 'tela_sobre_desenvolvedores.dart';
 import 'tela_favoritos.dart';
 import 'dart:convert';
-import '../models/bairros.dart';
+import '../models/bairros_models.dart';
 import 'package:http/http.dart' as http;
-import '../models/usuario.dart';
+import '../models/usuario_models.dart';
 
 String _baseUrl = 'https://back-end-tcc-deploy.lavianii.repl.co';
 LoginModels loginModels = LoginModels();

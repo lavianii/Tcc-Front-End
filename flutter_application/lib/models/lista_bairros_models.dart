@@ -1,5 +1,5 @@
 import 'dart:convert';
-import './bairros.dart';
+import 'bairros_models.dart';
 import 'package:http/http.dart' as http;
 import '../components/tela_denuncia_form.dart';
 
