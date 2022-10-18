@@ -11,15 +11,14 @@ String _baseUrl = 'https://back-end-tcc-deploy.lavianii.repl.co';
 List<Bairro> bairros = List<Bairro>.empty();
 
 Future<void> getBairros() async {
-  final response = await http.get(Uri.parse('$_baseUrl/recuperabairro'),
-      headers: {"Accept": "application/json"});
-
-  if (response.statusCode == 200) {
+  http.get(Uri.parse('$_baseUrl/recuperabairro'),
+      headers: {"Accept": "application/json"})
+  .then((response) {
     Iterable data = jsonDecode(response.body);
     bairros = data.map((model) => Bairro.fromJson(model)).toList();
-  } else {
+  }).catchError((error) {
     throw Exception('Erro inesperado...');
-  }
+  });
 }
 
 class TelaDenunciaForm extends StatefulWidget {
@@ -33,9 +32,9 @@ class _FormDenunciaState extends State<TelaDenunciaForm> {
   final _formKey = GlobalKey<FormState>();
   final _formData = Map<String, Object>();
 
+  @override
   void initState() {
     super.initState();
-
     getBairros();
     print('$bairros' 'Carregados com sucesso');
   }

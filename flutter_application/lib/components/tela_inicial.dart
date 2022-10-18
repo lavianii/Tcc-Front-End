@@ -14,8 +14,6 @@ import '../models/bairros.dart';
 import 'package:http/http.dart' as http;
 import '../models/usuario.dart';
 
-
-
 String _baseUrl = 'https://back-end-tcc-deploy.lavianii.repl.co';
 
 Future<List<Bairro>> getBairros() async {
@@ -30,20 +28,14 @@ Future<List<Bairro>> getBairros() async {
   }
 }
 
-
 List<Usuario> usuario = List<Usuario>.empty();
-LoginModels teste = new LoginModels();
+LoginModels loginModels = LoginModels();
+String email = '';
 
 Future<void> getUser() async {
-   Iterable user = await teste.getList();
-  print('$user aquiiiiiiiiiiiiiiiiiiiiiiiiiiiiii');
- usuario = user.map((model) => new  Usuario.fromJson(model)).toList();
- print('to aqui');
- print(usuario.map((e) => e.email));
- 
-
+  Iterable user = await loginModels.getUsuario();
+  usuario = user.map((model) => Usuario.fromJson(model)).toList();
 }
-
 
 class TelaInicial extends StatefulWidget {
   const TelaInicial({Key? key}) : super(key: key);
@@ -56,7 +48,7 @@ class _TelaInicial extends State<TelaInicial> {
   late Future<List<Bairro>> bairroData;
 
   Future<bool> verificarUsuario() async {
-    final usuario = await LoginModels.getMap('usuario');
+    final usuario = await loginModels.getUsuario();
 
     if (usuario.isEmpty) {
       return false;
@@ -68,9 +60,11 @@ class _TelaInicial extends State<TelaInicial> {
   @override
   void initState() {
     super.initState();
+
     bairroData = getBairros();
-    getUser();
- 
+    getUser().then((e) {
+      email = usuario.map((e) => e.email).toString();
+    });
 
     verificarUsuario().then(
       (temUsuario) => {
@@ -95,19 +89,17 @@ class _TelaInicial extends State<TelaInicial> {
       ),
       drawer: Drawer(
         backgroundColor: const Color(0xffffffff),
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: <Widget>[
+        child: Column(
+          children: [
             UserAccountsDrawerHeader(
-              accountEmail: const Text("Teste@email.com",
-                  style: TextStyle(color: Color(0xff000000), fontSize: 14)),
+              accountEmail: Text(email,
+                  style:
+                      const TextStyle(color: Color(0xff000000), fontSize: 14)),
               accountName: const Text("Teste",
                   style: TextStyle(color: Color(0xff000000), fontSize: 14)),
               currentAccountPicture: const CircleAvatar(
                 backgroundColor: Color(0xffffffff),
-
                 child: Text("TS"),
-
               ),
               decoration: const BoxDecoration(
                 color: Color(0xffDFF5F4),
@@ -210,12 +202,10 @@ class _TelaInicial extends State<TelaInicial> {
                 );
               },
             ),
-
           ],
         ),
       ),
       body: Center(
-
         child: FutureBuilder<List<Bairro>>(
           future: bairroData,
           builder: ((context, snapshot) {
@@ -257,7 +247,6 @@ class _TelaInicial extends State<TelaInicial> {
           }),
         ),
       ),
-
     ));
   }
 }

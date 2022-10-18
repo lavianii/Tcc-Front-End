@@ -2,16 +2,12 @@
 import 'dart:core';
 import 'package:flutter/material.dart';
 import 'package:flutter_application/components/tela_inicial.dart';
-import 'package:flutter_application/models/login_models.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-
 import 'templates/botoes/cadastrar_botao.dart';
 import 'templates/botoes/entrar_botao.dart';
 import 'templates/textos/estilo_text_fild.dart';
 import 'templates/logo.dart';
-import '../models/usuario.dart';
-
 
 class TelaLogin extends StatefulWidget {
   const TelaLogin({Key? key}) : super(key: key);
@@ -70,47 +66,33 @@ class _LoginState extends State<TelaLogin> {
   }
 
   logar() async {
-    var urlTodos = Uri.parse(
+    var urlLogin = Uri.parse(
       "https://back-end-tcc-deploy.lavianii.repl.co/login/${_emailController.text}/${_senhaController.text}",
     );
     await http.get(
-      urlTodos,
+      urlLogin,
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
     ).then((value) async {
-      
       if (value.statusCode == 200) {
-
-   
-       
-        Iterable bairros = json.decode(value.body);
-       
-        teste.saveList(bairros);
-       
-    
-        LoginModels.saveMap('user', {
-          "user": value.body
         
+        Iterable usuario = json.decode(value.body);
+        loginModels.saveUsuario(usuario);
 
-        });
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(
             builder: (context) => const TelaInicial(),
           ),
         );
-        print('foi aqui');
-        print(value.body);
-        print(value.statusCode);
       } else if (value.statusCode != 200) {
-        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-          content: Text("e-mail ou senha inválidos"),
-          behavior: SnackBarBehavior.floating,
-          backgroundColor: Colors.red,
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text("e-mail ou senha inválidos"),
+            behavior: SnackBarBehavior.floating,
+            backgroundColor: Colors.red,
         ));
-        print(value.statusCode);
-        print(value.body);
       }
     });
   }
