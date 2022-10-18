@@ -5,7 +5,7 @@ import 'templates/cards/cards_bairros.dart';
 import '../models/bairros.dart';
 
 class BarraDePesquisa extends SearchDelegate {
-  BairroList bairroList = BairroList();
+  BairroListPesquisa bairroList = BairroListPesquisa();
 
   @override
   List<Widget>? buildActions(BuildContext context) {
