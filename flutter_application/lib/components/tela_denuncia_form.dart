@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:flutter_application/models/lista_bairros.dart';
 import 'templates/botoes/entrar_botao.dart';
 import 'templates/textos/estilo_text_fild.dart';
 import 'package:http/http.dart' as http;
@@ -8,18 +9,7 @@ import 'dart:convert';
 import '../models/bairros.dart';
 
 String _baseUrl = 'https://back-end-tcc-deploy.lavianii.repl.co';
-List<Bairro> bairros = List<Bairro>.empty();
-
-Future<void> getBairros() async {
-  http.get(Uri.parse('$_baseUrl/recuperabairro'),
-      headers: {"Accept": "application/json"})
-  .then((response) {
-    Iterable data = jsonDecode(response.body);
-    bairros = data.map((model) => Bairro.fromJson(model)).toList();
-  }).catchError((error) {
-    throw Exception('Erro inesperado...');
-  });
-}
+ListaBairros listaBairros = ListaBairros();
 
 class TelaDenunciaForm extends StatefulWidget {
   const TelaDenunciaForm({Key? key}) : super(key: key);
@@ -31,11 +21,26 @@ class TelaDenunciaForm extends StatefulWidget {
 class _FormDenunciaState extends State<TelaDenunciaForm> {
   final _formKey = GlobalKey<FormState>();
   final _formData = Map<String, Object>();
+  List<Bairro> bairros = List<Bairro>.empty();
+  Iterable data = [];
 
   @override
   void initState() {
     super.initState();
-    getBairros();
+
+  
+    void teste() async {
+      String teste = await listaBairros.getBackEnd();
+      if (teste == '200') {
+        listaBairros.listBairros().then((List<Bairro> result) {
+          setState(() {
+            bairros = result;
+          });
+        });
+      }
+    }
+    teste();
+
     print('$bairros' 'Carregados com sucesso');
   }
 

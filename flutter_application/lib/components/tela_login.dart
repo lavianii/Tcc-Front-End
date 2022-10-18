@@ -19,6 +19,7 @@ class _LoginState extends State<TelaLogin> {
   final _formKey = GlobalKey<FormState>();
   final _emailController = TextEditingController();
   final _senhaController = TextEditingController();
+  
 
   @override
   Widget build(BuildContext context) {
@@ -94,5 +95,6 @@ class _LoginState extends State<TelaLogin> {
         ));
       }
     });
+    
   }
 }

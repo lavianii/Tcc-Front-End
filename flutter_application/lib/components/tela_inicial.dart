@@ -14,6 +14,7 @@ import 'package:http/http.dart' as http;
 import '../models/usuario.dart';
 
 String _baseUrl = 'https://back-end-tcc-deploy.lavianii.repl.co';
+LoginModels loginModels = LoginModels();
 
 Future<List<Bairro>> getBairros() async {
   final response = await http.get(Uri.parse('$_baseUrl/recuperabairro'),
@@ -27,15 +28,6 @@ Future<List<Bairro>> getBairros() async {
   }
 }
 
-List<Usuario> usuario = List<Usuario>.empty();
-LoginModels loginModels = LoginModels();
-String email = '';
-
-Future<void> getUser() async {
-  Iterable user = await loginModels.getUsuario();
-  usuario = user.map((model) => Usuario.fromJson(model)).toList();
-}
-
 class TelaInicial extends StatefulWidget {
   const TelaInicial({Key? key}) : super(key: key);
 
@@ -45,38 +37,32 @@ class TelaInicial extends StatefulWidget {
 
 class _TelaInicial extends State<TelaInicial> {
   late Future<List<Bairro>> bairroData;
-
-  Future<bool> verificarUsuario() async {
-    final usuario = await loginModels.getUsuario();
-
-    if (usuario.isEmpty) {
-      return false;
-    } else {
-      return true;
-    }
-  }
+  String email = '';
+  String senha = '';
 
   @override
   void initState() {
     super.initState();
 
     bairroData = getBairros();
-    getUser().then((e) {
-      email = usuario.map((e) => e.email).toString();
+    loginModels.getEmail().then((String result) {
+      setState(() {
+        email = result;
+      });
     });
 
-    verificarUsuario().then(
-      (temUsuario) => {
-        if (temUsuario)
-          {
-            print('tem usuario '),
-          }
-        else
-          {
-            print("não tem usuario"),
-          }
-      },
-    );
+    loginModels.verificarUsuario().then(
+          (temUsuario) => {
+            if (temUsuario)
+              {
+                print('tem usuario '),
+              }
+            else
+              {
+                print("não tem usuario"),
+              }
+          },
+        );
   }
 
   @override
@@ -87,9 +73,10 @@ class _TelaInicial extends State<TelaInicial> {
         backgroundColor: const Color(0xff77A8A6),
         actions: [
           IconButton(
-            onPressed: () {
-              showSearch(context: context, delegate: BarraDePesquisa());
-          }, icon: const Icon(Icons.search)),
+              onPressed: () {
+                showSearch(context: context, delegate: BarraDePesquisa());
+              },
+              icon: const Icon(Icons.search)),
         ],
       ),
       drawer: Drawer(
