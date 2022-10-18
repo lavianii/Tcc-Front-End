@@ -20,7 +20,7 @@ class TelaDenunciaForm extends StatefulWidget {
 
 class _FormDenunciaState extends State<TelaDenunciaForm> {
   final _formKey = GlobalKey<FormState>();
-  final _formData = Map<String, Object>();
+  final _formData = <String, Object>{};
   List<Bairro> bairros = List<Bairro>.empty();
   Iterable data = [];
 
@@ -28,7 +28,6 @@ class _FormDenunciaState extends State<TelaDenunciaForm> {
   void initState() {
     super.initState();
 
-  
     void teste() async {
       String teste = await listaBairros.getBackEnd();
       if (teste == '200') {
@@ -39,6 +38,7 @@ class _FormDenunciaState extends State<TelaDenunciaForm> {
         });
       }
     }
+
     teste();
 
     print('$bairros' 'Carregados com sucesso');

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application/components/tela_login.dart';
 import 'templates/botoes/entrar_botao.dart';
 import 'templates/textos/estilo_text_fild.dart';
 import 'package:http/http.dart' as http;
@@ -14,7 +15,7 @@ class TelaCadastro extends StatefulWidget {
 
 class _CadastroState extends State<TelaCadastro> {
   final _formKey = GlobalKey<FormState>();
-  final _formData = Map<String, Object>();
+  final _formData = <String, Object>{};
 
   final _baseUrl = 'https://back-end-tcc-deploy.lavianii.repl.co';
 
@@ -62,7 +63,7 @@ class _CadastroState extends State<TelaCadastro> {
                 onPressed: (() => Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const TelaInicial(),
+                        builder: (context) => const TelaLogin(),
                       ),
                     )),
                 child: const Text('ok'))
@@ -161,7 +162,7 @@ class _CadastroState extends State<TelaCadastro> {
                       }
                       return null;
                     },
-                    onFieldSubmitted: (_) => _submitForm() ,
+                    onFieldSubmitted: (_) => _submitForm(),
                   ),
                   const SizedBox(height: 100),
                   EntrarBotao(
