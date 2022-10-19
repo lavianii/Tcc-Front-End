@@ -15,7 +15,7 @@ class TelaCadastro extends StatefulWidget {
 
 class _CadastroState extends State<TelaCadastro> {
   final _formKey = GlobalKey<FormState>();
-  final _formData = <String, Object>{};
+  final _formData = Map<String, Object>();
 
   final _baseUrl = 'https://back-end-tcc-deploy.lavianii.repl.co';
 
@@ -119,6 +119,7 @@ class _CadastroState extends State<TelaCadastro> {
                   const SizedBox(height: 15),
                   EstiloTextFild(
                     label: 'Nome',
+                    hintText: 'Digite o nome',
                     iconData: Icons.person,
                     obscureText: false,
                     textInputAction: TextInputAction.next,
@@ -136,6 +137,7 @@ class _CadastroState extends State<TelaCadastro> {
                   const SizedBox(height: 15),
                   EstiloTextFild(
                     label: 'Senha',
+                    hintText: 'Digite a senha',
                     iconData: Icons.lock,
                     obscureText: true,
                     onSaved: (senha) => _formData['senha'] = senha ?? '',
@@ -152,6 +154,7 @@ class _CadastroState extends State<TelaCadastro> {
                   const SizedBox(height: 15),
                   EstiloTextFild(
                     label: 'email',
+                    hintText: 'Digite o email',
                     iconData: Icons.email_rounded,
                     obscureText: false,
                     onSaved: (email) => _formData['email'] = email ?? '',

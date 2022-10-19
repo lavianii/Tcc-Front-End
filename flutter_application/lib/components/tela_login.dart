@@ -40,6 +40,7 @@ class _LoginState extends State<TelaLogin> {
                   child: EstiloTextFild(
                     controller: _emailController,
                     label: 'Email',
+                    hintText: 'Digite o email',
                     iconData: Icons.email_rounded,
                     obscureText: false,
                   ),
@@ -48,6 +49,7 @@ class _LoginState extends State<TelaLogin> {
                 EstiloTextFild(
                   controller: _senhaController,
                   label: 'Senha',
+                  hintText: 'Digite a senha',
                   iconData: Icons.lock,
                   obscureText: true,
                 ),

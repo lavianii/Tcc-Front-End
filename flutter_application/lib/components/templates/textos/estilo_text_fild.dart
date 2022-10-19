@@ -9,6 +9,7 @@ class EstiloTextFild extends StatelessWidget {
   TextInputAction? textInputAction;
   void Function(String?)? onSaved;
   void Function(String)? onFieldSubmitted;
+  String? hintText;
 
   EstiloTextFild({
     Key? key,
@@ -20,6 +21,7 @@ class EstiloTextFild extends StatelessWidget {
     this.textInputAction,
     this.onFieldSubmitted,
     this.controller,
+    required this.hintText
   }) : super(key: key);
 
   @override
@@ -32,9 +34,10 @@ class EstiloTextFild extends StatelessWidget {
         textInputAction: textInputAction,
         validator: validator,
         controller: controller,
+        
         decoration: InputDecoration(
           labelText: label,
-          hintText: 'Digite $label...',
+          hintText: hintText,
           border: const OutlineInputBorder(
             borderRadius: BorderRadius.all(
               Radius.circular(40.0),

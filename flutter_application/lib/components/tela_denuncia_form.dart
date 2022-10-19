@@ -123,6 +123,7 @@ class _FormDenunciaState extends State<TelaDenunciaForm> {
                   const SizedBox(height: 15),
                   EstiloTextFild(
                     label: 'Observações',
+                    hintText: 'Digite as Observações',
                     iconData: Icons.info_outline_rounded,
                     obscureText: false,
                     textInputAction: TextInputAction.next,

@@ -35,23 +35,23 @@ class LoginModels {
 
   Future<String> getEmail() async {
     List<Usuario> usuario = await getUser();
-    return usuario.map((e) => e.email).toString();
+    return usuario.map((e) => e.email).first;
   }
 
   Future<String> getNome() async {
     List<Usuario> usuario = await getUser();
-    return usuario.map((e) => e.nome).toString();
+    return usuario.map((e) => e.nome).first;
   }
 
     Future<String> getSenha() async {
     List<Usuario> usuario = await getUser();
-    return usuario.map((e) => e.senha).toString();
+    return usuario.map((e) => e.senha).first;
 
   }
 
-  Future<String> getId() async {
+  Future<int> getId() async {
     List<Usuario> usuario = await getUser();
-    return usuario.map((e) => e.id).toString();
+    return usuario.map((e) => e.id).first;
 
   }
 }
