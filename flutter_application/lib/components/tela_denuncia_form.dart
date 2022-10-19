@@ -1,5 +1,3 @@
-
-
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_application/models/lista_bairros_models.dart';
@@ -10,7 +8,6 @@ import 'tela_inicial.dart';
 import 'dart:convert';
 import '../models/bairros_models.dart';
 
-String _baseUrl = 'https://back-end-tcc-deploy.lavianii.repl.co';
 ListaBairros listaBairros = ListaBairros();
 
 class TelaDenunciaForm extends StatefulWidget {
@@ -23,21 +20,18 @@ class TelaDenunciaForm extends StatefulWidget {
 class _FormDenunciaState extends State<TelaDenunciaForm> {
   final _formKey = GlobalKey<FormState>();
   final _formData = <String, Object>{};
+  final String _baseUrl = 'https://back-end-tcc-deploy.lavianii.repl.co';
   List<Bairro> bairros = List<Bairro>.empty();
-  
 
   @override
   void initState() {
     super.initState();
 
-
-        listaBairros.listBairros().then((List<Bairro> result) {
-          setState(() {
-            bairros = result;
-          });
-        });
-
-    print('$bairros' 'Carregados com sucesso');
+    listaBairros.listBairros().then((List<Bairro> result) {
+      setState(() {
+        bairros = result;
+      });
+    });
   }
 
   Future<void> insereDenuncia() {
@@ -109,51 +103,50 @@ class _FormDenunciaState extends State<TelaDenunciaForm> {
         ),
       ),
       resizeToAvoidBottomInset: false,
-      body: Container(
-        height: double.infinity,
-        width: double.infinity,
-        color: const Color(0xffDFF5F4),
-        child: Padding(
+      body: 
+        Padding(
           padding: const EdgeInsets.symmetric(vertical: 180),
           child: SingleChildScrollView(
-            child: Form(
-              key: _formKey,
-              child: Column(
-                children: [
-                  const SizedBox(height: 15),
-                  EstiloTextFild(
-                    label: 'Observações',
-                    hintText: 'Digite as Observações',
-                    iconData: Icons.info_outline_rounded,
-                    obscureText: false,
-                    textInputAction: TextInputAction.next,
-                  ),
-                  const SizedBox(height: 15),
-                  Container(
-                    width: 280,
-                    child: DropdownButton(
-                      items: bairros
-                          .map(
-                            (e) => DropdownMenuItem(
-                                value: e.id, child: Text(e.bairro)),
-                          )
-                          .toList(),
-                      onChanged: (value) => {_formData['id'] = value ?? ''},
-                      hint: const Text('Escolha o bairro'),
-                      isExpanded: true,
+            child: Card(
+              child: Form(
+                key: _formKey,
+                child: Column(
+                  children: [
+                    const SizedBox(height: 15),
+                    EstiloTextFild(
+                      label: 'Observações',
+                      hintText: 'Digite as Observações',
+                      iconData: Icons.info_outline_rounded,
+                      obscureText: false,
+                      textInputAction: TextInputAction.next,
                     ),
-                  ),
-                  const SizedBox(height: 100),
-                  EntrarBotao(
-                    text: 'Denunciar',
-                    onPressed: _submitForm,
-                  )
-                ],
+                    const SizedBox(height: 15),
+                    SizedBox(
+                      width: 280,
+                      child: DropdownButton(
+                        items: bairros
+                            .map(
+                              (e) => DropdownMenuItem(
+                                  value: e.id, child: Text(e.bairro)),
+                            )
+                            .toList(),
+                        onChanged: (value) => {_formData['id'] = value ?? ''},
+                        hint: const Text('Escolha o bairro'),
+                        isExpanded: true,
+                      ),
+                    ),
+                    const SizedBox(height: 100),
+                    EntrarBotao(
+                      text: 'Denunciar',
+                      onPressed: _submitForm,
+                    )
+                  ],
+                ),
               ),
             ),
           ),
         ),
-      ),
+      
     );
   }
 }

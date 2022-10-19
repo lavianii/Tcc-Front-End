@@ -1,12 +1,10 @@
 import 'dart:convert';
 import 'bairros_models.dart';
 import 'package:http/http.dart' as http;
-import '../components/tela_denuncia_form.dart';
 
 class ListaBairros {
-  //List<Bairro> bairros = List<Bairro>.empty();
   Iterable<dynamic> bairros = [];
-  String _baseUrl = 'https://back-end-tcc-deploy.lavianii.repl.co';
+  final String _baseUrl = 'https://back-end-tcc-deploy.lavianii.repl.co';
 
   saveBairros(Iterable data) async {
     if (data.isEmpty) {
@@ -37,6 +35,4 @@ class ListaBairros {
 
     return "Sucesso";
   }
-
-
 }

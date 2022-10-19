@@ -18,12 +18,12 @@ class TelaInfsDoUsuario extends StatefulWidget {
 
 class _TelaInfsDoUsuarioState extends State<TelaInfsDoUsuario> {
   final _formKey = GlobalKey<FormState>();
-  final _formData = Map<String, Object>();
+  final _formData = <String, Object>{};
   final _baseUrl = 'https://back-end-tcc-deploy.lavianii.repl.co';
-   int id = 0;
-   String nome = '';
-   String senha = '';
-   String email = '';
+  int id = 0;
+  String nome = '';
+  String senha = '';
+  String email = '';
 
   Future<void> atualizaUsuario() {
     final String nome = _formData['nome'] as String;
@@ -93,9 +93,8 @@ class _TelaInfsDoUsuarioState extends State<TelaInfsDoUsuario> {
     atualizaUsuario();
   }
 
- Future<void> removeUsuario(){
-
- return http.delete(
+  Future<void> removeUsuario() {
+    return http.delete(
       Uri.parse('$_baseUrl/remove/$id'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
@@ -136,18 +135,18 @@ class _TelaInfsDoUsuarioState extends State<TelaInfsDoUsuario> {
         ),
       );
     });
+  }
 
- }
   void _submitRemove() {
-     showDialog(
+    showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: const  Text('Excluir Conta'),
-        content: const  Text('Tem certeza que deseja excluir sua conta?'),
+        title: const Text('Excluir Conta'),
+        content: const Text('Tem certeza que deseja excluir sua conta?'),
         actions: [
           TextButton(
             onPressed: () => Navigator.of(context).pop(),
-            child:const  Text('cancelar'),
+            child: const Text('cancelar'),
           ),
           TextButton(
             onPressed: removeUsuario,
@@ -156,7 +155,7 @@ class _TelaInfsDoUsuarioState extends State<TelaInfsDoUsuario> {
         ],
       ),
     );
-    
+
     // removeUsuario();
   }
 
@@ -171,28 +170,24 @@ class _TelaInfsDoUsuarioState extends State<TelaInfsDoUsuario> {
     super.initState();
 
     loginModels.getId().then((int result) {
-      print(result);
       setState(() {
         id = result;
       });
     });
 
     loginModels.getNome().then((String result) {
-      print(result);
       setState(() {
         nome = result;
       });
     });
 
     loginModels.getSenha().then((String result) {
-      print(result);
       setState(() {
         senha = result;
       });
     });
 
     loginModels.getEmail().then((String result) {
-      print(result);
       setState(() {
         email = result;
       });
@@ -253,9 +248,9 @@ class _TelaInfsDoUsuarioState extends State<TelaInfsDoUsuario> {
                             obscureText: false,
                             textInputAction: TextInputAction.next,
                             onSaved: (nome) => _formData['nome'] = nome ?? '',
-                            validator: (_nome) {
+                            validator: (nomee) {
                               final name =
-                                  _nome ?? ''; //lidando com null safety
+                                  nomee ?? ''; //lidando com null safety
 
                               if (name.trim().isEmpty) {
                                 return 'O Nome é obrigatorio';
@@ -278,9 +273,9 @@ class _TelaInfsDoUsuarioState extends State<TelaInfsDoUsuario> {
                             textInputAction: TextInputAction.next,
                             onSaved: (email) =>
                                 _formData['email'] = email ?? '',
-                            validator: (_email) {
+                            validator: (emaill) {
                               final email =
-                                  _email ?? ''; //lidando com null safety
+                                  emaill ?? ''; //lidando com null safety
                               if (!_isValidEmail(email)) {
                                 return 'email Invalido';
                               }
@@ -300,9 +295,9 @@ class _TelaInfsDoUsuarioState extends State<TelaInfsDoUsuario> {
                             obscureText: false,
                             onSaved: (senha) =>
                                 _formData['senha'] = senha ?? '',
-                            validator: (_senha) {
+                            validator: (senhaa) {
                               final senha =
-                                  _senha ?? ''; //lidando com null safety
+                                  senhaa ?? ''; //lidando com null safety
 
                               if (senha.trim().isEmpty) {
                                 return 'A senha é obrigatoria';

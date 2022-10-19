@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
-class EstiloTextFild extends StatelessWidget {
+// ignore: must_be_immutable
+class EstiloTextFild extends StatefulWidget {
   final String? label;
   final IconData? iconData;
   final bool obscureText;
@@ -25,25 +26,31 @@ class EstiloTextFild extends StatelessWidget {
   }) : super(key: key);
 
   @override
+  State<EstiloTextFild> createState() => _EstiloTextFildState();
+}
+
+class _EstiloTextFildState extends State<EstiloTextFild> {
+  @override
   Widget build(BuildContext context) {
     return SizedBox(
       width: 300,
+      height: 50,
       child: TextFormField(
-        obscureText: obscureText,
-        onSaved: onSaved,
-        textInputAction: textInputAction,
-        validator: validator,
-        controller: controller,
+        obscureText: widget.obscureText,
+        onSaved: widget.onSaved,
+        textInputAction: widget.textInputAction,
+        validator: widget.validator,
+        controller: widget.controller,
         
         decoration: InputDecoration(
-          labelText: label,
-          hintText: hintText,
+          labelText: widget.label,
+          hintText: widget.hintText,
           border: const OutlineInputBorder(
             borderRadius: BorderRadius.all(
               Radius.circular(40.0),
             ),
           ),
-          prefixIcon: Icon(iconData),
+          prefixIcon: Icon(widget.iconData),
         ),
       ),
     );

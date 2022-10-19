@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application/components/tela_inicial.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-import 'templates/botoes/cadastrar_botao.dart';
+import 'templates/botoes/text_botao.dart';
 import 'templates/botoes/entrar_botao.dart';
 import 'templates/textos/estilo_text_fild.dart';
 import 'templates/logo.dart';
@@ -53,13 +53,13 @@ class _LoginState extends State<TelaLogin> {
                   iconData: Icons.lock,
                   obscureText: true,
                 ),
-                const SizedBox(height: 100),
+                const SizedBox(height: 70),
                 EntrarBotao(
                   text: 'Entrar',
                   onPressed: logar,
                 ),
-                const SizedBox(height: 110),
-                const CadastrarBotao()
+                const SizedBox(height: 10),
+                const TextBotao()
               ],
             ),
           ),

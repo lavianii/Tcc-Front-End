@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_application/models/login_models.dart';
 import 'barra_pesquisa.dart';
@@ -13,7 +12,6 @@ import 'tela_favoritos.dart';
 import 'dart:convert';
 import '../models/bairros_models.dart';
 import 'package:http/http.dart' as http;
-import '../models/usuario_models.dart';
 
 String _baseUrl = 'https://back-end-tcc-deploy.lavianii.repl.co';
 LoginModels loginModels = LoginModels();
@@ -43,7 +41,6 @@ class _TelaInicial extends State<TelaInicial> {
   String email = '';
   String nome = '';
 
-
   @override
   void initState() {
     super.initState();
@@ -60,19 +57,6 @@ class _TelaInicial extends State<TelaInicial> {
         nome = result;
       });
     });
-
-    loginModels.verificarUsuario().then(
-          (temUsuario) => {
-            if (temUsuario)
-              {
-                print('tem usuario '),
-              }
-            else
-              {
-                print("não tem usuario"),
-              }
-          },
-        );
   }
 
   @override
@@ -97,17 +81,17 @@ class _TelaInicial extends State<TelaInicial> {
               accountEmail: Text(email,
                   style:
                       const TextStyle(color: Color(0xff000000), fontSize: 14)),
-              accountName:  Text(nome,
-                  style: const TextStyle(color: Color(0xff000000), fontSize: 14)),
+              accountName: Text(nome,
+                  style:
+                      const TextStyle(color: Color(0xff000000), fontSize: 14)),
               currentAccountPicture: const CircleAvatar(
-                  backgroundImage: 
-                  NetworkImage('https://xsgames.co/randomusers/assets/avatars/female/48.jpg'),
-                  backgroundColor: Color(0xffffffff),
+                backgroundImage: NetworkImage(
+                    'https://xsgames.co/randomusers/assets/avatars/female/48.jpg'),
+                backgroundColor: Color(0xffffffff),
               ),
               decoration: const BoxDecoration(
                 color: Color(0xffDFF5F4),
               ),
-
             ),
             //Tela inicial
             ListTile(

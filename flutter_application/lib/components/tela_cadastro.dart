@@ -3,7 +3,6 @@ import 'package:flutter_application/components/tela_login.dart';
 import 'templates/botoes/entrar_botao.dart';
 import 'templates/textos/estilo_text_fild.dart';
 import 'package:http/http.dart' as http;
-import 'tela_inicial.dart';
 import 'dart:convert';
 
 class TelaCadastro extends StatefulWidget {
@@ -15,7 +14,7 @@ class TelaCadastro extends StatefulWidget {
 
 class _CadastroState extends State<TelaCadastro> {
   final _formKey = GlobalKey<FormState>();
-  final _formData = Map<String, Object>();
+  final _formData = <String, Object>{};
 
   final _baseUrl = 'https://back-end-tcc-deploy.lavianii.repl.co';
 
@@ -124,8 +123,8 @@ class _CadastroState extends State<TelaCadastro> {
                     obscureText: false,
                     textInputAction: TextInputAction.next,
                     onSaved: (nome) => _formData['nome'] = nome ?? '',
-                    validator: (_nome) {
-                      final name = _nome ?? ''; //lidando com null safety
+                    validator: (nomee) {
+                      final name = nomee ?? ''; //lidando com null safety
 
                       if (name.trim().isEmpty) {
                         return 'O Nome é obrigatorio';
@@ -141,8 +140,8 @@ class _CadastroState extends State<TelaCadastro> {
                     iconData: Icons.lock,
                     obscureText: true,
                     onSaved: (senha) => _formData['senha'] = senha ?? '',
-                    validator: (_senha) {
-                      final senha = _senha ?? ''; //lidando com null safety
+                    validator: (senhaa) {
+                      final senha = senhaa ?? ''; //lidando com null safety
 
                       if (senha.trim().isEmpty) {
                         return 'A senha é obrigatoria';
@@ -158,8 +157,8 @@ class _CadastroState extends State<TelaCadastro> {
                     iconData: Icons.email_rounded,
                     obscureText: false,
                     onSaved: (email) => _formData['email'] = email ?? '',
-                    validator: (_email) {
-                      final email = _email ?? ''; //lidando com null safety
+                    validator: (emaill) {
+                      final email = emaill ?? ''; //lidando com null safety
                       if (!_isValidEmail(email)) {
                         return 'email Invalido';
                       }
