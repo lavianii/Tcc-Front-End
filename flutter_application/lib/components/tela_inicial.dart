@@ -6,7 +6,7 @@ import 'tela_denuncia.dart';
 import 'tela_boletim_de_ocorrencia.dart';
 import 'templates/cards/cards_bairros.dart';
 import 'tela_estresse_pos_traumatico.dart';
-import 'tela_infs_do_usuario.dart';
+import 'form_atualiza_usuario.dart';
 import 'tela_sobre_desenvolvedores.dart';
 import 'tela_favoritos.dart';
 import 'dart:convert';
@@ -114,7 +114,7 @@ class _TelaInicial extends State<TelaInicial> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => const TelaInfsDoUsuario(),
+                    builder: (context) => const TelaConta(),
                   ),
                 );
               },
@@ -188,20 +188,7 @@ class _TelaInicial extends State<TelaInicial> {
                 );
               },
             ),
-                ListTile(
-              leading: const Icon(Icons.developer_mode_outlined),
-              title: const Text("Infs user"),
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const TelaConta(),
-                  ),
 
-                
-                );
-              },
-            ),
           ],
         ),
       ),

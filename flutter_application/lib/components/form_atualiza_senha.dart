@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application/components/tela_login.dart';
 import 'templates/cards/cards.dart';
-import 'templates/botoes/botao_padrao.dart';
 import './templates/textos/estilo_text_fild.dart';
 import 'package:http/http.dart' as http;
 import 'tela_inicial.dart';
 import 'dart:convert';
+import './templates/botoes/botao_icone.dart';
 
 class FormAtualizaSenha extends StatefulWidget {
   const FormAtualizaSenha({
@@ -145,7 +145,7 @@ class _FormAtualizaSenha extends State<FormAtualizaSenha> {
                     child: Column(
                       children: [
                         Container(
-                          margin: const EdgeInsets.fromLTRB(15, 50, 15, 15),
+                          margin: const EdgeInsets.fromLTRB(20, 50, 20, 15),
                           height: 50,
                           width: 300,
                           child: EstiloTextFild(
@@ -186,7 +186,7 @@ class _FormAtualizaSenha extends State<FormAtualizaSenha> {
                                 return 'A senha é obrigatoria';
                               }
 
-                              if (senhaNova==senhaAntiga) {
+                              if (senhaNova == senhaAntiga) {
                                 return 'A senha é igual a antiga, digite uma nova senha';
                               }
 
@@ -195,30 +195,29 @@ class _FormAtualizaSenha extends State<FormAtualizaSenha> {
                           ),
                         ),
 
-                        //card com botao
+                       
                         Cards(
-                          width: 310,
+                          width: 280,
                           height: 35,
                           color: 0xffffffff,
                           marginLeft: 0,
-                          marginTop: 40,
+                          marginTop: 20,
                           marginRight: 0,
-                          marginBottom: 20,
+                          marginBottom: 30,
                           paddingLeft: 0,
                           paddingTop: 0,
                           paddingRight: 0,
                           paddingBottom: 0,
                           opacity: 0,
-                          child: BotaoPadrao(
-                              paddingLeft: 127,
-                              paddingTop: 8,
-                              paddingRight: 126,
-                              paddingBottom: 10,
-                              colorBackground: 0xffffffff,
-                              opacity: 0.0,
-                              colorText: 0xff152C42,
-                              text: 'Atualizar',
-                              funcao: _submitForm),
+                          child: BotaoIcone(
+                            onPressed: _submitForm,
+                            text: 'Alterar',
+                            width: 1000,
+                            icon: Icons.arrow_forward,
+                            color: 0xff152C42,
+                            colorText: 0xffffffff,
+                            colorIcon: 0xffffffff,
+                          ),
                         ),
                       ],
                     ),

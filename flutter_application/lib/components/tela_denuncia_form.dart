@@ -93,61 +93,68 @@ class _FormDenunciaState extends State<TelaDenunciaForm> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color(0xffDFF5F4),
-        title: Row(
-          children: [
-            Image.asset(
-              'lib/components/assets/images/logo2.png',
-              height: 50,
-            ),
-          ],
-        ),
+        elevation: 0,
       ),
       resizeToAvoidBottomInset: false,
       body: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 180),
+        padding: const EdgeInsets.fromLTRB(25, 100, 25, 90),
         child: SingleChildScrollView(
           child: Card(
+            elevation: 10,
+            shadowColor: Colors.black87,
+            color: const Color(0xff77A8A6),
             child: Form(
               key: _formKey,
               child: Column(
                 children: [
-                  const SizedBox(height: 15),
-                  EstiloTextFild(
-                    label: 'Observações',
-                    hintText: 'Digite as Observações',
-                    iconData: Icons.info_outline_rounded,
-                    obscureText: false,
-                    textInputAction: TextInputAction.next,
+                  Container(
+          
+                    margin: const EdgeInsets.fromLTRB(15, 50, 15, 15),
+                    child: Text('Denuncie'),
                   ),
-                  const SizedBox(height: 15),
-                  SizedBox(
-                    width: 280,
-                    child: DropdownButton(
-                      items: bairros
-                          .map(
-                            (e) => DropdownMenuItem(
-                                value: e.id, child: Text(e.bairro)),
-                          )
-                          .toList(),
-                      onChanged: (value) => {_formData['id'] = value ?? ''},
-                      hint: const Text('Escolha o bairro'),
-                      isExpanded: true,
+                  Container(
+                    margin: const EdgeInsets.fromLTRB(15, 50, 15, 15),
+                    height: 45,
+                    width: 290,
+                    child: EstiloTextFild(
+                      label: 'Observações',
+                      hintText: 'Digite as Observações',
+                      iconData: Icons.info_outline_rounded,
+                      obscureText: false,
+                      textInputAction: TextInputAction.next,
                     ),
                   ),
-                  const SizedBox(height: 100),
-                  BotaoIcone(
-                    text: 'Denunciar',
-                    onPressed: _submitForm,
-                    icon: Icons.arrow_forward,
-                    width: 150,
-                   // colorText: 0xffffffff,
-                    //colorIcon: 0xffffffff ,
-                   // color: 0xff152C42,
-                     color: 0xff152C42 ,
-                  colorText: 0xffffffff,
-                  colorIcon: 0xffffffff ,
-                    
-                    
+                  Container(
+                    margin: const EdgeInsets.fromLTRB(15, 0, 15, 15),
+                    height: 50,
+                    width: 250,
+                    child: SizedBox(
+                      width: 280,
+                      child: DropdownButton(
+                        items: bairros
+                            .map(
+                              (e) => DropdownMenuItem(
+                                  value: e.id, child: Text(e.bairro)),
+                            )
+                            .toList(),
+                        onChanged: (value) => {_formData['id'] = value ?? ''},
+                        hint: const Text('Escolha o bairro'),
+                        isExpanded: true,
+                      ),
+                    ),
+                  ),
+                  Container(
+                    margin: const EdgeInsets.fromLTRB(15, 20, 15, 30),
+                    width: 250,
+                    child: BotaoIcone(
+                      text: 'Denunciar',
+                      onPressed: _submitForm,
+                      icon: Icons.arrow_forward,
+                      width: 150,
+                      color: 0xff152C42,
+                      colorText: 0xffffffff,
+                      colorIcon: 0xffffffff,
+                    ),
                   )
                 ],
               ),

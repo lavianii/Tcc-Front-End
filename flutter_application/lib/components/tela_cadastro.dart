@@ -4,6 +4,7 @@ import 'templates/botoes/botao_icone.dart';
 import 'templates/textos/estilo_text_fild.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import 'templates/logo.dart';
 
 class TelaCadastro extends StatefulWidget {
   const TelaCadastro({Key? key}) : super(key: key);
@@ -93,29 +94,25 @@ class _CadastroState extends State<TelaCadastro> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: const Color(0xffDFF5F4),
-        title: Row(
-          children: [
-            Image.asset(
-              'lib/components/assets/images/logo2.png',
-              height: 50,
-            ),
-          ],
-        ),
+      
+        backgroundColor: const Color(0xff77A8A6),
+        foregroundColor: const Color(0xff152C42),
+        elevation: 0,
       ),
+
       resizeToAvoidBottomInset: false,
       body: Container(
         height: double.infinity,
         width: double.infinity,
-        color: const Color(0xffDFF5F4),
+        color: const Color(0Xff77A8A6),
         child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 180),
-          child: SingleChildScrollView(
+          padding: const EdgeInsets.symmetric(vertical: 20),
+
             child: Form(
               key: _formKey,
               child: Column(
                 children: [
-                  const SizedBox(height: 15),
+                  const Logo(),
                   EstiloTextFild(
                     label: 'Nome',
                     hintText: 'Digite o nome',
@@ -133,7 +130,7 @@ class _CadastroState extends State<TelaCadastro> {
                       return null;
                     },
                   ),
-                  const SizedBox(height: 15),
+                  const SizedBox(height: 2),
                   EstiloTextFild(
                     label: 'Senha',
                     hintText: 'Digite a senha',
@@ -150,7 +147,7 @@ class _CadastroState extends State<TelaCadastro> {
                       return null;
                     },
                   ),
-                  const SizedBox(height: 15),
+                  const SizedBox(height: 2),
                   EstiloTextFild(
                     label: 'email',
                     hintText: 'Digite o email',
@@ -166,7 +163,7 @@ class _CadastroState extends State<TelaCadastro> {
                     },
                     onFieldSubmitted: (_) => _submitForm(),
                   ),
-                  const SizedBox(height: 100),
+                  const SizedBox(height: 50),
                   BotaoIcone(
                     text: 'Cadastrar',
                     onPressed: _submitForm,
@@ -179,7 +176,7 @@ class _CadastroState extends State<TelaCadastro> {
                 ],
               ),
             ),
-          ),
+         
         ),
       ),
     );

@@ -8,16 +8,16 @@ import 'tela_inicial.dart';
 import 'dart:convert';
 import 'templates/botoes/botao_icone.dart';
 
-class TelaInfsDoUsuario extends StatefulWidget {
-  const TelaInfsDoUsuario({
+class FormAtualizaUsuario extends StatefulWidget {
+  const FormAtualizaUsuario({
     Key? key,
   }) : super(key: key);
 
   @override
-  State<TelaInfsDoUsuario> createState() => _TelaInfsDoUsuarioState();
+  State<FormAtualizaUsuario> createState() => _FormAtualizaUsuario();
 }
 
-class _TelaInfsDoUsuarioState extends State<TelaInfsDoUsuario> {
+class _FormAtualizaUsuario extends State<FormAtualizaUsuario> {
   final _formKey = GlobalKey<FormState>();
   final _formData = <String, Object>{};
   final _baseUrl = 'https://back-end-tcc-deploy.lavianii.repl.co';
@@ -92,7 +92,6 @@ class _TelaInfsDoUsuarioState extends State<TelaInfsDoUsuario> {
     _formKey.currentState?.save();
     atualizaUsuario();
   }
-
 
   bool _isValidEmail(email) {
     return RegExp(
@@ -205,7 +204,7 @@ class _TelaInfsDoUsuarioState extends State<TelaInfsDoUsuario> {
                             iconData: Icons.email,
                             hintText: 'Digite o email',
                             obscureText: false,
-                             onFieldSubmitted: (_) => _submitForm(),
+                            onFieldSubmitted: (_) => _submitForm(),
                             onSaved: (email) =>
                                 _formData['email'] = email ?? '',
                             validator: (emaill) {
@@ -219,32 +218,29 @@ class _TelaInfsDoUsuarioState extends State<TelaInfsDoUsuario> {
                           ),
                         ),
 
-
                         //card com botao
                         Cards(
-                          width: 290,
-                          height: 35,
-                          color: 0xffffffff,
-                          marginLeft: 0,
-                          marginTop: 20,
-                          marginRight: 0,
-                          marginBottom: 30,
-                          paddingLeft: 0,
-                          paddingTop: 0,
-                          paddingRight: 0,
-                          paddingBottom: 0,
-                          opacity: 0,
-                          child: BotaoIcone(
-                            onPressed: _submitForm,
-                            text: 'Atualizar',
-                            width: 1000,
+                            width: 290,
+                            height: 35,
                             color: 0xffffffff,
-                            icon: Icons.arrow_forward,
-                            colorText:  0xff152C42,
-                            colorIcon:  0xff152C42 ,
-                          )
-                        ),
-
+                            marginLeft: 0,
+                            marginTop: 20,
+                            marginRight: 0,
+                            marginBottom: 30,
+                            paddingLeft: 0,
+                            paddingTop: 0,
+                            paddingRight: 0,
+                            paddingBottom: 0,
+                            opacity: 0,
+                            child: BotaoIcone(
+                              onPressed: _submitForm,
+                              text: 'Atualizar',
+                              width: 1000,
+                              icon: Icons.arrow_forward,
+                              color: 0xff152C42,
+                              colorText: 0xffffffff,
+                              colorIcon: 0xffffffff,
+                            )),
                       ],
                     ),
                   )

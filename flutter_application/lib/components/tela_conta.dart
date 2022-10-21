@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import './templates/cards/cards.dart';
-import './tela_infs_do_usuario.dart';
+import 'form_atualiza_usuario.dart';
 import './templates/cards/cards_conta.dart';
 import 'tela_inicial.dart';
 import 'tela_login.dart';
@@ -23,7 +23,7 @@ class _TelaContaState extends State<TelaConta> {
 
   void carregaFormInfs() {
     Navigator.push(context,
-        MaterialPageRoute(builder: (context) => const TelaInfsDoUsuario()));
+        MaterialPageRoute(builder: (context) => const FormAtualizaUsuario()));
   }
 
   void carregaFormSenha() {
@@ -121,7 +121,7 @@ class _TelaContaState extends State<TelaConta> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xffDFF5F4),
+      backgroundColor: const Color(0xffFFFFFF),
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
         title: const Text('Conta', style: TextStyle(fontSize: 17)),
@@ -196,8 +196,8 @@ class _TelaContaState extends State<TelaConta> {
                 child: CardsConta(
                   width: 400,
                   height: 60,
-                  color: 0xffF03E44,
-                  text: 'Remover conta',
+                  color:  0xffffffff,
+                  text: 'Remover conta' ,
                 )),
           ],
         ),
@@ -205,3 +205,4 @@ class _TelaContaState extends State<TelaConta> {
     );
   }
 }
+//0xffF03E44
