@@ -34,7 +34,7 @@ class _EstiloTextFildState extends State<EstiloTextFild> {
   Widget build(BuildContext context) {
     return SizedBox(
       width: 300,
-      height: 50,
+      height: 80,
       child: TextFormField(
         obscureText: widget.obscureText,
         onSaved: widget.onSaved,

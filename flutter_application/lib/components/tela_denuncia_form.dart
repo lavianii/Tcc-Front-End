@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_application/models/lista_bairros_models.dart';
-import 'templates/botoes/entrar_botao.dart';
+import 'templates/botoes/botao_icone.dart';
 import 'templates/textos/estilo_text_fild.dart';
 import 'package:http/http.dart' as http;
 import 'tela_inicial.dart';
@@ -103,50 +103,58 @@ class _FormDenunciaState extends State<TelaDenunciaForm> {
         ),
       ),
       resizeToAvoidBottomInset: false,
-      body: 
-        Padding(
-          padding: const EdgeInsets.symmetric(vertical: 180),
-          child: SingleChildScrollView(
-            child: Card(
-              child: Form(
-                key: _formKey,
-                child: Column(
-                  children: [
-                    const SizedBox(height: 15),
-                    EstiloTextFild(
-                      label: 'Observações',
-                      hintText: 'Digite as Observações',
-                      iconData: Icons.info_outline_rounded,
-                      obscureText: false,
-                      textInputAction: TextInputAction.next,
+      body: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 180),
+        child: SingleChildScrollView(
+          child: Card(
+            child: Form(
+              key: _formKey,
+              child: Column(
+                children: [
+                  const SizedBox(height: 15),
+                  EstiloTextFild(
+                    label: 'Observações',
+                    hintText: 'Digite as Observações',
+                    iconData: Icons.info_outline_rounded,
+                    obscureText: false,
+                    textInputAction: TextInputAction.next,
+                  ),
+                  const SizedBox(height: 15),
+                  SizedBox(
+                    width: 280,
+                    child: DropdownButton(
+                      items: bairros
+                          .map(
+                            (e) => DropdownMenuItem(
+                                value: e.id, child: Text(e.bairro)),
+                          )
+                          .toList(),
+                      onChanged: (value) => {_formData['id'] = value ?? ''},
+                      hint: const Text('Escolha o bairro'),
+                      isExpanded: true,
                     ),
-                    const SizedBox(height: 15),
-                    SizedBox(
-                      width: 280,
-                      child: DropdownButton(
-                        items: bairros
-                            .map(
-                              (e) => DropdownMenuItem(
-                                  value: e.id, child: Text(e.bairro)),
-                            )
-                            .toList(),
-                        onChanged: (value) => {_formData['id'] = value ?? ''},
-                        hint: const Text('Escolha o bairro'),
-                        isExpanded: true,
-                      ),
-                    ),
-                    const SizedBox(height: 100),
-                    EntrarBotao(
-                      text: 'Denunciar',
-                      onPressed: _submitForm,
-                    )
-                  ],
-                ),
+                  ),
+                  const SizedBox(height: 100),
+                  BotaoIcone(
+                    text: 'Denunciar',
+                    onPressed: _submitForm,
+                    icon: Icons.arrow_forward,
+                    width: 150,
+                   // colorText: 0xffffffff,
+                    //colorIcon: 0xffffffff ,
+                   // color: 0xff152C42,
+                     color: 0xff152C42 ,
+                  colorText: 0xffffffff,
+                  colorIcon: 0xffffffff ,
+                    
+                    
+                  )
+                ],
               ),
             ),
           ),
         ),
-      
+      ),
     );
   }
 }

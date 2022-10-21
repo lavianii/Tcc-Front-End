@@ -4,7 +4,7 @@ import 'package:flutter_application/components/tela_inicial.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'templates/botoes/text_botao.dart';
-import 'templates/botoes/entrar_botao.dart';
+import 'templates/botoes/botao_icone.dart';
 import 'templates/textos/estilo_text_fild.dart';
 import 'templates/logo.dart';
 
@@ -45,7 +45,7 @@ class _LoginState extends State<TelaLogin> {
                     obscureText: false,
                   ),
                 ),
-                const SizedBox(height: 15),
+                const SizedBox(height: 5),
                 EstiloTextFild(
                   controller: _senhaController,
                   label: 'Senha',
@@ -53,10 +53,15 @@ class _LoginState extends State<TelaLogin> {
                   iconData: Icons.lock,
                   obscureText: true,
                 ),
-                const SizedBox(height: 70),
-                EntrarBotao(
+                const SizedBox(height: 60),
+                BotaoIcone(
                   text: 'Entrar',
                   onPressed: logar,
+                  icon: Icons.arrow_forward,
+                  width: 150,
+                  color: 0xff152C42 ,
+                  colorText: 0xffffffff,
+                  colorIcon: 0xffffffff ,
                 ),
                 const SizedBox(height: 10),
                 const TextBotao()

@@ -12,6 +12,7 @@ import 'tela_favoritos.dart';
 import 'dart:convert';
 import '../models/bairros_models.dart';
 import 'package:http/http.dart' as http;
+import 'tela_conta.dart';
 
 String _baseUrl = 'https://back-end-tcc-deploy.lavianii.repl.co';
 LoginModels loginModels = LoginModels();
@@ -182,6 +183,22 @@ class _TelaInicial extends State<TelaInicial> {
                   MaterialPageRoute(
                     builder: (context) => const TelaSobreDesenvolvedores(),
                   ),
+
+                
+                );
+              },
+            ),
+                ListTile(
+              leading: const Icon(Icons.developer_mode_outlined),
+              title: const Text("Infs user"),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const TelaConta(),
+                  ),
+
+                
                 );
               },
             ),

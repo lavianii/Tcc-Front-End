@@ -6,29 +6,28 @@ import './templates/textos/estilo_text_fild.dart';
 import 'package:http/http.dart' as http;
 import 'tela_inicial.dart';
 import 'dart:convert';
-import 'templates/botoes/botao_icone.dart';
 
-class TelaInfsDoUsuario extends StatefulWidget {
-  const TelaInfsDoUsuario({
+class FormAtualizaSenha extends StatefulWidget {
+  const FormAtualizaSenha({
     Key? key,
   }) : super(key: key);
 
   @override
-  State<TelaInfsDoUsuario> createState() => _TelaInfsDoUsuarioState();
+  State<FormAtualizaSenha> createState() => _FormAtualizaSenha();
 }
 
-class _TelaInfsDoUsuarioState extends State<TelaInfsDoUsuario> {
+class _FormAtualizaSenha extends State<FormAtualizaSenha> {
   final _formKey = GlobalKey<FormState>();
   final _formData = <String, Object>{};
   final _baseUrl = 'https://back-end-tcc-deploy.lavianii.repl.co';
+
   int id = 0;
   String nome = '';
-  String senha = '';
+  String senhaAntiga = '';
   String email = '';
 
-  Future<void> atualizaUsuario() {
-    final String nome = _formData['nome'] as String;
-    final String email = _formData['email'] as String;
+  Future<void> atualizaSenha() {
+    final String senha = _formData['senhaNova'] as String;
     final String idd = id.toString();
 
     return http
@@ -90,14 +89,7 @@ class _TelaInfsDoUsuarioState extends State<TelaInfsDoUsuario> {
     }
     //o save cada um dos campos do onSaved do form
     _formKey.currentState?.save();
-    atualizaUsuario();
-  }
-
-
-  bool _isValidEmail(email) {
-    return RegExp(
-            r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
-        .hasMatch(email);
+    atualizaSenha();
   }
 
   @override
@@ -118,7 +110,7 @@ class _TelaInfsDoUsuarioState extends State<TelaInfsDoUsuario> {
 
     loginModels.getSenha().then((String result) {
       setState(() {
-        senha = result;
+        senhaAntiga = result;
       });
     });
 
@@ -133,9 +125,8 @@ class _TelaInfsDoUsuarioState extends State<TelaInfsDoUsuario> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xffDFF5F4),
-      resizeToAvoidBottomInset: false,
       appBar: AppBar(
-        title: const Text('Atualiza dados', style: TextStyle(fontSize: 17)),
+        title: const Text('Atualizar senha', style: TextStyle(fontSize: 17)),
         backgroundColor: const Color(0xff77A8A6),
         foregroundColor: const Color(0xff000000),
       ),
@@ -149,46 +140,26 @@ class _TelaInfsDoUsuarioState extends State<TelaInfsDoUsuario> {
               color: const Color(0xff77A8A6),
               child: Column(
                 children: [
-                  Container(
-                    padding: const EdgeInsets.only(top: 0),
-                    child: Column(
-                      children: [
-                        //container foto
-                        Container(
-                          margin: const EdgeInsets.fromLTRB(0, 20, 0, 30),
-                          alignment: const Alignment(0, 0),
-                          width: 500,
-                          height: 125,
-                          decoration: const BoxDecoration(
-                              shape: BoxShape.circle,
-                              image: DecorationImage(
-                                  image: NetworkImage(
-                                      'https://xsgames.co/randomusers/assets/avatars/female/48.jpg'))),
-                        ),
-                      ],
-                    ),
-                  ),
                   Form(
                     key: _formKey,
                     child: Column(
                       children: [
                         Container(
-                          margin: const EdgeInsets.fromLTRB(15, 0, 15, 15),
+                          margin: const EdgeInsets.fromLTRB(15, 50, 15, 15),
                           height: 50,
                           width: 300,
                           child: EstiloTextFild(
-                            label: nome,
-                            hintText: 'Digite o nome',
-                            iconData: Icons.person,
-                            obscureText: false,
+                            label: 'Digite sua senha atual',
+                            hintText: 'Digite sua senha atual',
+                            iconData: Icons.lock,
+                            obscureText: true,
                             textInputAction: TextInputAction.next,
-                            onSaved: (nome) => _formData['nome'] = nome ?? '',
-                            validator: (nomee) {
-                              final name =
-                                  nomee ?? ''; //lidando com null safety
+                            validator: (senha) {
+                              final senhaa =
+                                  senha ?? ''; //lidando com null safety
 
-                              if (name.trim().isEmpty) {
-                                return 'O Nome é obrigatorio';
+                              if (senhaa != senhaAntiga) {
+                                return 'A senha está errada';
                               }
 
                               return null;
@@ -201,50 +172,54 @@ class _TelaInfsDoUsuarioState extends State<TelaInfsDoUsuario> {
                           height: 50,
                           width: 300,
                           child: EstiloTextFild(
-                            label: email,
-                            iconData: Icons.email,
-                            hintText: 'Digite o email',
-                            obscureText: false,
-                             onFieldSubmitted: (_) => _submitForm(),
-                            onSaved: (email) =>
-                                _formData['email'] = email ?? '',
-                            validator: (emaill) {
-                              final email =
-                                  emaill ?? ''; //lidando com null safety
-                              if (!_isValidEmail(email)) {
-                                return 'email Invalido';
+                            label: 'Digite sua nova atual',
+                            iconData: Icons.lock,
+                            hintText: 'Digite sua nova senha',
+                            obscureText: true,
+                            textInputAction: TextInputAction.next,
+                            onSaved: (senhaNova) =>
+                                _formData['senhaNova'] = senhaNova ?? '',
+                            validator: (senha) {
+                              final senhaNova =
+                                  senha ?? ''; //lidando com null safety
+                              if (senhaNova.trim().isEmpty) {
+                                return 'A senha é obrigatoria';
                               }
+
+                              if (senhaNova==senhaAntiga) {
+                                return 'A senha é igual a antiga, digite uma nova senha';
+                              }
+
                               return null;
                             },
                           ),
                         ),
 
-
                         //card com botao
                         Cards(
-                          width: 290,
+                          width: 310,
                           height: 35,
                           color: 0xffffffff,
                           marginLeft: 0,
-                          marginTop: 20,
+                          marginTop: 40,
                           marginRight: 0,
-                          marginBottom: 30,
+                          marginBottom: 20,
                           paddingLeft: 0,
                           paddingTop: 0,
                           paddingRight: 0,
                           paddingBottom: 0,
                           opacity: 0,
-                          child: BotaoIcone(
-                            onPressed: _submitForm,
-                            text: 'Atualizar',
-                            width: 1000,
-                            color: 0xffffffff,
-                            icon: Icons.arrow_forward,
-                            colorText:  0xff152C42,
-                            colorIcon:  0xff152C42 ,
-                          )
+                          child: BotaoPadrao(
+                              paddingLeft: 127,
+                              paddingTop: 8,
+                              paddingRight: 126,
+                              paddingBottom: 10,
+                              colorBackground: 0xffffffff,
+                              opacity: 0.0,
+                              colorText: 0xff152C42,
+                              text: 'Atualizar',
+                              funcao: _submitForm),
                         ),
-
                       ],
                     ),
                   )
