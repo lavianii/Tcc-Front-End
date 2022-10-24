@@ -1,5 +1,4 @@
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
+
 import 'package:flutter/material.dart';
 
 class CardsConta extends StatefulWidget {
@@ -28,13 +27,13 @@ class _CardsContaState extends State<CardsConta> {
       width: widget.width,
       height: widget.height,
       alignment: const AlignmentDirectional(0, 0),
+      decoration: BoxDecoration(
+          color: Color(widget.color),
+          border: Border.all(color: const Color.fromARGB(95, 212, 212, 212))),
       child: Text(
         widget.text,
         style: const TextStyle(fontSize: 16),
       ),
-      decoration: BoxDecoration(
-          color: Color(widget.color),
-          border: Border.all(color: const Color.fromARGB(95, 212, 212, 212))),
     );
   }
 }

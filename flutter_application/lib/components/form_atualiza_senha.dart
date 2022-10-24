@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application/components/tela_login.dart';
 import 'templates/cards/cards.dart';
-import './templates/textos/estilo_text_fild.dart';
+import 'templates/Inputs/estilo_text_fild.dart';
 import 'package:http/http.dart' as http;
 import 'tela_inicial.dart';
 import 'dart:convert';
@@ -125,6 +125,7 @@ class _FormAtualizaSenha extends State<FormAtualizaSenha> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xffDFF5F4),
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         title: const Text('Atualizar senha', style: TextStyle(fontSize: 17)),
         backgroundColor: const Color(0xff77A8A6),
@@ -140,12 +141,20 @@ class _FormAtualizaSenha extends State<FormAtualizaSenha> {
               color: const Color(0xff77A8A6),
               child: Column(
                 children: [
+                  Container(
+                    margin: const EdgeInsets.fromLTRB(15, 35, 15, 15),
+                    child: const Text(
+                      'Alterar senha',
+                      style:
+                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    ),
+                  ),
                   Form(
                     key: _formKey,
                     child: Column(
                       children: [
                         Container(
-                          margin: const EdgeInsets.fromLTRB(20, 50, 20, 15),
+                          margin: const EdgeInsets.fromLTRB(20, 20, 20, 15),
                           height: 50,
                           width: 300,
                           child: EstiloTextFild(
@@ -166,17 +175,16 @@ class _FormAtualizaSenha extends State<FormAtualizaSenha> {
                             },
                           ),
                         ),
-
                         Container(
-                          margin: const EdgeInsets.fromLTRB(15, 0, 15, 15),
+                          margin: const EdgeInsets.fromLTRB(20, 1, 20, 15),
                           height: 50,
                           width: 300,
                           child: EstiloTextFild(
-                            label: 'Digite sua nova atual',
+                            label: 'Digite sua nova senha',
                             iconData: Icons.lock,
                             hintText: 'Digite sua nova senha',
                             obscureText: true,
-                            textInputAction: TextInputAction.next,
+                            textInputAction: TextInputAction.send,
                             onSaved: (senhaNova) =>
                                 _formData['senhaNova'] = senhaNova ?? '',
                             validator: (senha) {
@@ -194,16 +202,14 @@ class _FormAtualizaSenha extends State<FormAtualizaSenha> {
                             },
                           ),
                         ),
-
-                       
                         Cards(
-                          width: 280,
+                          width: 210,
                           height: 35,
                           color: 0xffffffff,
                           marginLeft: 0,
                           marginTop: 20,
                           marginRight: 0,
-                          marginBottom: 30,
+                          marginBottom: 40,
                           paddingLeft: 0,
                           paddingTop: 0,
                           paddingRight: 0,

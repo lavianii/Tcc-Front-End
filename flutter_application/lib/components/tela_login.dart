@@ -5,7 +5,7 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'templates/botoes/text_botao.dart';
 import 'templates/botoes/botao_icone.dart';
-import 'templates/textos/estilo_text_fild.dart';
+import 'templates/Inputs/estilo_text_fild.dart';
 import 'templates/logo.dart';
 
 class TelaLogin extends StatefulWidget {
@@ -29,7 +29,7 @@ class _LoginState extends State<TelaLogin> {
         height: double.infinity,
         width: double.infinity,
         child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 100),
+          padding: const EdgeInsets.fromLTRB(35, 100, 35, 0),
           child: SingleChildScrollView(
             child: Column(
               children: [
@@ -43,17 +43,20 @@ class _LoginState extends State<TelaLogin> {
                     hintText: 'Digite o email',
                     iconData: Icons.email_rounded,
                     obscureText: false,
+                    textInputAction: TextInputAction.next,
                   ),
                 ),
-                const SizedBox(height: 5),
+                const SizedBox(height: 1),
                 EstiloTextFild(
                   controller: _senhaController,
                   label: 'Senha',
                   hintText: 'Digite a senha',
                   iconData: Icons.lock,
                   obscureText: true,
+                  textInputAction: TextInputAction.send,
+                  onFieldSubmitted: (_) => logar(),
                 ),
-                const SizedBox(height: 60),
+                const SizedBox(height: 50),
                 BotaoIcone(
                   text: 'Entrar',
                   onPressed: logar,

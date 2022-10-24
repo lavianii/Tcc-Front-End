@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import './templates/cards/cards.dart';
 import 'form_atualiza_usuario.dart';
 import './templates/cards/cards_conta.dart';
 import 'tela_inicial.dart';
@@ -18,17 +17,41 @@ class _TelaContaState extends State<TelaConta> {
   int id = 0;
   String nome = '';
   String email = '';
-
   final _baseUrl = 'https://back-end-tcc-deploy.lavianii.repl.co';
 
-  void carregaFormInfs() {
+  void _carregaFormInfs() {
     Navigator.push(context,
         MaterialPageRoute(builder: (context) => const FormAtualizaUsuario()));
   }
 
-  void carregaFormSenha() {
+  void _carregaFormSenha() {
     Navigator.push(context,
         MaterialPageRoute(builder: (context) => const FormAtualizaSenha()));
+  }
+
+  void _carregaLogin() {
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => const TelaLogin()));
+  }
+
+  void _logout() {
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text('Sair da conta'),
+        content: const Text('Tem certeza que deseja sair da sua conta?'),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.of(context).pop(),
+            child: const Text('cancelar'),
+          ),
+          TextButton(
+            onPressed: _carregaLogin,
+            child: const Text('Sim'),
+          ),
+        ],
+      ),
+    );
   }
 
   void _submitRemove() {
@@ -156,13 +179,14 @@ class _TelaContaState extends State<TelaConta> {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.fromLTRB(20,40,0,0),
+                      padding: const EdgeInsets.fromLTRB(20, 40, 0, 0),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
                             nome,
-                            style: const TextStyle(fontSize: 16,fontWeight: FontWeight.bold ),
+                            style: const TextStyle(
+                                fontSize: 16, fontWeight: FontWeight.bold),
                           ),
                           Text(
                             email,
@@ -176,7 +200,7 @@ class _TelaContaState extends State<TelaConta> {
               ),
             ),
             InkWell(
-                onTap: carregaFormInfs,
+                onTap: _carregaFormInfs,
                 child: CardsConta(
                   width: 400,
                   height: 60,
@@ -184,7 +208,7 @@ class _TelaContaState extends State<TelaConta> {
                   text: 'Alterar dados da conta',
                 )),
             InkWell(
-                onTap: carregaFormSenha,
+                onTap: _carregaFormSenha,
                 child: CardsConta(
                   width: 400,
                   height: 60,
@@ -196,8 +220,16 @@ class _TelaContaState extends State<TelaConta> {
                 child: CardsConta(
                   width: 400,
                   height: 60,
-                  color:  0xffffffff,
-                  text: 'Remover conta' ,
+                  color: 0xffffffff,
+                  text: 'Remover conta',
+                )),
+            InkWell(
+                onTap: _logout,
+                child: CardsConta(
+                  width: 400,
+                  height: 60,
+                  color: 0xffffffff,
+                  text: 'Sair da conta',
                 )),
           ],
         ),
@@ -205,4 +237,3 @@ class _TelaContaState extends State<TelaConta> {
     );
   }
 }
-//0xffF03E44

@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application/components/tela_login.dart';
 import 'templates/cards/cards.dart';
-import 'templates/botoes/botao_padrao.dart';
-import './templates/textos/estilo_text_fild.dart';
+import 'templates/Inputs/estilo_text_fild.dart';
 import 'package:http/http.dart' as http;
 import 'tela_inicial.dart';
 import 'dart:convert';
@@ -172,9 +171,9 @@ class _FormAtualizaUsuario extends State<FormAtualizaUsuario> {
                     child: Column(
                       children: [
                         Container(
-                          margin: const EdgeInsets.fromLTRB(15, 0, 15, 15),
+                          margin: const EdgeInsets.fromLTRB(20, 1, 20, 15),
                           height: 50,
-                          width: 300,
+                          width: 280,
                           child: EstiloTextFild(
                             label: nome,
                             hintText: 'Digite o nome',
@@ -196,7 +195,7 @@ class _FormAtualizaUsuario extends State<FormAtualizaUsuario> {
                         ),
 
                         Container(
-                          margin: const EdgeInsets.fromLTRB(15, 0, 15, 15),
+                          margin: const EdgeInsets.fromLTRB(20, 2, 20, 15),
                           height: 50,
                           width: 300,
                           child: EstiloTextFild(
@@ -220,13 +219,13 @@ class _FormAtualizaUsuario extends State<FormAtualizaUsuario> {
 
                         //card com botao
                         Cards(
-                            width: 290,
+                            width: 200,
                             height: 35,
                             color: 0xffffffff,
                             marginLeft: 0,
                             marginTop: 20,
                             marginRight: 0,
-                            marginBottom: 30,
+                            marginBottom: 40,
                             paddingLeft: 0,
                             paddingTop: 0,
                             paddingRight: 0,

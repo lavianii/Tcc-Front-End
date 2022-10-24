@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application/components/tela_login.dart';
 import 'templates/botoes/botao_icone.dart';
-import 'templates/textos/estilo_text_fild.dart';
+import 'templates/Inputs/estilo_text_fild.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'templates/logo.dart';
@@ -106,7 +106,7 @@ class _CadastroState extends State<TelaCadastro> {
         width: double.infinity,
         color: const Color(0Xff77A8A6),
         child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 20),
+          padding: const EdgeInsets.fromLTRB(40, 20, 40, 20),
 
             child: Form(
               key: _formKey,
@@ -130,12 +130,13 @@ class _CadastroState extends State<TelaCadastro> {
                       return null;
                     },
                   ),
-                  const SizedBox(height: 2),
+                  const SizedBox(height: 1),
                   EstiloTextFild(
                     label: 'Senha',
                     hintText: 'Digite a senha',
                     iconData: Icons.lock,
                     obscureText: true,
+                    textInputAction: TextInputAction.next,
                     onSaved: (senha) => _formData['senha'] = senha ?? '',
                     validator: (senhaa) {
                       final senha = senhaa ?? ''; //lidando com null safety
@@ -147,7 +148,7 @@ class _CadastroState extends State<TelaCadastro> {
                       return null;
                     },
                   ),
-                  const SizedBox(height: 2),
+                  const SizedBox(height: 1),
                   EstiloTextFild(
                     label: 'email',
                     hintText: 'Digite o email',
@@ -161,6 +162,7 @@ class _CadastroState extends State<TelaCadastro> {
                       }
                       return null;
                     },
+                    textInputAction: TextInputAction.send,
                     onFieldSubmitted: (_) => _submitForm(),
                   ),
                   const SizedBox(height: 50),

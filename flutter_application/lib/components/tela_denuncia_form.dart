@@ -2,7 +2,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_application/models/lista_bairros_models.dart';
 import 'templates/botoes/botao_icone.dart';
-import 'templates/textos/estilo_text_fild.dart';
+import 'templates/Inputs/estilo_text_fild.dart';
 import 'package:http/http.dart' as http;
 import 'tela_inicial.dart';
 import 'dart:convert';
@@ -92,9 +92,11 @@ class _FormDenunciaState extends State<TelaDenunciaForm> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: const Color(0xffDFF5F4),
-        elevation: 0,
+        title: const Text('Denuncia'),
+        backgroundColor: const Color(0xff77A8A6),
+        foregroundColor: const Color(0xffffffff),
       ),
+      backgroundColor: const Color(0xffDFF5F4),
       resizeToAvoidBottomInset: false,
       body: Padding(
         padding: const EdgeInsets.fromLTRB(25, 100, 25, 90),
@@ -109,11 +111,11 @@ class _FormDenunciaState extends State<TelaDenunciaForm> {
                 children: [
                   Container(
           
-                    margin: const EdgeInsets.fromLTRB(15, 50, 15, 15),
-                    child: Text('Denuncie'),
+                    margin: const EdgeInsets.fromLTRB(15, 40, 15, 15),
+                    child: const  Text('Denuncia', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
                   ),
                   Container(
-                    margin: const EdgeInsets.fromLTRB(15, 50, 15, 15),
+                    margin: const EdgeInsets.fromLTRB(15, 30, 15, 15),
                     height: 45,
                     width: 290,
                     child: EstiloTextFild(
