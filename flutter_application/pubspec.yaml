@@ -38,6 +38,22 @@ dependencies:
   url_launcher: ^6.1.5
   http: ^0.13.3
   shared_preferences: ^2.0.15
+  flutter_native_splash: ^2.2.12
+  flutter_launcher_icons: ^0.10.0
+
+flutter_native_splash:
+  color: "#77A8A6"
+  image: "lib/components/assets/icons/icon.png"
+  android: true
+  ios: true
+
+flutter_icons:
+  image_path: "lib/components/assets/icons/icon.png"
+  ios: true
+  remove_alpha_ios: true
+  android: "laucher_icon"
+  adaptive_icon_background: "#77A8A6"
+  adaptive_icon_foreground: "lib/components/assets/icons/icon.png"
  
 
 
@@ -67,12 +83,8 @@ flutter:
   assets:
     - lib/components/assets/images/logo.png
     - lib/components/assets/images/logo2.png
-    - lib/components/assets/icons/atencao.png
-    - lib/components/assets/icons/favoritos.png
-    - lib/components/assets/icons/grafico.png
-    - lib/components/assets/icons/mapa.png
-    - lib/components/assets/icons/pensamento.png
-    - lib/components/assets/icons/saude.png
+    - lib/components/assets/icons/icon.png
+  
 
 
   # An image asset can refer to one or more resolution-specific "variants", see
