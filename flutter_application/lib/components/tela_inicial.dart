@@ -7,7 +7,7 @@ import 'tela_boletim_de_ocorrencia.dart';
 import 'templates/cards/cards_bairros.dart';
 import 'tela_estresse_pos_traumatico.dart';
 import 'tela_sobre_desenvolvedores.dart';
-import 'tela_favoritos.dart';
+import 'mapa.dart';
 import 'dart:convert';
 import '../models/bairros_models.dart';
 import 'package:http/http.dart' as http;
@@ -120,13 +120,13 @@ class _TelaInicial extends State<TelaInicial> {
             ),
             //Favoritos
             ListTile(
-              leading: const Icon(Icons.star_rate_outlined),
-              title: const Text("Favoritos"),
+              leading: const Icon(Icons.location_on_outlined),
+              title: const Text("Mapa"),
               onTap: () {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => const TelaFavoritos(),
+                    builder: (context) => const TelaMapa(),
                   ),
                 );
               },
