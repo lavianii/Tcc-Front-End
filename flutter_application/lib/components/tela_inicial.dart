@@ -7,14 +7,17 @@ import 'tela_boletim_de_ocorrencia.dart';
 import 'templates/cards/cards_bairros.dart';
 import 'tela_estresse_pos_traumatico.dart';
 import 'tela_sobre_desenvolvedores.dart';
-import 'mapa.dart';
 import 'dart:convert';
 import '../models/bairros_models.dart';
 import 'package:http/http.dart' as http;
 import 'tela_conta.dart';
+import 'mapaScreen.dart';
+import 'package:location/location.dart';
+import 'package:geolocator/geolocator.dart';
 
 String _baseUrl = 'https://back-end-tcc-deploy.lavianii.repl.co';
 LoginModels loginModels = LoginModels();
+Location localizacao = Location();
 
 Future<List<Bairro>> getBairros() async {
   final response = await http.get(Uri.parse('$_baseUrl/recuperabairro'),
@@ -26,6 +29,10 @@ Future<List<Bairro>> getBairros() async {
   } else {
     throw Exception('Erro inesperado...');
   }
+}
+
+Future<Position> _getlocalizacao() async {
+  return await Geolocator.getCurrentPosition();
 }
 
 class TelaInicial extends StatefulWidget {
@@ -40,12 +47,20 @@ class _TelaInicial extends State<TelaInicial> {
 
   String email = '';
   String nome = '';
+  double longitude = 0;
+  double latitude = 0;
 
   @override
   void initState() {
     super.initState();
 
+    _getlocalizacao().then((value) => setState(() {
+          longitude = value.longitude;
+          latitude = value.latitude;
+        }));
+
     bairroData = getBairros();
+
     loginModels.getEmail().then((String result) {
       setState(() {
         email = result;
@@ -126,7 +141,8 @@ class _TelaInicial extends State<TelaInicial> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => const TelaMapa(),
+                    builder: (context) =>
+                        MapaScreen(longitude: longitude, latitude: latitude),
                   ),
                 );
               },
@@ -182,12 +198,9 @@ class _TelaInicial extends State<TelaInicial> {
                   MaterialPageRoute(
                     builder: (context) => const TelaSobreDesenvolvedores(),
                   ),
-
-                
                 );
               },
             ),
-
           ],
         ),
       ),

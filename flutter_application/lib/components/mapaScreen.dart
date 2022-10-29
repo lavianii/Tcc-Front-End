@@ -1,27 +1,30 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
-class mapaScreen extends StatefulWidget {
-  double longitude;
-  double latitude;
-  mapaScreen({super.key, required this.latitude, required this.longitude});
 
+class MapaScreen extends StatefulWidget {
+  double latitude;
+  double longitude;
+
+  MapaScreen({Key? key, required this.latitude, required this.longitude})
+      : super(key: key);
   @override
-  State<mapaScreen> createState() => _mapaScreenState();
+  State<MapaScreen> createState() => _MapaScreenState();
 }
 
-class _mapaScreenState extends State<mapaScreen> {
+class _MapaScreenState extends State<MapaScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('mapa'),
+        title: const Text('mapa'),
       ),
       body: GoogleMap(
-        initialCameraPosition:
-            CameraPosition(target: LatLng(widget.latitude, widget.longitude)),
+        mapType: MapType.normal,
+        initialCameraPosition: CameraPosition(
+            target: LatLng(widget.latitude, widget.longitude), zoom: 17,),
+        myLocationEnabled: true,
+        
       ),
     );
   }
