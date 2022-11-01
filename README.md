@@ -11,7 +11,5 @@ F0913E (90%) - média periculosidade
 78CF46 (90%) - baixa periculosidade
 000000 (35%) - fundinho dos favoritos
 
-link do Docs:
- https://docs.google.com/document/d/1HX5rDxtJvFzJ648zZsJqDWL-hafQWZljVfMR6utrUnE/edit
 
 
