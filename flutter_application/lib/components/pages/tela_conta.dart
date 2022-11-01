@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'form_atualiza_usuario.dart';
-import './templates/cards/cards_conta.dart';
+import '../templates/cards/cards_conta.dart';
 import 'tela_inicial.dart';
 import 'tela_login.dart';
 import 'package:http/http.dart' as http;

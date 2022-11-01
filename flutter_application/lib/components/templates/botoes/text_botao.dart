@@ -1,27 +1,33 @@
 import 'package:flutter/material.dart';
 
-import '../../tela_cadastro.dart';
 
-class TextBotao extends StatelessWidget {
-  const TextBotao({Key? key, required}) : super(key: key);
+class TextBotao extends StatefulWidget {
+  void Function()? onPressed;
+  final String text;
+  final int colorText;
 
+  TextBotao(
+      {Key? key,
+      required this.onPressed,
+      required this.colorText,
+      required this.text})
+      : super(key: key);
+
+  @override
+  State<TextBotao> createState() => _TextBotaoState();
+}
+
+class _TextBotaoState extends State<TextBotao> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       child: TextButton(
-        onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => const TelaCadastro(),
-            ),
-          );
-        },
-        child: const Text(
-          "Me cadastrar",
+        onPressed: widget.onPressed,
+        child: Text(
+          widget.text,
           style: TextStyle(
             fontSize: 17,
-            color: Color(0xff152C42),
+            color: Color(widget.colorText),
           ),
         ),
       ),

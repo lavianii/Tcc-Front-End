@@ -1,12 +1,14 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:flutter_application/models/lista_bairros_models.dart';
-import 'templates/botoes/botao_icone.dart';
-import 'templates/Inputs/estilo_text_fild.dart';
+import 'package:flutter_application/components/templates/botoes/text_botao.dart';
+import 'package:flutter_application/components/pages/form_sugestao_bairros.dart';
+import 'package:flutter_application/controllers/lista_bairros_controller.dart';
+import '../templates/botoes/botao_icone.dart';
+import '../templates/Inputs/estilo_text_fild.dart';
 import 'package:http/http.dart' as http;
 import 'tela_inicial.dart';
 import 'dart:convert';
-import '../models/bairros_models.dart';
+import '../../models/bairros_models.dart';
 
 ListaBairros listaBairros = ListaBairros();
 
@@ -27,7 +29,7 @@ class _FormDenunciaState extends State<TelaDenunciaForm> {
   void initState() {
     super.initState();
 
-    listaBairros.listBairros().then((List<Bairro> result) {
+    listaBairros.getListBairros().then((List<Bairro> result) {
       setState(() {
         bairros = result;
       });
@@ -88,6 +90,15 @@ class _FormDenunciaState extends State<TelaDenunciaForm> {
     insereDenuncia();
   }
 
+  void _carregaFormSugestaoBairros() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => const FormSugestaoBairros(),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -110,9 +121,10 @@ class _FormDenunciaState extends State<TelaDenunciaForm> {
               child: Column(
                 children: [
                   Container(
-          
                     margin: const EdgeInsets.fromLTRB(15, 40, 15, 15),
-                    child: const  Text('Denuncia', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+                    child: const Text('Denuncia',
+                        style: TextStyle(
+                            fontSize: 20, fontWeight: FontWeight.bold)),
                   ),
                   Container(
                     margin: const EdgeInsets.fromLTRB(15, 30, 15, 15),
@@ -146,7 +158,7 @@ class _FormDenunciaState extends State<TelaDenunciaForm> {
                     ),
                   ),
                   Container(
-                    margin: const EdgeInsets.fromLTRB(15, 20, 15, 30),
+                    margin: const EdgeInsets.fromLTRB(15, 20, 15, 10),
                     width: 250,
                     child: BotaoIcone(
                       text: 'Denunciar',
@@ -157,6 +169,14 @@ class _FormDenunciaState extends State<TelaDenunciaForm> {
                       colorText: 0xffffffff,
                       colorIcon: 0xffffffff,
                     ),
+                  ),
+                  Container(
+                    margin: const EdgeInsets.fromLTRB(15, 10, 15, 30),
+                    width: 250,
+                    child: TextBotao(
+                        onPressed: _carregaFormSugestaoBairros,
+                        colorText: 0xffffffff,
+                        text: 'Não encontrou seu bairro?'),
                   )
                 ],
               ),

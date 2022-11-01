@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'templates/textos/paragrafo.dart';
+import '../templates/textos/paragrafo.dart';
 
 class TelaSobreDesenvolvedores extends StatelessWidget {
   const TelaSobreDesenvolvedores({

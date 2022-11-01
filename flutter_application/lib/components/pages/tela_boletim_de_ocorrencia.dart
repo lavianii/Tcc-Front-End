@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'templates/textos/texto_cards_de_info.dart';
-import 'templates/cards/cards.dart';
-import 'templates/textos/paragrafo.dart';
+import '../templates/textos/texto_cards_de_info.dart';
+import '../templates/cards/cards.dart';
+import '../templates/textos/paragrafo.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class TelaEstressePosTraumatico extends StatelessWidget {
-  const TelaEstressePosTraumatico({
+class TelaBoletimDeOcorrencia extends StatelessWidget {
+  const TelaBoletimDeOcorrencia({
     Key? key,
   }) : super(key: key);
 
@@ -13,8 +13,8 @@ class TelaEstressePosTraumatico extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Estresse pós traumatico',
-            style: TextStyle(fontSize: 17)),
+        title:
+            const Text('Boletim de Ocorrencia', style: TextStyle(fontSize: 17)),
         backgroundColor: const Color(0xff77A8A6),
         foregroundColor: const Color(0xffffffff),
       ),
@@ -26,15 +26,20 @@ class TelaEstressePosTraumatico extends StatelessWidget {
           children: [
             const Paragrafo(
                 texto:
-                    'O trauma psicológico é a dificuldade em se recuperar depois de vivenciar ou testemunhar um acontecimento assustador.Isso pode durar meses ou anos, com gatilhos que podem trazer de volta memórias acompanhadas por intensas reações emocionais e físicas as quais,muitas vezes, podem atrapalhar a vida profissional e pessoal.',
+                    'Grande parte dos brasileiros só registra um boletim de ocorrência em casos graves.',
                 padding: 5),
             const Paragrafo(
                 texto:
-                    'A maioria dos casos é necessário o auxílio de um profissional para superar um trauma.',
+                    'Isso acontece porque não sabem a importância de registrar um B.O. Ele é responável por notificar as autoridades policiais e judiciais sobre a situação da criminalidade na região.',
+                padding: 5),
+            const Paragrafo(
+                texto:
+                    'É mais do que apenas recuperar um bem roubado, por exemplo, é colaborar para um bem coletivo.',
                 padding: 5),
             InkWell(
               onTap: () async {
-                final Uri url = Uri.parse('https://apsiquiatra.com.br/trauma/');
+                final Uri url = Uri.parse(
+                    'https://www.delegaciaeletronica.policiacivil.sp.gov.br/ssp-de-cidadao/pages/comunicar-ocorrencia');
 
                 if (!await launchUrl(url,
                     mode: LaunchMode.externalApplication)) {
@@ -45,18 +50,18 @@ class TelaEstressePosTraumatico extends StatelessWidget {
                   width: 300,
                   height: 190,
                   color: 0xff77A8A6,
-                  opacity: 0.30,
+                  opacity: 0.40,
                   marginLeft: 0,
                   marginBottom: 0,
                   marginRight: 0,
                   marginTop: 35,
                   paddingLeft: 30,
-                  paddingTop: 35,
+                  paddingTop: 50,
                   paddingRight: 30,
-                  paddingBottom: 35,
+                  paddingBottom: 50,
                   child: TextoCardsDeInfo(
                       texto:
-                          'Para entender melhor todo o processo de um trauma, a dra.Aline Rangel, psiquiatra, aborda esse tema em seu site de forma resumida e esclarecedora:')),
+                          'Clique aqui e sera redicionado para a Delegacia eletrônica, onde é possivel registrar um B.O tranquilamente.')),
             ),
           ],
         ),

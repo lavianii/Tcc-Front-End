@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application/components/tela_login.dart';
-import 'templates/cards/cards.dart';
-import 'templates/Inputs/estilo_text_fild.dart';
+import 'package:flutter_application/components/pages/tela_login.dart';
+import '../templates/cards/cards.dart';
+import '../templates/Inputs/estilo_text_fild.dart';
 import 'package:http/http.dart' as http;
 import 'tela_inicial.dart';
 import 'dart:convert';
-import 'templates/botoes/botao_icone.dart';
+import '../templates/botoes/botao_icone.dart';
 
 class FormAtualizaUsuario extends StatefulWidget {
   const FormAtualizaUsuario({

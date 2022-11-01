@@ -1,6 +1,12 @@
-import 'usuario_models.dart';
+import '../models/usuario_models.dart';
 
-class LoginModels {
+/* Classe utilizada para controlar as informaçoes do usuario.
+   Existem dois metodos getUser pois tem retornos diferentes,
+   e são utilizados para funçoes diferentes
+*/ 
+
+class LoginController {
+  
   Iterable<dynamic> usuario = [];
 
   saveUsuario(Iterable user) async {

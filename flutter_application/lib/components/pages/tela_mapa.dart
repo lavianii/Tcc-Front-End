@@ -2,17 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 
-class MapaScreen extends StatefulWidget {
-  double latitude;
-  double longitude;
+class TelaMapa extends StatefulWidget {
+ final double latitude;
+ final double longitude;
 
-  MapaScreen({Key? key, required this.latitude, required this.longitude})
+  const TelaMapa({Key? key, required this.latitude, required this.longitude})
       : super(key: key);
   @override
-  State<MapaScreen> createState() => _MapaScreenState();
+  State<TelaMapa> createState() => _TelaMapa();
 }
 
-class _MapaScreenState extends State<MapaScreen> {
+class _TelaMapa extends State<TelaMapa> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'templates/textos/paragrafo.dart';
-import 'templates/cards/cards.dart';
-import 'templates/textos/texto_cards_de_info.dart';
+import '../templates/textos/paragrafo.dart';
+import '../templates/cards/cards.dart';
+import '../templates/textos/texto_cards_de_info.dart';
 import 'tela_denuncia_form.dart';
 import 'tela_boletim_de_ocorrencia.dart';
 

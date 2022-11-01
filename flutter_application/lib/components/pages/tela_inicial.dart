@@ -1,39 +1,23 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:flutter_application/models/login_models.dart';
+import 'package:flutter_application/controllers/lista_bairros_controller.dart';
+import 'package:flutter_application/controllers/localizacao_controller.dart';
+import 'package:flutter_application/controllers/login_controller.dart';
 import 'barra_pesquisa.dart';
 import 'tela_denuncia.dart';
 import 'tela_boletim_de_ocorrencia.dart';
-import 'templates/cards/cards_bairros.dart';
+import '../templates/cards/cards_bairros.dart';
 import 'tela_estresse_pos_traumatico.dart';
 import 'tela_sobre_desenvolvedores.dart';
-import 'dart:convert';
-import '../models/bairros_models.dart';
-import 'package:http/http.dart' as http;
+import '../../models/bairros_models.dart';
 import 'tela_conta.dart';
-import 'mapaScreen.dart';
-import 'package:location/location.dart';
-import 'package:geolocator/geolocator.dart';
+import 'tela_mapa.dart';
 
-String _baseUrl = 'https://back-end-tcc-deploy.lavianii.repl.co';
-LoginModels loginModels = LoginModels();
-Location localizacao = Location();
 
-Future<List<Bairro>> getBairros() async {
-  final response = await http.get(Uri.parse('$_baseUrl/recuperabairro'),
-      headers: {"Accept": "application/json"});
+LoginController loginModels = LoginController();
+Localizacao localizacao = Localizacao();
+ListaBairros bairros = ListaBairros();
 
-  if (response.statusCode == 200) {
-    List bairros = json.decode(response.body);
-    return bairros.map((data) => Bairro.fromJson(data)).toList();
-  } else {
-    throw Exception('Erro inesperado...');
-  }
-}
-
-Future<Position> _getlocalizacao() async {
-  return await Geolocator.getCurrentPosition();
-}
 
 class TelaInicial extends StatefulWidget {
   const TelaInicial({Key? key}) : super(key: key);
@@ -43,8 +27,8 @@ class TelaInicial extends StatefulWidget {
 }
 
 class _TelaInicial extends State<TelaInicial> {
-  late Future<List<Bairro>> bairroData;
 
+  late Future<List<Bairro>> bairroData;
   String email = '';
   String nome = '';
   double longitude = 0;
@@ -54,12 +38,12 @@ class _TelaInicial extends State<TelaInicial> {
   void initState() {
     super.initState();
 
-    _getlocalizacao().then((value) => setState(() {
+    bairroData = bairros.getBairrosTelaInicial();
+
+    localizacao.getlocalizacao().then((value) => setState(() {
           longitude = value.longitude;
           latitude = value.latitude;
         }));
-
-    bairroData = getBairros();
 
     loginModels.getEmail().then((String result) {
       setState(() {
@@ -108,7 +92,7 @@ class _TelaInicial extends State<TelaInicial> {
                 color: Color(0xffDFF5F4),
               ),
             ),
-            //Tela inicial
+            //inicial
             ListTile(
               leading: const Icon(Icons.home),
               title: const Text("Home"),
@@ -121,6 +105,7 @@ class _TelaInicial extends State<TelaInicial> {
                 );
               },
             ),
+             //conta
             ListTile(
               leading: const Icon(Icons.person),
               title: const Text("Conta"),
@@ -133,7 +118,7 @@ class _TelaInicial extends State<TelaInicial> {
                 );
               },
             ),
-            //Favoritos
+            //mapa
             ListTile(
               leading: const Icon(Icons.location_on_outlined),
               title: const Text("Mapa"),
@@ -142,12 +127,12 @@ class _TelaInicial extends State<TelaInicial> {
                   context,
                   MaterialPageRoute(
                     builder: (context) =>
-                        MapaScreen(longitude: longitude, latitude: latitude),
+                        TelaMapa(longitude: longitude, latitude: latitude),
                   ),
                 );
               },
             ),
-            //Tela denuncia
+            //denuncia
             ListTile(
               leading: const Icon(Icons.warning_amber_rounded),
               title: const Text("Denuncia"),
@@ -160,7 +145,7 @@ class _TelaInicial extends State<TelaInicial> {
                 );
               },
             ),
-            //Tela estresse pos traumatico
+            //estresse pos traumatico
             ListTile(
               leading: const Icon(Icons.supervised_user_circle_outlined),
               title: const Text("Estresse pós-traumatico"),
@@ -188,7 +173,7 @@ class _TelaInicial extends State<TelaInicial> {
               },
             ),
 
-            //Tela sobre os devs
+            //sobre os devs
             ListTile(
               leading: const Icon(Icons.developer_mode_outlined),
               title: const Text("Desenvolvedores"),
@@ -227,15 +212,32 @@ class _TelaInicial extends State<TelaInicial> {
 
                     return Padding(
                       padding: const EdgeInsets.fromLTRB(0, 20, 0, 10),
-                      child: CardsBairros(
-                        colorSuperior: color,
-                        colorInferior: 0xffffffff,
-                        borderRadius: 4,
-                        width: 300,
-                        height: 60,
-                        paddingSuperior: 15,
-                        textInferior: data[index].bairro,
-                        textSuperior: text,
+                      child: InkWell(
+                        onTap: () {
+                          showDialog(
+                            context: context,
+                            builder: (context) => AlertDialog(
+                              title:  Text(data[index].bairro.toString()),
+                              content: Text(' Número de denuncias: '+ data[index].qtd.toString() ) ,
+                              actions: [
+                                TextButton(
+                                  onPressed: () => Navigator.of(context).pop(),
+                                  child: const Text('Ok'),
+                                ),
+                              ],
+                            ),
+                          );
+                        },
+                        child: CardsBairros(
+                          colorSuperior: color,
+                          colorInferior: 0xffffffff,
+                          borderRadius: 4,
+                          width: 300,
+                          height: 60,
+                          paddingSuperior: 15,
+                          textInferior: data[index].bairro,
+                          textSuperior: text,
+                        ),
                       ),
                     );
                   });
