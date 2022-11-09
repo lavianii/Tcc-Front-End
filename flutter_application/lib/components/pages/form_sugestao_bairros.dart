@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application/components/pages/tela_login.dart';
+import 'package:flutter_application/components/pages/tela_inicial.dart';
 import '../templates/Inputs/estilo_text_fild.dart';
 import '../templates/botoes/botao_icone.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-
 
 class FormSugestaoBairros extends StatefulWidget {
   const FormSugestaoBairros({Key? key}) : super(key: key);
@@ -22,16 +21,14 @@ class _FormSugestaoBairrosState extends State<FormSugestaoBairros> {
   Future<void> enviaBairro() {
     final String bairro = _formData['bairro'] as String;
 
-
     return http
         .post(
-      Uri.parse('$_baseUrl/incluir'),
+      Uri.parse('$_baseUrl/incluirSugestao'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
       body: jsonEncode(<String, String>{
-        'bairro': bairro,
-
+        'sugestoesBairro': bairro,
       }),
     )
         .then((response) {
@@ -41,7 +38,12 @@ class _FormSugestaoBairrosState extends State<FormSugestaoBairros> {
                 title: const Text('Sugestão enviada com sucesso!!'),
                 actions: [
                   TextButton(
-                      onPressed: () => Navigator.of(context).pop(),
+                      onPressed: () => Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const TelaInicial(),
+                            ),
+                          ),
                       child: const Text('ok'))
                 ],
               ));
@@ -72,10 +74,9 @@ class _FormSugestaoBairrosState extends State<FormSugestaoBairros> {
     enviaBairro();
   }
 
-
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
+    return Scaffold(
       appBar: AppBar(
         title: const Text('Sugestão de bairro'),
         backgroundColor: const Color(0xff77A8A6),
@@ -96,7 +97,8 @@ class _FormSugestaoBairrosState extends State<FormSugestaoBairros> {
                 children: [
                   Container(
                     margin: const EdgeInsets.fromLTRB(25, 40, 25, 15),
-                    child: const Text('Envie o nome do  bairro para adicionarmos a nossa base de dados!',
+                    child: const Text(
+                        'Envie o nome do  bairro para adicionarmos a nossa base de dados!',
                         style: TextStyle(
                             fontSize: 18, fontWeight: FontWeight.bold)),
                   ),
@@ -106,22 +108,21 @@ class _FormSugestaoBairrosState extends State<FormSugestaoBairros> {
                     width: 290,
                     child: EstiloTextFild(
                       label: 'Nome do bairro',
-                  hintText: 'Digite o bairro',
-                  iconData: Icons.location_on,
-                  obscureText: false,
-                  onSaved: (bairro) => _formData['bairro'] = bairro ?? '',
-                  validator: (bairoo) {
-                    final bairro = bairoo ?? ''; //lidando com null safety
-                    if (bairro.trim().isEmpty) {
-                      return 'bairro Invalido';
-                    }
-                    return null;
-                  },
-                  textInputAction: TextInputAction.send,
-                  onFieldSubmitted: (_) => _submitForm,
+                      hintText: 'Digite o bairro',
+                      iconData: Icons.location_on,
+                      obscureText: false,
+                      onSaved: (bairro) => _formData['bairro'] = bairro ?? '',
+                      validator: (bairoo) {
+                        final bairro = bairoo ?? ''; //lidando com null safety
+                        if (bairro.trim().isEmpty) {
+                          return 'bairro Invalido';
+                        }
+                        return null;
+                      },
+                      textInputAction: TextInputAction.send,
+                      onFieldSubmitted: (_) => _submitForm,
                     ),
                   ),
-               
                   Container(
                     margin: const EdgeInsets.fromLTRB(15, 20, 15, 30),
                     width: 250,
@@ -135,7 +136,6 @@ class _FormSugestaoBairrosState extends State<FormSugestaoBairros> {
                       colorIcon: 0xffffffff,
                     ),
                   ),
-                
                 ],
               ),
             ),
